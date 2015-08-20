@@ -1,0 +1,97 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block monitorlist %}
+<div class="large-12">
+    
+ {% if doc %}
+     <div class="row full-width">
+     <div class="medium-12 columns">
+     <div class="panel">
+			<h4><center>Мониторинг: <a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}}">{{doc_type.name}}</a></center></h4>
+	     	<div class="medium-12-4">
+		         <h4>Лечебное учреждение: <span class="SUL" style="text-decoration:underline"> {{ doc.hosp }} </span></h4> 
+	        </div>
+	     	<div class="medium-12-3">
+		         <h6>Отчетный период: <span class="SUL"> {{ doc.period}} ({{doc.datef}}) </span></h6> 
+	        </div>
+	     	<!--div class="medium-12-3 medium-3 columns">
+		         <h6>{{ doc.get_status_display }}</h6> 
+	        </div-->
+          <div class="medium-12-12 columns errmess">
+		      {{error}}
+          </div>
+{% comment %}
+          <form onsubmit="return validate_form ($(this));">
+{% endcomment %}
+          <form >
+           {% csrf_token %}
+           {% block monitorform %} {% endblock %}
+ 
+          <div id="errmess" class="medium-12-12 columns errmess">
+          </div>
+           <div class="row">
+           <div class="medium-12 columns">
+           {% if right_operator or right_admin %}
+           {% if doc.status == 'E' or doc.status == 'C' %}
+ 	     	 <div class="medium-2 columns">
+   		       <button class="button" name="button_save" value="1" type="submit" formmethod="post">Сохранить</button>         
+	         </div>
+ 	     	 <div class="medium-3 columns">
+     		   <button id="btnSend" class="button" name="button_send_control" value="2" type="submit" formmethod="post">На согласование</button>         
+	         </div>
+ 	     	 <div class="medium-1 columns">
+	         </div>
+ 	     	 <div class="medium-2 columns">
+             {% if isloadExcel %}
+   	     	 <div class="medium-2 columns">
+      	       <button class="button" name="button_load" value="6" type="submit" formmethod="post">Загрузить из Excel</button>         
+	         </div>
+             {% endif %}
+	         </div>
+
+          {% endif %}
+          {% endif %}
+          {% if right_control or right_admin %}
+          {% if doc.status == 'W' %}
+       	    <div class="medium-2 columns">
+  	    	<button class="button" name="button_isOK" value="4" type="submit" formmethod="post">Согласовано</button>         
+            </div>
+  	   	    <div class="medium-3 columns">
+  		    <button class="button" name="button_isNotOK" value="5" type="submit" formmethod="post">Не согласовано</button>         
+            </div>
+          {% endif %}
+          {% endif %}
+     	    <div class="medium-2 columns">
+     	    <button class="button" name="button_export" value="3" type="submit" formmethod="post">Экспорт в Excel</button>         
+     	    </div>
+          </div>
+          </div>
+  		  </form>
+           
+    </div>
+    </div>
+       <div class="large-offset-1 large-8 columns">
+         <h4>Комментарии</h4>
+         {% if comment %}
+         {% for c in comment %}
+         <h6>{{c.user.first_name}} {{c.user.last_name}}({{c.user}}):  {{c.date}}:  {{c.get_action_display}}<h6>
+         <p>{{c.text}}<p>
+         <hr>
+         {% endfor %}
+         {% endif %}
+         {% if doc.status != 'F' %}
+         <form action="monitor/add_comment/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}}/" method = "post">
+            {%csrf_token%}
+            {{form}}
+  		    <button class="button" name="button_addComment" value="5" type="submit" formmethod="post">Добавить</button>         
+         </form>
+         {% endif %}
+      </div>
+    </div>
+ {% else %} 
+    <p>Мониторинги не найдены‹</p>
+{% endif %}
+</div>
+</div>
+{% endblock %}

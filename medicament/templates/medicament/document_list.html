@@ -1,0 +1,190 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block monitorlist %}
+{#   Элементы управления                           #}
+<div class="otbor">
+    <div class="panel">
+       <form>
+         {% csrf_token %}
+         <h5>Фильтр</h5>
+         {% if right_all %}
+	         <label>Район</label>
+	         <select size="1" name="region">
+	           {% if region > 0 %}
+	             <option value="0">По всем</option>
+	           {% else %}
+	             <option selected value="0">По всем</option>
+	           {% endif %}
+	           
+	           {% for p1 in region_list %}
+	
+	           {% if p1.id == region %}
+	             <option selected value="{{p1.id}}">{{p1.name}}</option>
+	           {% else %}
+	             <option value="{{p1.id}}">{{p1.name}}</option>
+	           {% endif %}
+	           {% endfor %}
+	         </select>  
+	
+	         <label>МО</label>
+	         <select multiple name="mo[]">
+	           {% if hosp > 0 %}
+	             <option value="0">По всем</option>
+	           {% else %}
+	             <option selected value="0">По всем</option>
+	           {% endif %}
+	           {% for q1 in mo_list %}
+		         {% if q1.id == hosp %}
+	               <option selected value="{{q1.id}}">{{q1.name}}</option>
+	             {% else %}
+	               <option value="{{q1.id}}">{{q1.name}}</option>
+	             {% endif %}
+	           {% endfor %}
+	         </select>  
+         {% endif %}
+
+         <label>Период</label>
+         <select size="1" name="period">
+           {% if period > 0 %}
+             <option value="0">По всем</option>
+           {% else %}
+             <option selected value="0">По всем</option>
+           {% endif %}
+           
+           {% for p1 in period_list %}
+
+           {% if p1.id == period %}
+             <option selected value="{{p1.id}}">{{p1.name}} ({{p1.dateb|date:"d/m/y"}}-{{p1.datee|date:"d/m/y"}})</option>
+           {% else %}
+             <option value="{{p1.id}}">{{p1.name}} ({{p1.dateb|date:"d/m/y"}}-{{p1.datee|date:"d/m/y"}})</option>
+           {% endif %}
+           {% endfor %}
+         </select>  
+         <label>Статус</label>
+         <select size="1" name="status">
+             <option value="0">По всем</option>
+             {% if status == 'E' %} 
+	            <option selected value="E">Редактирование</option>
+             {% else %}
+	            <option value="E">Редактирование</option>
+             {% endif %}
+             {% if status == 'W' %} 
+	            <option selected value="W">Согласование</option>
+             {% else %}
+	            <option value="W">Согласование</option>
+             {% endif %}
+             {% if status == 'C' %} 
+	            <option selected value="C">Корректировка</option>
+             {% else %}
+	            <option value="C">Корректировка</option>
+             {% endif %}
+             {% if status == 'F' %} 
+	            <option selected value="F">Завершено</option>
+             {% else %}
+	            <option value="F">Завершено</option>
+             {% endif %}
+         </select>  
+         <button class="button" name="button_filter" value="1" type="submit" formmethod="post">Фильтр</button>         
+
+         {% if right_all %}
+         <button class="button" name="button_report" value="6" type="submit" formmethod="post">Свод</button>   
+         <hr>
+         <h5>Создать новый отчет</h5>
+         <label>Период</label>
+         <select size="1" name="period_new">
+           {% for p1 in period_list %}
+             <option value="{{p1.id}}">{{p1.name}} ({{p1.dateb|date:"d/m/y"}}-{{p1.datee|date:"d/m/y"}})</option>
+           {% endfor %}
+         </select>  
+         <label>Срок сдачи</label>
+         <input type='date' name='datef'>
+         <button class="button" name="button_create" value="2" type="submit" formmethod="post">Создать</button>   
+         {% if not isOk %}
+           <h5><blink>Ошибка при создании!</blink></h5>               
+         {% endif %}
+         {% endif %}
+         
+       </form> 
+    </div>
+</div>
+
+<div class="row full-width" style="min-height:{% if right_all %}990px{% else %}763px{% endif %}">
+<div class="large-12">
+    
+ {% if doc_list %}
+ 
+     <div class="panel large-8 medium-8">
+			<h4><center><a href="/form/{{doc_type.id}}">{{doc_type.name}}</a></center></h4>
+		    <table>
+			  <thead>
+				<tr>
+				  <th>Медицинская организация</th>
+				  <th>Период</th>
+				  <th>Срок до</th>
+				  <th>Состояние</th>
+				</tr >
+			  </thead>
+			  <tbody>
+			     {% for q in doc_page %}
+				<tr class="rowsel">
+				  <td><h6><a href="/monitor/{{doc_type.id}},{{q.id}},{{doc_page.number}},{{hosp}},{{period}},{{status}},{{region}}">{{ q.hosp }}</a></h6></td>
+				  <td><h6><a href="/monitor/{{doc_type.id}},{{q.id}},{{doc_page.number}},{{hosp}},{{period}},{{status}},{{region}}">{{q.period}}</a></h6></td>
+				  <td><h6><a href="/monitor/{{doc_type.id}},{{q.id}},{{doc_page.number}},{{hosp}},{{period}},{{status}},{{region}}">{{q.datef|date:"d/m/y"}}</a></h6></td>
+				  <td><h6><a href="/monitor/{{doc_type.id}},{{q.id}},{{doc_page.number}},{{hosp}},{{period}},{{status}},{{region}}">{{q.get_status_display}}</a></h6></td>
+				</tr>		    
+			    {% endfor %}
+			  </tbody>
+		    </table>
+
+			   <div class="large-12">
+			    <ul class="pagination">
+			       {% if doc_page.has_previous %}
+			           <li class="arrow"><a href="/form/{{doc_type.id}},{{ doc_page.previous_page_number }},{{hosp}},{{period}},{{status}},{{region}}/">&laquo;</a></li>
+			       {% else %}
+			           <li class="arrow unavailable">&laquo;</li>
+			       {% endif %}
+			       
+			       {%  for page in   doc_page.paginator.page_range %}
+			           {% if page ==  doc_page.number  %}
+			               <li class="current"> <a href="/form/{{doc_type.id}},{{page}},{{hosp}},{{period}},{{status}},{{region}}/">{{ page }}</a> </li>
+			           {% else %}
+			               <li><a  href="/form/{{doc_type.id}},{{page}},{{hosp}},{{period}},{{status}},{{region}}/">{{ page }}</a> </li>
+			           {% endif %}
+			       {% endfor %}
+			       {% if  doc_page.has_next %}
+			           <li class="arrow"><a href="/form/{{doc_type.id}},{{ doc_page.next_page_number}},{{hosp}},{{period}},{{status}},{{region}}/">&raquo;</a></li>
+			       {% else %}
+			           <li class="arrow unavailable">&raquo;</li>
+			       {% endif %}
+			    </ul> 
+			   </div>			
+     </div>
+
+ {% else %} 
+     <div class="panel large-8 medium-8">
+			<h4><center><a href="/form/{{doc_type.id}}">{{doc_type.name}}</a></center></h4>
+		    <table>
+			  <thead>
+				<tr>
+				  <th>Медицинская организация</th>
+				  <th>Период</th>
+				  <th>Срок до</th>
+				  <th>Состояние</th>
+				</tr >
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td colspan="4">
+					<center>Мониторинги не найдены</center>
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+	 </div>
+{% endif %}
+
+</div>
+</div>
+
+{% endblock %}

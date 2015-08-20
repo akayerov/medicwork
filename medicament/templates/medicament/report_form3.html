@@ -1,0 +1,1253 @@
+﻿{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block monitorlist %}
+<div class="row full-width">
+  <div class="large-12 columns">
+    <h4>Мониторинг: <a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}}">{{doc_type.name}}</a></h4>
+{% if doc_list %}
+
+    <ul class="tabs" data-tab="" role="tablist">
+	  <li class="tab-title {% if detail_tab == 'tab1000' or detail_tab == '' %} active {% endif %}" role="presentational"><a href="#panel1" role="tab" controls="panel1">Таблица 1000</a></li>
+	  <li class="tab-title {% if detail_tab == 'tab2000' %} active {% endif %}" role="presentational"><a href="#panel2" role="tab" controls="panel2">Таблица 2000</a></li>
+	  <li class="tab-title {% if detail_tab == 'tab3000' %} active {% endif %}" role="presentational"><a href="#panel3" role="tab" controls="panel3">Таблица 3000</a></li>
+	  <li class="tab-title {% if detail_tab == 'tab4000' %} active {% endif %}" role="presentational"><a href="#panel4" role="tab" controls="panel4">Таблица 4000</a></li>
+	  <li class="tab-title {% if detail_tab == 'tab5000' %} active {% endif %}" role="presentational"><a href="#panel5" role="tab" controls="panel5">Таблица 5000</a></li>
+	  <li class="tab-title {% if detail_tab == 'tab5001' %} active {% endif %}" role="presentational"><a href="#panel6" role="tab" controls="panel6">Таблица 5001</a></li>
+	  <li class="tab-title {% if detail_tab == 'tab6000' %} active {% endif %}" role="presentational"><a href="#panel7" role="tab" controls="panel7">Таблица 6000</a></li>
+	  <li class="tab-title {% if detail_tab == 'tab7000' %} active {% endif %}" role="presentational"><a href="#panel8" role="tab" controls="panel8">Таблица 7000</a></li>
+	</ul>
+	
+	<div class="tabs-content">
+	  <section role="tabpanel" class="content{% if detail_tab == 'tab1000' %} active{% else %}{% endif %}" id="panel1">
+	    <table class="table" id="table1" cellpadding="1" cellspacing="1">
+          <thead>
+            <tr>
+              <th class="row_mess" colspan="14">Сведения о проведении диспансеризации определенных групп взрослого населения</th>
+            </tr>
+		    <tr>
+	  		  <th rowspan="3" colspan="2">Возрастная группа</th>
+	  		  <th colspan="4">Все население</th>
+	  		  <th colspan="4">Мужчины</th>
+	  		  <th colspan="4">Женщины</th>
+		    </tr>
+			<tr>
+		  	  <th rowspan="2">Численность населения на 01.01 текущего года</th>
+		  	  <th rowspan="2">Подлежит диспансеризации по плану текущего года</th>
+		  	  <th colspan="2">Прошли диспансеризацию (чел.)</th>
+		  	  <th rowspan="2">Численность населения на 01.01 текущего года</th>
+		  	  <th rowspan="2">Подлежит диспансеризации по плану текущего года </th>
+		  	  <th colspan="2">Прошли диспансеризацию (чел.)</th>
+		  	  <th rowspan="2">Численность населения на 01.01 текущего года</th>
+		  	  <th rowspan="2">Подлежит диспансеризации по плану текущего года</th>
+		  	  <th colspan="2">Прошли диспансеризацию (чел.)</th>
+			</tr>
+			<tr>
+		  	  <th width="8%">I этап</th>
+		  	  <th width="8%">II этап </th>
+		  	  <th width="8%">I этап</th>
+		  	  <th width="8%">II этап </th>
+		  	  <th width="8%">I этап</th>
+		  	  <th width="8%">II этап </th>
+			</tr>
+          </thead>
+	  	  <tbody>
+           {% for line in result.tab1000 %}
+ 		        <tr class="itog_row">
+				  {% if detail_line == line.0.id %}
+				    <td class="detail_cel">-
+				  {% else %}
+				    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},{{line.0.id}},tab1000">+</a>
+				  {% endif %}</td>
+		          <td>{{line.0.name}}</td>
+		          <td class="cal" id='t1000_r{{line.0.id}}_c1'></td>
+		          <td class="cal" id='t1000_r{{line.0.id}}_c2'></td>
+		          <td class="cal" id='t1000_r{{line.0.id}}_c3'></td>
+		          <td class="cal" id='t1000_r{{line.0.id}}_c4'></td>
+		          <td id='t1000_r{{line.0.id}}_c5' class="number">{{line.5}}</td>
+		          <td id='t1000_r{{line.0.id}}_c6' class="number">{{line.6}}</td>
+		          <td id='t1000_r{{line.0.id}}_c7' class="number">{{line.7}}</td>
+		          <td id='t1000_r{{line.0.id}}_c8' class="number">{{line.8}}</td>
+		          <td id='t1000_r{{line.0.id}}_c9' class="number">{{line.9}}</td>
+		          <td id='t1000_r{{line.0.id}}_c10' class="number">{{line.10}}</td>
+		          <td id='t1000_r{{line.0.id}}_c11' class="number">{{line.11}}</td>
+		          <td id='t1000_r{{line.0.id}}_c12' class="number">{{line.12}}</td>
+		       </tr>
+               {% if detail_line == line.0.id %} 
+   	             {% for t in tab %}
+				 <tr class="detail_row">
+	      	       <td colspan="2">{{t.doc.hosp}}</td>
+		           <td class="cal" id='t1000_rD{{t.doc.hosp.id}}_c1'></td>
+		           <td class="cal" id='t1000_rD{{t.doc.hosp.id}}_c2'></td>
+		           <td class="cal" id='t1000_rD{{t.doc.hosp.id}}_c3'></td>
+		           <td class="cal" id='t1000_rD{{t.doc.hosp.id}}_c4'></td>
+		           <td id='t1000_rD{{t.doc.hosp.id}}_c5' class="number">{{t.c5}}</td>
+		           <td id='t1000_rD{{t.doc.hosp.id}}_c6' class="number">{{t.c6}}</td>
+		           <td id='t1000_rD{{t.doc.hosp.id}}_c7' class="number">{{t.c7}}</td>
+		           <td id='t1000_rD{{t.doc.hosp.id}}_c8' class="number">{{t.c8}}</td>
+		           <td id='t1000_rD{{t.doc.hosp.id}}_c9' class="number">{{t.c9}}</td>
+		           <td id='t1000_rD{{t.doc.hosp.id}}_c10' class="number">{{t.c10}}</td>
+		           <td id='t1000_rD{{t.doc.hosp.id}}_c11' class="number">{{t.c11}}</td>
+		           <td id='t1000_rD{{t.doc.hosp.id}}_c12' class="number">{{t.c12}}</td>
+		         </tr>
+                 {% endfor %}  
+               {% endif %}
+           {% endfor %}  
+          </tbody>
+          <tfoot>
+			<tr>
+			  <td colspan="2">Итого</td>
+		      <td id='t1000_rS_c1' class="cal"></td>
+		      <td id='t1000_rS_c2' class="cal"></td>
+		      <td id='t1000_rS_c3' class="cal"></td>
+		      <td id='t1000_rS_c4' class="cal"></td>
+		      <td id='t1000_rS_c5' class="cal"></td>
+		      <td id='t1000_rS_c6' class="cal"></td>
+		      <td id='t1000_rS_c7' class="cal"></td>
+		      <td id='t1000_rS_c8' class="cal"></td>
+		      <td id='t1000_rS_c9' class="cal"></td>
+		      <td id='t1000_rS_c10' class="cal"></td>
+		      <td id='t1000_rS_c11' class="cal"></td>
+		      <td id='t1000_rS_c12' class="cal"></td>
+			</tr>
+          </tfoot>
+	    </table>
+	  </section>
+	  
+	  <section role="tabpanel"  class="content{% if detail_tab == 'tab2000' or detail_tab == '' %} active{% else %}{% endif %}"  id="panel2">
+	    <table class="table">
+          <thead>
+			<tr>
+		      <th class="row_mess" colspan="6">Сведения о первом этапе диспансеризации определенных групп взрослого населения </th>
+			</tr>
+			<tr>
+		      <th rowspan="2" colspan="2" width="35%">Осмотр, исследование, иное медицинское мероприятие  первого этапа диспансеризации</th>
+		      <th colspan="3">Медицинское мероприятие </th>
+		      <th rowspan="2">Выявлены патологические отклонения </th>
+			</tr>
+			<tr>
+		      <th width="15%">проведено</th>
+		      <th width="18%">учтено, выполненных ранее (в предшествующие 12 мес.)</th>
+		      <th width="15%">отказы</th>
+			</tr>
+          </thead>
+          <tbody>
+          {% for line in result.tab2000 %}
+			<tr class="itog_row">
+	      	  {% if detail_line == line.0.id %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},{{line.0.id}},tab2000">+</a>
+			  {% endif %}</td>
+		      <td>{{line.0.name}}</td>
+		      <td class="number">{{line.1}}</td>
+			  {% if line.0.id == 4 or line.0.id == 23 %}
+			    <td class="none"></td>
+			    <td class="none"></td>
+			  {% else %}
+		        <td class="number">{{line.2}}</td>
+		        <td class="number">{{line.3}}</td>
+			  {% endif %}
+		      <td class="number">{{line.4}}</td>
+			</tr>
+               {% if detail_line == line.0.id %} 
+   	             {% for t in tab %}
+				 <tr class="detail_row">
+	      	       <td colspan="2">{{t.doc.hosp}}</td>
+		           <td class="number">{{t.c1}}</td>
+			       {% if line.0.id == 4 or line.0.id == 23 %}
+			         <td class="none"></td>
+			         <td class="none"></td>
+			       {% else %}
+		             <td class="number">{{t.c2}}</td>
+		             <td class="number">{{t.c3}}</td>
+			       {% endif %}
+		           <td class="number">{{t.c4}}</td>
+		         </tr>
+                 {% endfor %}  
+               {% endif %}
+          {% endfor %} 
+          </tbody>
+	    </table>
+	    <hr>
+	    <p>* Врач-терапевт - включает врача-терапевта, врача-терапевта участкового, врача-терапевта цехового врачебного участка, врача общей практики (семейного врача)</p>
+	  </section>
+	  
+	  <section role="tabpanel" class="content{% if detail_tab == 'tab3000' %} active{% else %}{% endif %}" id="panel3">
+	    <table class="table">
+	      <thead>
+		    <tr>
+		      <th class="row_mess" colspan="7">Сведения о втором этапе диспансеризации определенных групп взрослого населения</th>
+		    </tr>
+		    <tr>
+		      <th rowspan="2" colspan="2">Медицинское мероприятие второго этапа диспансеризации</th>
+		      <th rowspan="2" width="12%">Выявлено показание к дополнительному обследованию  </th>
+		      <th colspan="2">Количество выполненных медицинских мероприятий</th>
+		      <th rowspan="2" width="12%">Отказы</th>
+		      <th rowspan="2">Выявлено заболеваний</th>
+		    </tr>
+		    <tr>
+		      <th width="12%">в рамках диспансе-ризации</th>
+		      <th width="12%">проведено ранее (в предшествую-щие 12 мес.) </th> 
+		    </tr>
+	      </thead>
+	      <tbody>
+          {% for line in result.tab3000 %}
+			<tr class="itog_row">
+	      	  {% if detail_line == line.0.id %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},{{line.0.id}},tab3000">+</a>
+			  {% endif %}</td>
+		      <td>{{line.0.name}}</td>
+		      <td id='t3000_r{{line.0.id}}_c1' class="number">{{line.1}}</td>
+		      <td id='t3000_r{{line.0.id}}_c2' class="number">{{line.2}}</td>
+		      <td id='t3000_r{{line.0.id}}_c3' class="number">{{line.3}}</td>
+		      <td id='t3000_r{{line.0.id}}_c4' class="number">{{line.4}}</td>
+			  {% if line.0.id == 37 or line.0.id == 38 %}
+			    <td class="none"></td>
+			  {% else %}
+		        <td id='t3000_r{{line.0.id}}_c5' class="number">{{line.5}}</td>
+			  {% endif %}
+			</tr>
+               {% if detail_line == line.0.id %} 
+   	             {% for t in tab %}
+				 <tr class="detail_row">
+	      	       <td colspan="2">{{t.doc.hosp}}</td>
+		           <td id='t3000_rD{{t.doc.hosp.id}}_c1' class="number">{{t.c1}}</td>
+		           <td id='t3000_rD{{t.doc.hosp.id}}_c2' class="number">{{t.c2}}</td>
+		           <td id='t3000_rD{{t.doc.hosp.id}}_c3' class="number">{{t.c3}}</td>
+		           <td id='t3000_rD{{t.doc.hosp.id}}_c4' class="number">{{t.c4}}</td>
+			       {% if line.0.id == 37 or line.0.id == 38 %}
+			         <td class="none"></td>
+			       {% else %}
+		             <td id='t3000_rD{{t.doc.hosp.id}}_c5' class="number">{{t.c5}}</td>
+			       {% endif %}
+		         </tr>
+                 {% endfor %}  
+               {% endif %}
+          {% endfor %} 
+	      </tbody>
+	      <tfoot>
+		    <tr>
+		      <td colspan="2">Всего</td>
+		      <td id='t3000_rS_c1' class="cal"></td>
+		      <td id='t3000_rS_c2' class="cal"></td>
+		      <td id='t3000_rS_c3' class="cal"></td>
+		      <td id='t3000_rS_c4' class="cal"></td>
+		      <td id='t3000_rS_c5' class="cal"></td>
+		    </tr>
+	      </tfoot>
+	    </table>
+        <hr>
+        <table>
+          <tr class="itog_row">
+	      	  {% if detail_line == 3001 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},3001,tab3000">+</a>
+			  {% endif %}</td>
+            <td style="border-right: 0">3001 По результатам осмотра врачом-неврологом и дуплексного сканирования брахицефальных артерий выявлено медицинское показание для направления и направлено к врачу-сердечно-сосудистому хирургу:</td>
+            <td style="border-right: 0" class="number">{{result.doc.0}}</td>
+            <td style="vertical-align: middle">чел.</td>
+          </tr>
+          {% if detail_line == 3001 %} 
+   	        {% for t in doc_list %}
+			<tr class="detail_row">
+	      	  <td colspan="2" style="border-right: 0">{{t.hosp}}</td>
+		      <td style="border-right: 0" class="number">{{t.t3001}}</td>
+		      <td style="vertical-align: middle">чел.</td>
+		    </tr>
+            {% endfor %}  
+          {% endif %}
+        </table>
+        <p>* Врач-терапевт - включает врача-терапевта, врача-терапевта участкового, врача-терапевта цехового врачебного участка, врача общей практики (семейного врача)</p>
+	  </section>
+	  
+	  <section role="tabpanel" class="content{% if detail_tab == 'tab4000' %} active{% else %}{% endif %}" id="panel4">
+        <table class="table">
+	      <thead>
+		    <tr>
+		      <th  class="row_mess" colspan="15">Сведения о выявленных отдельных факторах риска развития хронических неинфекционных заболеваний,<br> не являющихся заболеваниями, в соответствии с кодами МКБ-10 **</th>
+		    </tr>
+		    <tr>
+		      <th rowspan="2" colspan="2" width="25%">Фактора риска (наименование по МКБ-10)</th>
+		      <th rowspan="2" width="5%">Код МКБ-10</th>
+		      <th colspan="4">Мужчины</th>
+		      <th colspan="4">Женщины</th>
+		      <th colspan="4">Всего</th>
+		    </tr>
+		    <tr>
+		      <th>21 – 36 лет</th>
+		      <th>37 – 60 лет</th>
+		      <th>Старше 60 лет</th>
+		      <th>Всего</th>
+		      <th>21 – 36 лет</th>
+		      <th>37 – 60 лет</th>
+		      <th>Старше 60 лет</th>
+		      <th>Всего</th>
+		      <th>21 – 36 лет</th>
+		      <th>37 – 60 лет</th>
+		      <th>Старше 60 лет </th>
+		      <th>Всего</th>
+		    </tr>
+	      </thead>
+	      <tbody>
+           {% for line in result.tab4000 %}
+ 		        <tr class="itog_row">
+	      	      <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},{{line.0.id}},tab4000">+</a></td>
+		          <td>{{line.0.name}}</td>
+		          <td>{{line.0.name1}}</td>
+		          <td id='t4000_r{{line.0.id}}_c1' class="number">{{line.1}}</td>
+		          <td id='t4000_r{{line.0.id}}_c2' class="number">{{line.2}}</td>
+		          <td id='t4000_r{{line.0.id}}_c3' class="number">{{line.3}}</td>
+		          <td id='t4000_r{{line.0.id}}_c4' class="cal"></td>
+		          <td id='t4000_r{{line.0.id}}_c5' class="number">{{line.4}}</td>
+		          <td id='t4000_r{{line.0.id}}_c6' class="number">{{line.5}}</td>
+		          <td id='t4000_r{{line.0.id}}_c7' class="number">{{line.6}}</td>
+		          <td id='t4000_r{{line.0.id}}_c8' class="cal"></td>
+		          <td id='t4000_r{{line.0.id}}_c9' class="cal"></td>
+		          <td id='t4000_r{{line.0.id}}_c10' class="cal"></td>
+		          <td id='t4000_r{{line.0.id}}_c11' class="cal"></td>
+		          <td id='t4000_r{{line.0.id}}_c12' class="cal"></td>
+		       </tr>
+               {% if detail_line == line.0.id %} 
+   	             {% for t in tab %}
+				 <tr class="detail_row">
+	      	       <td colspan="3">{{t.doc.hosp}}</td>
+		           <td id='t4000_rD{{t.doc.hosp.id}}_c1' class="number">{{t.c1}}</td>
+		           <td id='t4000_rD{{t.doc.hosp.id}}_c2' class="number">{{t.c2}}</td>
+		           <td id='t4000_rD{{t.doc.hosp.id}}_c3' class="number">{{t.c3}}</td>
+		           <td id='t4000_rD{{t.doc.hosp.id}}_c4' class="cal"></td>
+		           <td id='t4000_rD{{t.doc.hosp.id}}_c5' class="number">{{t.c5}}</td>
+		           <td id='t4000_rD{{t.doc.hosp.id}}_c6' class="number">{{t.c6}}</td>
+		           <td id='t4000_rD{{t.doc.hosp.id}}_c7' class="number">{{t.c7}}</td>
+		           <td id='t4000_rD{{t.doc.hosp.id}}_c8' class="cal"></td>
+		           <td id='t4000_rD{{t.doc.hosp.id}}_c9' class="cal"></td>
+		           <td id='t4000_rD{{t.doc.hosp.id}}_c10' class="cal"></td>
+		           <td id='t4000_rD{{t.doc.hosp.id}}_c11' class="cal"></td>
+		           <td id='t4000_rD{{t.doc.hosp.id}}_c12' class="cal"></td>
+		         </tr>
+                 {% endfor %}  
+               {% endif %}
+           {% endfor %}  
+          </tbody>
+	    </table>
+	    <table align="center" style="width:50%">
+		    <tr>
+		      <th class="row_mess" colspan="4">4001 Установлено диспансерное наблюдение врачом (фельдшером):</th>
+		    </tr>
+		    <tr>
+            <tr class="itog_row">
+	      	  {% if detail_line == 40011 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},40011,tab4000">+</a>
+			  {% endif %}</td>
+		      <td>кабинета или отделения медицинской профилактики:</td>
+		      <td class="number">{{result.doc.1}}</td>
+		      <td>чел.</td>
+		    </tr>
+            {% if detail_line == 40011 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t4001_r1}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+		    <tr class="itog_row">
+	      	  {% if detail_line == 40012 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},40012,tab4000">+</a>
+			  {% endif %}</td>
+		      <td>центра здоровья:</td>
+		      <td class="number">{{result.doc.2}}</td>
+		      <td>чел.</td>
+		    </tr>
+            {% if detail_line == 40012 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t4001_r2}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+	    </table>
+	    <table align="center" style="width:50%">
+		    <tr>
+		      <th class="row_mess" colspan="4">4002 Направлено к врачу-психиатру (врачу-психиатру-наркологу)</th>
+		    </tr>
+			<tr class="itog_row">
+	      	  {% if detail_line == 40021 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},40021,tab4000">+</a>
+			  {% endif %}</td>
+		      <td> в связи с выявленным риском пагубного потребления алкоголя: </td>
+		      <td class="number">{{result.doc.3}}</td>
+		      <td>чел.</td>
+		    </tr>
+            {% if detail_line == 40021 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t4002_r1}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 40022 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},40022,tab4000">+</a>
+			  {% endif %}</td>
+		      <td>в связи с выявленным риском потребления наркотических средств и психотропных веществ без назначения врача:</td>
+		      <td class="number">{{result.doc.4}}</td>
+		      <td>чел.</td>
+		    </tr>
+            {% if detail_line == 40022 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t4002_r2}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+	    </table>
+	    <hr>
+	    <p>** Международная статистическая классификация болезней и проблем, связанных со здоровьем, 10-го пересмотра</p>
+	  </section>
+	  
+	  <section role="tabpanel" class="content{% if detail_tab == 'tab5000' %} active{% else %}{% endif %}" id="panel5">
+	    <table class="table">
+	      <thead>
+		    <tr>
+		      <th class="row_mess" colspan="17">Сведения о выявленных при проведении диспансеризации заболеваниях (случаев)</th>
+		    <tr>
+		      <th rowspan="2" colspan="2" width="15%">Заболевание</th>
+		      <th rowspan="2" width="5%">Код МКБ-10</th>
+		      <th colspan="4" width="30%">Мужчины</th>
+		      <th colspan="4" width="30%">Женщины</th>
+		      <th colspan="4">Всего</th>
+		      <th rowspan="2">Установлено диспансерное наблюдение</th>
+		    </tr>
+		    <tr>
+		      <th>21 – 36 лет</th>
+		      <th>37 – 60 лет</th>
+		      <th>Старше 60 лет</th>
+		      <th>Всего</th>
+		      <th>21 – 36 лет</th>
+		      <th>37 – 60 лет</th>
+		      <th>Старше 60 лет</th>
+		      <th>Всего</th>
+		      <th>21 – 36 лет</th>
+		      <th> 37 – 60 лет</th>
+		      <th> Старше 60 лет</th>
+		      <th>Всего</th>
+		    </tr>
+	      </thead>
+	      <tbody>
+           {% for line in result.tab5000 %}
+ 		        <tr class="itog_row">
+	      	      <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},{{line.0.id}},tab5000">+</a></td>
+		          <td>{{line.0.name}}</td>
+		          <td>{{line.0.name1}}</td>
+		          <td id='t5000_r{{line.0.id}}_c1' class="number">{{line.1}}</td>
+		          <td id='t5000_r{{line.0.id}}_c2' class="number">{{line.2}}</td>
+		          <td id='t5000_r{{line.0.id}}_c3' class="number">{{line.3}}</td>
+		          <td id='t5000_r{{line.0.id}}_c4' class="cal"></td>
+		          <td id='t5000_r{{line.0.id}}_c5' class="number">{{line.4}}</td>
+		          <td id='t5000_r{{line.0.id}}_c6' class="number">{{line.5}}</td>
+		          <td id='t5000_r{{line.0.id}}_c7' class="number">{{line.6}}</td>
+		          <td id='t5000_r{{line.0.id}}_c8' class="cal"></td>
+		          <td id='t5000_r{{line.0.id}}_c9' class="cal"></td>
+		          <td id='t5000_r{{line.0.id}}_c10' class="cal"></td>
+		          <td id='t5000_r{{line.0.id}}_c11' class="cal"></td>
+		          <td id='t5000_r{{line.0.id}}_c12' class="cal"></td>
+		          <td id='t5000_r{{line.0.id}}_c13' class="number">{{line.7}}</td>
+		       </tr>
+               {% if detail_line == line.0.id %} 
+   	             {% for t in tab %}
+				 <tr class="detail_row">
+	      	       <td colspan="3">{{t.doc.hosp}}</td>
+		           <td id='t5000_rD{{t.doc.hosp.id}}_c1' class="number">{{t.c1}}</td>
+		           <td id='t5000_rD{{t.doc.hosp.id}}_c2' class="number">{{t.c2}}</td>
+		           <td id='t5000_rD{{t.doc.hosp.id}}_c3' class="number">{{t.c3}}</td>
+		           <td id='t5000_rD{{t.doc.hosp.id}}_c4' class="cal"></td>
+		           <td id='t5000_rD{{t.doc.hosp.id}}_c5' class="number">{{t.c5}}</td>
+		           <td id='t5000_rD{{t.doc.hosp.id}}_c6' class="number">{{t.c6}}</td>
+		           <td id='t5000_rD{{t.doc.hosp.id}}_c7' class="number">{{t.c7}}</td>
+		           <td id='t5000_rD{{t.doc.hosp.id}}_c8' class="cal"></td>
+		           <td id='t5000_rD{{t.doc.hosp.id}}_c9' class="cal"></td>
+		           <td id='t5000_rD{{t.doc.hosp.id}}_c10' class="cal"></td>
+		           <td id='t5000_rD{{t.doc.hosp.id}}_c11' class="cal"></td>
+		           <td id='t5000_rD{{t.doc.hosp.id}}_c12' class="cal"></td>
+		           <td id='t5000_rD{{t.doc.hosp.id}}_c13' class="number">{{t.c13}}</td>
+		         </tr>
+                 {% endfor %}  
+               {% endif %}
+           {% endfor %}  
+          </tbody>
+	      <tfoot>
+		    <tr>
+		      <td colspan="2">ИТОГО заболеваний</td>
+		      <td>А00-Т98</td>
+		      <td id='t5000_rS_c1' class="cal"></td>
+		      <td id='t5000_rS_c2' class="cal"></td>
+		      <td id='t5000_rS_c3' class="cal"></td>
+		      <td id='t5000_rS_c4' class="cal"></td>
+		      <td id='t5000_rS_c5' class="cal"></td>
+		      <td id='t5000_rS_c6' class="cal"></td>
+		      <td id='t5000_rS_c7' class="cal"></td>
+		      <td id='t5000_rS_c8' class="cal"></td>
+		      <td id='t5000_rS_c9' class="cal"></td>
+		      <td id='t5000_rS_c10' class="cal"></td>
+		      <td id='t5000_rS_c11' class="cal"></td>
+		      <td id='t5000_rS_c12' class="cal"></td>
+		      <td id='t5000_rS_c13' class="cal"></td>
+		    </tr>
+	      </tfoot>
+	    </table>
+	  </section>
+	  
+	  <section role="tabpanel" class="content{% if detail_tab == 'tab5001' %} active{% else %}{% endif %}" id="panel6">
+	    <table class="table">
+	      <thead>
+		    <tr>
+		      <th  class="row_mess" colspan="17">Сведения о впервые выявленных при проведении диспансеризации заболеваниях (случаев)</th>
+		    <tr>
+		      <th rowspan="2" colspan="2" width="15%">Заболевание</th>
+		      <th rowspan="2" width="5%">Код МКБ-10</th>
+		      <th colspan="4" width="30%">Мужчины</th>
+		      <th colspan="4" width="30%">Женщины</th>
+		      <th colspan="4">Всего</th>
+		      <th rowspan="2">Установлено диспансерное наблюдение</th>
+		    </tr>
+		    <tr>
+		      <th>21 – 36 лет</th>
+		      <th>37 – 60 лет</th>
+		      <th>Старше 60 лет</th>
+		      <th>Всего</th>
+		      <th>21 – 36 лет</th>
+		      <th>37 – 60 лет</th>
+		      <th>Старше 60 лет</th>
+		      <th>Всего</th>
+		      <th>21 – 36 лет</th>
+		      <th> 37 – 60 лет</th>
+		      <th> Старше 60 лет</th>
+		      <th>Всего</th>
+		    </tr>
+	      </thead>
+	      <tbody>
+           {% for line in result.tab5001 %}
+ 		        <tr class="itog_row">
+	      	      <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},{{line.0.id}},tab5001">+</a></td>
+		          <td>{{line.0.name}}</td>
+		          <td>{{line.0.name1}}</td>
+		          <td id='t5001_r{{line.0.id}}_c1' class="number">{{line.1}}</td>
+		          <td id='t5001_r{{line.0.id}}_c2' class="number">{{line.2}}</td>
+		          <td id='t5001_r{{line.0.id}}_c3' class="number">{{line.3}}</td>
+		          <td id='t5001_r{{line.0.id}}_c4' class="cal"></td>
+		          <td id='t5001_r{{line.0.id}}_c5' class="number">{{line.4}}</td>
+		          <td id='t5001_r{{line.0.id}}_c6' class="number">{{line.5}}</td>
+		          <td id='t5001_r{{line.0.id}}_c7' class="number">{{line.6}}</td>
+		          <td id='t5001_r{{line.0.id}}_c8' class="cal"></td>
+		          <td id='t5001_r{{line.0.id}}_c9' class="cal"></td>
+		          <td id='t5001_r{{line.0.id}}_c10' class="cal"></td>
+		          <td id='t5001_r{{line.0.id}}_c11' class="cal"></td>
+		          <td id='t5001_r{{line.0.id}}_c12' class="cal"></td>
+		          <td id='t5001_r{{line.0.id}}_c13' class="number">{{line.7}}</td>
+               {% if detail_line == line.0.id %} 
+   	             {% for t in tab %}
+				 <tr class="detail_row">
+	      	       <td colspan="3">{{t.doc.hosp}}</td>
+		           <td id='t5001_rD{{t.doc.hosp.id}}_c1' class="number">{{t.c1}}</td>
+		           <td id='t5001_rD{{t.doc.hosp.id}}_c2' class="number">{{t.c2}}</td>
+		           <td id='t5001_rD{{t.doc.hosp.id}}_c3' class="number">{{t.c3}}</td>
+		           <td id='t5001_rD{{t.doc.hosp.id}}_c4' class="cal"></td>
+		           <td id='t5001_rD{{t.doc.hosp.id}}_c5' class="number">{{t.c5}}</td>
+		           <td id='t5001_rD{{t.doc.hosp.id}}_c6' class="number">{{t.c6}}</td>
+		           <td id='t5001_rD{{t.doc.hosp.id}}_c7' class="number">{{t.c7}}</td>
+		           <td id='t5001_rD{{t.doc.hosp.id}}_c8' class="cal"></td>
+		           <td id='t5001_rD{{t.doc.hosp.id}}_c9' class="cal"></td>
+		           <td id='t5001_rD{{t.doc.hosp.id}}_c10' class="cal"></td>
+		           <td id='t5001_rD{{t.doc.hosp.id}}_c11' class="cal"></td>
+		           <td id='t5001_rD{{t.doc.hosp.id}}_c12' class="cal"></td>
+		           <td id='t5001_rD{{t.doc.hosp.id}}_c13' class="number">{{t.c13}}</td>
+		         </tr>
+                 {% endfor %}  
+               {% endif %}
+		       </tr>
+           {% endfor %}  
+          </tbody>
+	      <tfoot>
+		    <tr>
+		      <td colspan="2">ИТОГО заболеваний</td>
+		      <td>А00-Т98</td>
+		      <td id='t5001_rS_c1' class="cal"></td>
+		      <td id='t5001_rS_c2' class="cal"></td>
+		      <td id='t5001_rS_c3' class="cal"></td>
+		      <td id='t5001_rS_c4' class="cal"></td>
+		      <td id='t5001_rS_c5' class="cal"></td>
+		      <td id='t5001_rS_c6' class="cal"></td>
+		      <td id='t5001_rS_c7' class="cal"></td>
+		      <td id='t5001_rS_c8' class="cal"></td>
+		      <td id='t5001_rS_c9' class="cal"></td>
+		      <td id='t5001_rS_c10' class="cal"></td>
+		      <td id='t5001_rS_c11' class="cal"></td>
+		      <td id='t5001_rS_c12' class="cal"></td>
+		      <td id='t5001_rS_c13' class="cal"></td>
+		    </tr>
+	      </tfoot>
+	    </table>
+	  </section>
+	  
+	  <section role="tabpanel" class="content{% if detail_tab == 'tab6000' %} active{% else %}{% endif %}" id="panel7">
+	    <table class="table">
+	      <thead>
+		    <tr>
+		      <th  class="row_mess" colspan="17">Сведения об установленных при проведении диспансеризации предварительных диагнозах (случаев)</th>
+		    <tr>
+		      <th rowspan="2" colspan="2" width="15%">Заболевание</th>
+		      <th rowspan="2" width="5%">Код МКБ-10</th>
+		      <th colspan="4" width="30%">Мужчины</th>
+		      <th colspan="4" width="30%">Женщины</th>
+		      <th colspan="4">Всего</th>
+		      <th rowspan="2">Из них направлено на дополнительное обследование, не входящее в объем диспансеризации</th>
+		    </tr>
+		    <tr>
+		      <th>21 – 36 лет</th>
+		      <th>37 – 60 лет</th>
+		      <th>Старше 60 лет</th>
+		      <th>Всего</th>
+		      <th>21 – 36 лет</th>
+		      <th>37 – 60 лет</th>
+		      <th>Старше 60 лет</th>
+		      <th>Всего</th>
+		      <th>21 – 36 лет</th>
+		      <th> 37 – 60 лет</th>
+		      <th> Старше 60 лет</th>
+		      <th>Всего</th>
+		    </tr>
+	      </thead>
+	      <tbody>
+           {% for line in result.tab6000 %}
+ 		        <tr class="itog_row">
+	      	      <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},{{line.0.id}},tab6000">+</a></td>
+		          <td>{{line.0.name}}</td>
+		          <td>{{line.0.name1}}</td>
+		          <td id='t6000_r{{line.0.id}}_c1' class="number">{{line.1}}</td>
+		          <td id='t6000_r{{line.0.id}}_c2' class="number">{{line.2}}</td>
+		          <td id='t6000_r{{line.0.id}}_c3' class="number">{{line.3}}</td>
+		          <td id='t6000_r{{line.0.id}}_c4' class="cal"></td>
+		          <td id='t6000_r{{line.0.id}}_c5' class="number">{{line.4}}</td>
+		          <td id='t6000_r{{line.0.id}}_c6' class="number">{{line.5}}</td>
+		          <td id='t6000_r{{line.0.id}}_c7' class="number">{{line.6}}</td>
+		          <td id='t6000_r{{line.0.id}}_c8' class="cal"></td>
+		          <td id='t6000_r{{line.0.id}}_c9' class="cal"></td>
+		          <td id='t6000_r{{line.0.id}}_c10' class="cal"></td>
+		          <td id='t6000_r{{line.0.id}}_c11' class="cal"></td>
+		          <td id='t6000_r{{line.0.id}}_c12' class="cal"></td>
+		          <td id='t6000_r{{line.0.id}}_c13' class="number">{{line.7}}</td>
+		       </tr>
+               {% if detail_line == line.0.id %} 
+   	             {% for t in tab %}
+				 <tr class="detail_row">
+	      	       <td colspan="3">{{t.doc.hosp}}</td>
+		           <td id='t6000_rD{{t.doc.hosp.id}}_c1' class="number">{{t.c1}}</td>
+		           <td id='t6000_rD{{t.doc.hosp.id}}_c2' class="number">{{t.c2}}</td>
+		           <td id='t6000_rD{{t.doc.hosp.id}}_c3' class="number">{{t.c3}}</td>
+		           <td id='t6000_rD{{t.doc.hosp.id}}_c4' class="cal"></td>
+		           <td id='t6000_rD{{t.doc.hosp.id}}_c5' class="number">{{t.c5}}</td>
+		           <td id='t6000_rD{{t.doc.hosp.id}}_c6' class="number">{{t.c6}}</td>
+		           <td id='t6000_rD{{t.doc.hosp.id}}_c7' class="number">{{t.c7}}</td>
+		           <td id='t6000_rD{{t.doc.hosp.id}}_c8' class="cal"></td>
+		           <td id='t6000_rD{{t.doc.hosp.id}}_c9' class="cal"></td>
+		           <td id='t6000_rD{{t.doc.hosp.id}}_c10' class="cal"></td>
+		           <td id='t6000_rD{{t.doc.hosp.id}}_c11' class="cal"></td>
+		           <td id='t6000_rD{{t.doc.hosp.id}}_c12' class="cal"></td>
+		           <td id='t6000_rD{{t.doc.hosp.id}}_c13' class="number">{{t.c13}}</td>
+		         </tr>
+                 {% endfor %}  
+               {% endif %}
+           {% endfor %}  
+          </tbody>
+	      <tfoot>
+		    <tr>
+		      <td colspan="2">ИТОГО заболеваний</td>
+		      <td>А00-Т98</td>
+		      <td id='t6000_rS_c1' class="cal"></td>
+		      <td id='t6000_rS_c2' class="cal"></td>
+		      <td id='t6000_rS_c3' class="cal"></td>
+		      <td id='t6000_rS_c4' class="cal"></td>
+		      <td id='t6000_rS_c5' class="cal"></td>
+		      <td id='t6000_rS_c6' class="cal"></td>
+		      <td id='t6000_rS_c7' class="cal"></td>
+		      <td id='t6000_rS_c8' class="cal"></td>
+		      <td id='t6000_rS_c9' class="cal"></td>
+		      <td id='t6000_rS_c10' class="cal"></td>
+		      <td id='t6000_rS_c11' class="cal"></td>
+		      <td id='t6000_rS_c12' class="cal"></td>
+		      <td id='t6000_rS_c13' class="cal"></td>
+		    </tr>
+	      </tfoot>
+	    </table>
+	  </section>
+  
+	  <section role="tabpanel" class="content{% if detail_tab == 'tab7000' %} active{% else %}{% endif %}" id="panel8">
+	    <table class="table">
+	      <thead>
+		    <tr>
+		      <th class="row_mess" colspan="9">Общие результаты диспансеризации определенных групп взрослого населения</th>
+		    </tr>
+		    <tr>
+		      <th rowspan="2" colspan="2">Результат диспансеризации определенных групп взрослого населения</th>
+		      <th colspan="3">Мужчины</th>
+		      <th colspan="3">Женщины</th>
+		    </tr>
+		    <tr>
+		      <th>21 – 36 лет</th>
+		      <th>37 – 60 лет</th>
+		      <th>Старше 60 лет</th>
+		      <th>21 – 36 лет</th>
+		      <th>37 – 60 лет</th>
+		      <th>Старше 60 лет</th>
+		    </tr>
+	      </thead>
+	      <tbody>
+           {% for line in result.tab7000 %}
+ 		        <tr class="itog_row">
+	      	      <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},{{line.0.id}},tab7000">+</a></td>
+		          <td>{{line.0.name}}</td>
+		          <td class="number">{{line.1}}</td>
+		          <td class="number">{{line.2}}</td>
+		          <td class="number">{{line.3}}</td>
+		          <td class="number">{{line.4}}</td>
+		          <td class="number">{{line.5}}</td>
+		          <td class="number">{{line.6}}</td>
+		       </tr>
+               {% if detail_line == line.0.id %} 
+   	             {% for t in tab %}
+				 <tr class="detail_row">
+	      	       <td colspan="3">{{t.doc.hosp}}</td>
+		           <td class="number">{{t.c1}}</td>
+		           <td class="number">{{t.c2}}</td>
+		           <td class="number">{{t.c3}}</td>
+		           <td class="number">{{t.c4}}</td>
+		           <td class="number">{{t.c5}}</td>
+		           <td class="number">{{t.c6}}</td>
+		         </tr>
+                 {% endfor %}  
+               {% endif %}
+           {% endfor %}	  
+          </tbody>
+	    </table>
+	    <table class="table">
+	      <tbody>
+			<tr class="itog_row">
+	      	  {% if detail_line == 7001 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},7001,tab7000">+</a>
+			  {% endif %}</td>
+		      <th width="70%">7001 Общее число работающих граждан, прошедших диспансеризацию</th>
+		      <td class="number">{{result.doc.5}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 7001 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7001}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 7002 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},7002,tab7000">+</a>
+			  {% endif %}</td>
+		      <th>7002 Общее число неработающих граждан, прошедших диспансеризацию</th>
+		      <td class="number">{{result.doc.6}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 7002 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7002}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 7003 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},7003,tab7000">+</a>
+			  {% endif %}</td>
+		      <th>7003 Общее число граждан, обучающихся в образовательных организациях по очной форме, прошедших диспансеризацию</th>
+		      <td class="number">{{result.doc.7}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 7003 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7003}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 7004 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},7004,tab7000">+</a>
+			  {% endif %}</td>
+		      <th>7004 Общее число граждан, имеющих право на получение государственной социальной помощи в виде набора социальных услуг , прошедших диспансеризацию ***</th>
+		      <td class="number">{{result.doc.8}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 7004 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7004}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 70041 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},70041,tab7000">+</a>
+			  {% endif %}</td>
+		      <td>из них:<br> - инвалиды войны</td>
+		      <td class="number">{{result.doc.9}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 70041 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7004_r1}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 70042 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},70042,tab7000">+</a>
+			  {% endif %}</td>
+		      <td>- участники Великой Отечественной войны </td>
+		      <td class="number">{{result.doc.10}}</td>
+		      <td>человек</td>
+		    </tr>
+            {% if detail_line == 70042 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7004_r2}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 70043 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},70043,tab7000">+</a>
+			  {% endif %}</td>
+		      <td>- ветераны боевых действий из числа лиц, указанных в подпунктах 1-4 пункта 1 статьи 3 Федерального закона от 12 января 1995 г. № 5-ФЗ «О ветеранах»</td>
+		      <td class="number">{{result.doc.11}}</td>
+		      <td>человек</td>
+		    </tr>
+            {% if detail_line == 70043 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7004_r3}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 70044 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},70044,tab7000">+</a>
+			  {% endif %}</td>
+		      <td>- военнослужащие, проходившие военную службу в воинских частях, учреждениях, военно-учебных заведениях, не входивших в состав действующей армии, в период с 22 июня 1941 года по 3 сентября 1945 года не менее шести месяцев, военнослужащие, награжденные орденами или медалями СССР за службу в указанный период </td>
+		      <td class="number">{{result.doc.12}}</td>
+		      <td>человек</td>
+		    </tr>
+            {% if detail_line == 70044 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7004_r4}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 70045 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},70045,tab7000">+</a>
+			  {% endif %}</td>
+		      <td>- лица, награжденные знаком «Жителю блокадного Ленинграда» и признанных инвалидами вследствие общего заболевания, трудового увечья и других причин (кроме лиц, инвалидность которых наступила вследствие их противоправных действий) </td>
+		      <td class="number">{{result.doc.13}}</td>
+		      <td>человек</td>
+		    </tr>
+            {% if detail_line == 70045 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7004_r5}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 70046 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},70046,tab7000">+</a>
+			  {% endif %}</td>
+		      <td>- лица, работавшие в период Великой Отечественной войны на объектах противовоздушной обороны, местной противовоздушной обороны, на строительстве оборонительных сооружений, военно-морских баз, аэродромов и других военных объектов в пределах тыловых границ действующих фронтов, операционных зон действующих флотов, на прифронтовых участках железных и автомобильных дорог, а также члены экипажей судов транспортного флота, интернированных в начале Великой Отечественной войны в портах других государств </td>
+		      <td class="number">{{result.doc.14}}</td>
+		      <td>человек</td>
+		    </tr>
+            {% if detail_line == 70046 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7004_r6}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 70047 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},70047,tab7000">+</a>
+			  {% endif %}</td>
+		      <td>- члены семей погибших (умерших) инвалидов войны, участников Великой Отечественной войны и ветеранов боевых действий, члены семей погибших в Великой Отечественной войне лиц из числа личного состава групп самозащиты объектовых и аварийных команд местной противовоздушной обороны, а также члены семей погибших работников госпиталей и больниц города Ленинграда </td>
+		      <td class="number">{{result.doc.15}}</td>
+		      <td>человек</td>
+		    </tr>
+            {% if detail_line == 70047 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7004_r7}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 70048 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},70048,tab7000">+</a>
+			  {% endif %}</td>
+		      <td>- инвалиды</td>
+		      <td class="number">{{result.doc.16}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 70048 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7004_r8}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 7005 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},7005,tab7000">+</a>
+			  {% endif %}</td>
+		      <th>7005 Общее число граждан, принадлежащих к коренным малочисленным народам Севера, Сибири и Дальнего Востока Российской Федерации, прошедших диспансеризацию</th>
+		      <td class="number">{{result.doc.17}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 7005 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7005}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 7006 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},7006,tab7000">+</a>
+			  {% endif %}</td>
+		      <th>7006 Общее число медицинских организаций, оказывающих первичную медико-санитарную помощь, принимавших участие в проведении диспансеризации</th>
+		      <td class="number">{{result.doc.18}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 7006 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7006}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 70061 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},70061,tab7000">+</a>
+			  {% endif %}</td>
+		      <td>из них: имеют кабинеты или отделения медицинской профилактики </td>
+		      <td class="number">{{result.doc.19}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 70061 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7006_r1}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 7007 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},7007,tab7000">+</a>
+			  {% endif %}</td>
+		      <th>7007 Общее число мобильных медицинских бригад, принимавших участие в проведении диспансеризации </th>
+		      <td class="number">{{result.doc.20}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 7007 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7007}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 7008 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},7008,tab7000">+</a>
+			  {% endif %}</td>
+		      <th>7008 Общее число граждан, диспансеризация которых была проведена мобильными медицинскими бригадами</th>
+		      <td class="number">{{result.doc.21}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 7008 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7008}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 7009 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},7009,tab7000">+</a>
+			  {% endif %}</td>
+		      <th>7009 Число письменных отказов от прохождения медицинских мероприятий в рамках диспансеризации </th>
+		      <td class="number">{{result.doc.22}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 7009 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7009}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 7010 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},7010,tab7000">+</a>
+			  {% endif %}</td>
+		      <th>7010 Число письменных отказов от прохождения диспансеризации в целом </th>
+		      <td class="number">{{result.doc.23}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 7010 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7010}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 7011 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},7011,tab7000">+</a>
+			  {% endif %}</td>
+		      <th>7011 Число граждан, прошедших первый этап диспансеризации и не завершивших второй этап диспансеризации, </th>
+		      <td class="number">{{result.doc.24}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 7011 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7011}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+			<tr class="itog_row">
+	      	  {% if detail_line == 7012 %}
+				<td class="detail_cel">-
+			  {% else %}
+			    <td><a href="/form/{{doc_type.id}},{{page_number}},{{hosp}},{{period}},{{status}},{{region}},7012,tab7000">+</a>
+			  {% endif %}</td>
+		      <th>7012 Число граждан, проживающих в сельской местности, прошедших диспансеризацию</th>
+		      <td class="number">{{result.doc.25}}</td>
+		      <td>человек.</td>
+		    </tr>
+            {% if detail_line == 7012 %} 
+   	          {% for t in doc_list %}
+			  <tr class="detail_row">
+	      	    <td colspan="2">{{t.hosp}}</td>
+                <td class="number">{{t.t7012}}</td>
+		        <td style="vertical-align: middle">чел.</td>
+		      </tr>
+              {% endfor %}  
+            {% endif %}
+	      </tbody>
+	    </table>
+	    <p>*** Статья 6.1 Федерального закона от 17 июля 1999 г. № 178-ФЗ «О государственной социальной помощи» (Собрание законодательства Российской Федерации, 1999, № 24, ст. 3699; 2004, № 35, ст. 3607).</p>
+	  </section>
+	</div>
+  <form>
+    {%csrf_token%}
+    <button class="button" name="button_export" value="7" type="submit" formmethod="post">Экспорт в Excel</button>   
+    <input  class="par_hidden" type="text" size="1" name="mo[]" value={{hosp}}>
+    <input  class="par_hidden" type="text" size="1" name="period" value={{period}}>
+    <input  class="par_hidden" type="text" size="1" name="status" value={{status}}>
+    <input  class="par_hidden" type="text" size="1" name="region" value={{region}}>
+  </form>
+<span id="t1000_S" hidden>{{result.tab1000.0.0.id}}</span><span id="t1000_F" hidden>{{result.tab1000.2.0.id}}</span>
+<span id="t3000_S" hidden>{{result.tab3000.0.0.id}}</span><span id="t3000_F" hidden>{{result.tab3000.15.0.id}}</span>
+<span id="t5000_S" hidden>{{result.tab5000.0.0.id}}</span><span id="t5000_F" hidden>{{result.tab5000.66.0.id}}</span>
+<span id="t5001_S" hidden>{{result.tab5001.0.0.id}}</span><span id="t5001_F" hidden>{{result.tab5001.66.0.id}}</span>
+<span id="t6000_S" hidden>{{result.tab6000.0.0.id}}</span><span id="t6000_F" hidden>{{result.tab6000.66.0.id}}</span>
+<script>
+  function calCell (t, r, c) {
+    switch (t) {
+	  case '1000':
+	    switch (c) {
+		  case '1': case '2': case '3': case '4':
+	        $('#t' + t + '_r' + r + '_c' + c).html(
+		      (parseInt($('#t' + t + '_r' + r + '_c' + (parseInt(c) + 4)).val()) + parseInt($('#t' + t + '_r' + r + '_c' + (parseInt(c) + 8)).val()))||
+              (parseInt($('#t' + t + '_r' + r + '_c' + (parseInt(c) + 4)).html()) + parseInt($('#t' + t + '_r' + r + '_c' + (parseInt(c) + 8)).html()))||
+		      0);
+			break;
+        }			
+	    break;
+      case '4000': case '5000': case '5001': case '6000':
+	  // суммирование происходит по строкам 
+        switch (c) {
+          // сумирование для столбца мужчины/всего 
+          case '1': case '2': case '3': case '4':
+            $('#t' + t + '_r' + r + '_c4').html(
+		      (parseInt($('#t' + t + '_r' + r + '_c1').val()) + parseInt($('#t' + t + '_r' + r + '_c2').val()) + parseInt($('#t' + t + '_r' + r + '_c3').val()))||
+              (parseInt($('#t' + t + '_r' + r + '_c1').html()) + parseInt($('#t' + t + '_r' + r + '_c2').html()) + parseInt($('#t' + t + '_r' + r + '_c3').html()))||
+		      0);
+            break;
+          // сумирование для столбца женщины/всего
+          case '5': case '6': case '7': case '8':
+            $('#t' + t + '_r' + r + '_c8').html(
+	          (parseInt($('#t' + t + '_r' + r + '_c5').val()) + parseInt($('#t' + t + '_r' + r + '_c6').val()) + parseInt($('#t' + t + '_r' + r + '_c7').val()))||
+		      (parseInt($('#t' + t + '_r' + r + '_c5').html()) + parseInt($('#t' + t + '_r' + r + '_c6').html()) + parseInt($('#t' + t + '_r' + r + '_c7').html()))||
+		      0);
+            break;
+	    } 
+        switch (c) {
+          // сумирование для столбца всего/21-36 лет
+          case '1': case '5': case '9':
+            $('#t' + t + '_r' + r + '_c9').html(
+		      (parseInt($('#t' + t + '_r' + r + '_c1').val()) + parseInt($('#t' + t + '_r' + r + '_c5').val()))||
+		      (parseInt($('#t' + t + '_r' + r + '_c1').html()) + parseInt($('#t' + t + '_r' + r + '_c5').html()))||
+		      0);
+            break;
+          // сумирование для столбца всего/37-60 лет
+          case '2': case '6': case '10':
+            $('#t' + t + '_r' + r + '_c10').html(
+		      (parseInt($('#t' + t + '_r' + r + '_c2').val()) + parseInt($('#t' + t + '_r' + r + '_c6').val()))||
+		      (parseInt($('#t' + t + '_r' + r + '_c2').html()) + parseInt($('#t' + t + '_r' + r + '_c6').html()))||
+              0);
+            break;
+          // сумирование для столбца всего/более 60 лет
+          case '3': case '7': case '11':
+            $('#t' + t + '_r' + r + '_c11').html(
+		      (parseInt($('#t' + t + '_r' + r + '_c3').val()) + parseInt($('#t' + t + '_r' + r + '_c7').val()))||
+		      (parseInt($('#t' + t + '_r' + r + '_c3').html()) + parseInt($('#t' + t + '_r' + r + '_c7').html()))||
+		      0);
+		    break;
+        }
+        // суммирование для столбца всего/всего
+        $('#t' + t + '_r' + r + '_c12').html(parseInt($('#t' + t + '_r' + r + '_c9').html()) + parseInt($('#t' + t + '_r' + r + '_c10').html()) + parseInt($('#t' + t + '_r' + r + '_c11').html()));
+	    break;
+	}
+  }
+  
+  function sumCell (t, c){ // Строка "Итого"
+    sum = 0;
+	s = parseInt($('#t' + t + '_S').html());
+	f = parseInt($('#t' + t + '_F').html());
+    for (var i = s; i <= f; i++) {
+	  sum = sum + parseInt($('#t' + t + '_r' + i + '_c' + c).val()||$('#t' + t + '_r' + i + '_c' + c).html()||0);
+	}
+	$('#t' + t + '_rS_c' + c).html(sum);
+  }
+  
+  $(document).ready ( function () {
+    $('.cal',this).each ( function () {
+	  pole = $(this).attr('id').split('_');
+	  if (pole[1].slice(1) == 'S') sumCell(pole[0].slice(1), pole[2].slice(1));
+	  else calCell(pole[0].slice(1), pole[1].slice(1), pole[2].slice(1));
+	})
+  })
+</script>
+{% else %} 
+    <p>Мониторинги не найдены</p>
+{% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+   <title>
+     ЯрВебМед Мониторинги
+   </title>
+   <link rel="stylesheet" type="text/css" href="{% static 'css/foundation.css'%}" />
+{% comment %}
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+{% endcomment %}
+   <script src="{% static 'js/vendor/jquery.js'%}"></script>
+ 
+   <script src="{% static 'js/vendor/modernizr.js'%}"></script>
+
+   <style>
+     .rowsel:hover {background: #f0f080}
+     .errmess {background: #dd0000}
+     .old_period { background: #eeeeee !important }
+     .row.full-width {
+        width: 100%;
+        max-width: 90rem !important; 
+     }
+     .par_hidden {
+        display: none !important
+     } 
+   </style>
+    
+</head>
+<body>
+ <div class="header">
+	<table class="logotipe">
+      <tbody><tr>
+        <!--Логотип-->
+		<td class="logIMG"><a href="/"><img src="/static/img/logo.png"></a></td>
+        <!--Название сайта-->
+		<td class="logTXT"><h2><a href="/">ЯрВебМед</a></h2>
+		  <p>Мониторинги "Медицинского информационно-аналитического центра"</p></td>
+        <!--Авторизованный пользователь-->
+		<td class="logLogin">
+       {% if first_name %}
+	      <p>{{first_name}}</p>
+          <a href="/auth/logout" class="button">Выйти</a>
+       {% else %}
+          <a href="/auth/login" class="button">Вход</a>
+       {% endif %}</td>
+      </tr>
+	</tbody></table>
+  </div>
+<div class="top-bar navig">
+    <section class="top-bar-section">
+    <ul class = "left">
+       <li><a href="/">Главная</a></li>
+       <li><a href="/contact">Контакты</a></li>
+       <!--li><a href="/document">Документы</a></li>
+       <li><a href="/FAQ">Предложения и замечания</a></li-->
+    </ul>  
+    </section>
+</div>
+
+      {% block monitorlist %} {% endblock %}
+      {% block login %} {% endblock %}
+
+<div class="footer-bar">
+  Copyright © <a href="http://miac.zdrav76.ru">Медицинский информационно-аналитический центр</a> - Государственное бюджетное учреждение здравоохранения Ярославской области	
+</div>
+{% comment %}
+  <script src="{% static 'js/vendor/jquery.js'%}"></script>
+{% endcomment %}
+  <script src="{% static 'js/vendor/fastclick.js'%}"></script>
+  <script src="{% static 'js/foundation.min.js'%}"></script>
+  <script type="text/javascript" src="{% static 'js/jqia2.support.js'%}"></script>
+  <script>
+    $(document).foundation();
+  </script>
+  <script type="text/javascript">
+        $(function(){
+           /* $("table").click(swapThemOn).dblclick(swapThemOff);*/
+          $("table").bind('click', ftrigger )
+          /*alert($('button').length + ' elements!');*/
+        });  
+        $(document).ready(function() {
+        	  $(window).keydown(function(event){
+        	    if(event.keyCode == 13) {
+        	      event.preventDefault();
+        	      return false;
+        	    }
+        	  });
+        });
+
+        function ftrigger() {
+         	$('tr.detail_row').toggle();
+      	 /*	$('tr.detail_row').slideToggle("fast"); */
+
+        }
+        function swapThemOn() {
+            $('tr.detail_row').show();
+        }
+        function swapThemOff() {
+            $('tr.detail_row').hide();
+        }
+ </script>
+	
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+{% extends 'medicament/document_form.html' %}
+{% block monitorform %}
+       <table class="table" id="table1" cellpadding="1" cellspacing="0">
+	     <thead>
+		   <tr>
+		    <th></th>
+		    <th width="15%">Всего</th>
+		    <th width="10%">Дети(0-18), Всего</th>
+		    <th width="10%">В т.ч дети до 3-х лет</th>
+		    <th width="10%">Мужчины старше 60, женщины старше 55</th>
+		    <th width="10%">Инвалиды и участники ВОВ*</th>
+		    <th width="10%">Сахарный диабет</th>
+		    <th width="10%">Бронхиаль<wbr>ная астма</th>
+		    <th width="10%">Онкологи<wbr>ческие заболевания</th>
+		   </tr>
+		 </thead>
+		 <tbody>
+		   <tr>
+		        <th class="row_mess" colspan="9" >Высокозатратные нозологии (в соответствии с постановлением Правительства Российской Федерации от 18.10.2007 № 682)</th>
+		   </tr>
+		   <tr>
+		        <td  width="15%"><h6>Выписано рецептов**</h6></td>
+		        <td><input type="number" name="c1_1" min="0" max="999999" size="7" value="{{doc.c1_1}}"></td>
+		        <td><input type="number" name="c1_2" min="0" max="999999" size="6" value="{{doc.c1_2}}"></td>
+		        <td><input type="number" name="c1_3" min="0" max="999999" size="6" value="{{doc.c1_3}}"></td>
+		        <td><input type="number" name="c1_4" min="0" max="999999" size="6" value="{{doc.c1_4}}"></td>
+		        <td><input type="number" name="c1_5" min="0" max="999999" size="6" value="{{doc.c1_5}}"></td>
+		        <td>X</td>
+		        <td>X</td>
+		        <td>X</td>
+           {% if right_control and doc_prev %}
+		   <tr class="old_period">
+		        <td  width="15%"><h6>Прошлый период</h6></td>
+		        <td>{{doc_prev.c1_1}}</td>
+		        <td>{{doc_prev.c1_2}}</td>
+		        <td>{{doc_prev.c1_3}}</td>
+		        <td>{{doc_prev.c1_4}}</td>
+		        <td>{{doc_prev.c1_5}}</td>
+		        <td>X</td>
+		        <td>X</td>
+		        <td>X</td>
+		   </tr>
+           {% endif %}
+		   </tr>
+		   <tr>
+		        <th class="row_mess" colspan="9" >Федеральное обеспечение</th>
+		   </tr>
+		   
+		   <tr>
+		        <td><h6>Численность категории льготополучателей</h6></td>
+		        <td>X</td>
+		        <td>X</td>
+		        <td>X</td>
+		        <td>X</td>
+		        <td>X</td>
+		        <td><input type="number" name="c2_6" min="0" max="10000" step="1" size="6" value="{{doc.c2_6}}"></td>
+		        <td><input type="number" name="c2_7" min="0" max="10000" step="1" size="6" value="{{doc.c2_7}}"></td>
+		        <td><input type="number" name="c2_8" min="0" max="10000" step="1" size="6" value="{{doc.c2_8}}"></td>
+		   </tr>
+           {% if right_control and doc_prev %}
+		   <tr class="old_period">
+		        <td  width="15%"><h6>Прошлый период</h6></td>
+		        <td>X</td>
+		        <td>X</td>
+		        <td>X</td>
+		        <td>X</td>
+		        <td>X</td>
+		        <td>{{doc_prev.c2_6}}</td>
+		        <td>{{doc_prev.c2_7}}</td>
+		        <td>{{doc_prev.c2_8}}</td>
+		   </tr>
+           {% endif %}
+		   </tr>
+		   <tr>
+		        <td><h6> Выписано рецептов**</h6></td>
+		        <td><input type="number" name="c3_1" min="0" max="10000" step="1" size="6" value="{{doc.c3_1}}"></td>
+		        <td><input type="number" name="c3_2" min="0" max="10000" step="1" size="6" value="{{doc.c3_2}}"></td>
+		        <td><input type="number" name="c3_3" min="0" max="10000" step="1" size="6" value="{{doc.c3_3}}"></td>
+		        <td><input type="number" name="c3_4" min="0" max="10000" step="1" size="6" value="{{doc.c3_4}}"></td>
+		        <td><input type="number" name="c3_5" min="0" max="10000" step="1" size="6" value="{{doc.c3_5}}"></td>
+		        <td><input type="number" name="c3_6" min="0" max="10000" step="1" size="6" value="{{doc.c3_6}}"></td>
+		        <td><input type="number" name="c3_7" min="0" max="10000" step="1" size="5" value="{{doc.c3_7}}"></td>
+		        <td><input type="number" name="c3_8" min="0" max="10000" step="1" size="4" value="{{doc.c3_8}}"></td>
+		   </tr>
+           {% if right_control and doc_prev %}
+		   <tr class="old_period">
+		        <td  width="15%"><h6>Прошлый период</h6></td>
+		        <td>{{doc_prev.c3_1}}</td>
+		        <td>{{doc_prev.c3_2}}</td>
+		        <td>{{doc_prev.c3_3}}</td>
+		        <td>{{doc_prev.c3_4}}</td>
+		        <td>{{doc_prev.c3_5}}</td>
+		        <td>{{doc_prev.c3_6}}</td>
+		        <td>{{doc_prev.c3_7}}</td>
+		        <td>{{doc_prev.c3_8}}</td>
+		   </tr>
+           {% endif %}
+		   <tr >
+		        <th class="row_mess" colspan="9" >Региональное обеспечение</th>
+		   </tr>
+		   <tr>
+		        <td><h6> Выписано рецептов**</h6></td>
+		        <td><input type="number" name="c4_1" min="0" max="10000" step="1" size="5" value="{{doc.c4_1}}"></td>
+		        <td><input type="number" name="c4_2" min="0" max="10000" step="1" size="5" value="{{doc.c4_2}}"></td>
+		        <td><input type="number" name="c4_3" min="0" max="10000" step="1" size="5" value="{{doc.c4_3}}"></td>
+		        <td><input type="number" name="c4_4" min="0" max="10000" step="1" size="5" value="{{doc.c4_4}}"></td>
+		        <td><input type="number" name="c4_5" min="0" max="10000" step="1" size="5" value="{{doc.c4_5}}"></td>
+		        <td><input type="number" name="c4_6" min="0" max="10000" step="1" size="5" value="{{doc.c4_6}}"></td>
+		        <td><input type="number" name="c4_7" min="0" max="10000" step="1" size="5" value="{{doc.c4_7}}"></td>
+		        <td><input type="number" name="c4_8" min="0" max="10000" step="1" size="5" value="{{doc.c4_8}}"></td>
+		   </tr>
+           {% if right_control and doc_prev %}
+		   <tr class="old_period">
+		        <td  width="15%"><h6>Прошлый период</h6></td>
+		        <td>{{doc_prev.c4_1}}</td>
+		        <td>{{doc_prev.c4_2}}</td>
+		        <td>{{doc_prev.c4_3}}</td>
+		        <td>{{doc_prev.c4_4}}</td>
+		        <td>{{doc_prev.c4_5}}</td>
+		        <td>{{doc_prev.c4_6}}</td>
+		        <td>{{doc_prev.c4_7}}</td>
+		        <td>{{doc_prev.c4_8}}</td>
+		   </tr>
+           {% endif %}
+		 </tbody>
+       </table>
+{% endblock %}
+

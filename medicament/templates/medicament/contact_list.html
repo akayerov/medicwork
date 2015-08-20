@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block monitorlist %}
+<div class="row full-width">
+    
+{% if role %}
+  <div class="panel">
+    <div class="row full-width">
+	  <p>
+	    <strong style="color:red">Если указаные данные не верны просьба прислать актуальные данные на e-mail: <u><a href="mailto:rysinns@zdrav.yar.ru">rysinns@zdrav.yar.ru</a></u></strong>
+	    
+	  </p>
+      <table>
+	    <thead>
+	      <tr>
+			<th class="row_mess">Медицинская организация</th>
+			<th class="row_mess">Ответственный за<br> мониторинг</th>
+			<th class="row_mess">Телефон</th>
+			<th class="row_mess">E-mail</th>
+		  </tr >
+		</thead>
+		<tbody>
+		{% for u in role %}
+		    {% ifchanged u.type %} <tr><th colspan="5" class="row_mess"><h6>{{u.type}}</h6> <span style="float: left; margin-top: -12px; font-size: 12px;" class="viewer" id="viewer-{{u.type.id}}">скрыть</span></th></tr> {% endifchanged %}
+			<tr id="view-{{u.type.id}}" class="viewer-on">
+			  <td><h6>{{u.hosp}}</h6></td>
+			  <td><h6>{{u.contact}}</h6></td>
+			  <td><h6>{{u.tel}}</h6></td>
+			  <td><h6>{{u.email}}</h6></td>
+			</tr>
+	    {% endfor %}
+		</tbody>
+	  </table>
+    </div>
+  </div>
+{% endif %}
+ </div>
+ <script>
+  $('span.viewer').click ( function () {
+    if ($(this).html() == 'скрыть') {
+      $(this).html('показать');
+	  $('tr#view-'+$(this).attr('id').slice(7)).attr('hidden',true);
+	} 
+	else {
+      $(this).html('скрыть');
+	  $('tr#view-'+$(this).attr('id').slice(7)).attr('hidden',false);
+	}
+  })
+ </script>
+{% endblock %}
