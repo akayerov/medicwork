@@ -105,7 +105,10 @@ def monitoring_list(request, question_id ):
         detail = False
         detail_line = 0
         detail_tab  = ''            # имя таблицы в табличной части для детализации 
-
+        if 'period' in request.COOKIES:
+            period = (int)(request.COOKIES['period']) 
+            start_filter = True
+    
     if role.role == "К" or role.role == "F":
         see_all = True                # see_all  контроль и создание новых отчетов
         user_hosp = 0
@@ -287,8 +290,12 @@ def monitoring_list(request, question_id ):
 #   пагинатор
     cur_page = Paginator(args['doc_list'], NUM_RECORD_ON_PAGE)  
     args['doc_page'] = cur_page.page(page_number)
-     
-    return render_to_response(html_response, args)
+ 
+ # 21/08/2015   
+ #   return render_to_response(html_response, args)
+    response = render_to_response(html_response, args)
+    response.set_cookie("period",period)
+    return response
 
 def monitoring_form(request, question_id):
     if not request.user.is_authenticated():

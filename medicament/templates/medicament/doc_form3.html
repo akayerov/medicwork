@@ -16,10 +16,11 @@
     <table class="table" id="table1" cellpadding="1" cellspacing="1">
           <thead>
             <tr>
-              <th class="row_mess" colspan="13">Сведения о проведении диспансеризации определенных групп взрослого населения</th>
+              <th class="row_mess" colspan="14">Сведения о проведении диспансеризации определенных групп взрослого населения</th>
             </tr>
 		    <tr>
 	  		  <th rowspan="3">Возрастная группа</th>
+	  		  <th rowspan="3">Строка</th>
 	  		  <th colspan="4">Все население</th>
 	  		  <th colspan="4">Мужчины</th>
 	  		  <th colspan="4">Женщины</th>
@@ -43,11 +44,28 @@
 		  	  <th width="8%">I этап</th>
 		  	  <th width="8%">II этап </th>
 			</tr>
+			<tr>
+		  	  <th>1</th>
+		  	  <th>2</th>
+		  	  <th>3</th>
+		  	  <th>4</th>
+		  	  <th>5</th>
+		  	  <th>6</th>
+		  	  <th>7</th>
+		  	  <th>8</th>
+		  	  <th>9</th>
+		  	  <th>10</th>
+		  	  <th>11</th>
+		  	  <th>12</th>
+		  	  <th>13</th>
+		  	  <th>14</th>
+			</tr>
 	  	 </thead>
 	  	 <tbody>
            {% for t in tab1000 %}
  		     <tr>
 		       <td>{{t.row}}</td>
+		       <td>{{t.row.nomer}}</td>
 		       <td class="cal" id="t1000_r{{t.row.id}}_c1"></td>
 		       <td class="cal" id="t1000_r{{t.row.id}}_c2"></td>
 		       <td class="cal" id="t1000_r{{t.row.id}}_c3"></td>
@@ -66,6 +84,7 @@
          <tfoot>
 			<tr>
 			  <td>Итого</td>
+		      <td></td>
 		      <td class="cal" id="t1000_rS_c1"></td>
 		      <td class="cal" id="t1000_rS_c2"></td>
 		      <td class="cal" id="t1000_rS_c3"></td>
@@ -86,10 +105,11 @@
     <table class="table">
 	  <thead>
 		<tr>
-		  <th class="row_mess" colspan="5">Сведения о первом этапе диспансеризации определенных групп взрослого населения </th>
+		  <th class="row_mess" colspan="6">Сведения о первом этапе диспансеризации определенных групп взрослого населения </th>
 		</tr>
 		<tr>
-		  <th rowspan="2" width="35%">Осмотр, исследование, иное медицинское мероприятие  первого этапа диспансеризации</th>
+		  <th rowspan="2" width="32%">Осмотр, исследование, иное медицинское мероприятие  первого этапа диспансеризации</th>
+		  <th rowspan="2" width="3%">Строка</th>
 		  <th colspan="3">Медицинское мероприятие </th>
 		  <th rowspan="2">Выявлены патологические отклонения </th>
 		</tr>
@@ -98,11 +118,21 @@
 		  <th width="18%">учтено, выполненных ранее (в предшествующие 12 мес.)</th>
 		  <th width="15%">отказы</th>
 		</tr>
+			<tr>
+		  	  <th>1</th>
+		  	  <th>2</th>
+		  	  <th>3</th>
+		  	  <th>4</th>
+		  	  <th>5</th>
+		  	  <th>6</th>
+			</tr>
+
 	  </thead>
 	  <tbody>
       {% for t in tab2000 %}
  		<tr>
 		  <td>{{t.row}}</td>
+          <td>{{t.row.nomer}}</td>
 		  <td><input type="number" name="t2000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  {% if t.row.id == 4 or t.row.id == 23 %}
 		  <td class="none"></td>
@@ -123,10 +153,11 @@
   	<table class="table">
 	  <thead>
 		<tr>
-		  <th class="row_mess" colspan="6">Сведения о втором этапе диспансеризации определенных групп взрослого населения</th>
+		  <th class="row_mess" colspan="7">Сведения о втором этапе диспансеризации определенных групп взрослого населения</th>
 		</tr>
 		<tr>
 		  <th rowspan="2">Медицинское мероприятие второго этапа диспансеризации</th>
+  		  <th rowspan="2">Строка</th>
 		  <th rowspan="2" width="12%">Выявлено показание к дополнительному обследованию  </th>
 		  <th colspan="2">Количество выполненных медицинских мероприятий</th>
 		  <th rowspan="2" width="12%">Отказы</th>
@@ -136,11 +167,21 @@
 		  <th width="12%">в рамках диспансе-ризации</th>
 		  <th width="12%">проведено ранее (в предшествую-щие 12 мес.) </th> 
 		</tr>
+		<tr>
+	  	  <th>1</th>
+	  	  <th>2</th>
+	  	  <th>3</th>
+	  	  <th>4</th>
+	  	  <th>5</th>
+	  	  <th>6</th>
+	  	  <th>7</th>
+		</tr>
 	  </thead>
 	  <tbody>
       {% for t in tab3000 %}
  		<tr>
 		  <td>{{t.row}}</td>
+          <td>{{t.row.nomer}}</td>
 		  <td><input type="number" name="t3000_r{{t.row.id}}_c1" id="t3000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  <td><input type="number" name="t3000_r{{t.row.id}}_c2" id="t3000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
 		  <td><input type="number" name="t3000_r{{t.row.id}}_c3" id="t3000_r{{t.row.id}}_c3" value="{{t.c3}}"></td>
@@ -155,7 +196,8 @@
 	  </tbody>
 	  <tfoot>
 		<tr>
-		  <td>Всего</td>
+		  <td>ВСЕГО</td>
+		  <td></td>
 		  <td id="t3000_rS_c1" class="cal"></td>
 		  <td id="t3000_rS_c2" class="cal"></td>
 		  <td id="t3000_rS_c3" class="cal"></td>
@@ -178,10 +220,11 @@
     <table class="table">
 	  <thead>
 		<tr>
-		  <th  class="row_mess" colspan="14">Сведения о выявленных отдельных факторах риска развития хронических неинфекционных заболеваний,<br> не являющихся заболеваниями, в соответствии с кодами МКБ-10 **</th>
+		  <th  class="row_mess" colspan="15">Сведения о выявленных отдельных факторах риска развития хронических неинфекционных заболеваний,<br> не являющихся заболеваниями, в соответствии с кодами МКБ-10 **</th>
 		</tr>
 		<tr>
-		  <th rowspan="2" width="25%">Фактора риска (наименование по МКБ-10)</th>
+		  <th rowspan="2" width="23%">Фактора риска (наименование по МКБ-10)</th>
+		  <th rowspan="2" width="2%">Строка</th>
 		  <th rowspan="2" width="5%">Код МКБ-10</th>
 		  <th colspan="4">Мужчины</th>
 		  <th colspan="4">Женщины</th>
@@ -201,11 +244,16 @@
 		  <th>Старше 60 лет </th>
 		  <th>Всего</th>
 		</tr>
+		<tr>
+	  	  <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th>
+	  	  <th>11</th><th>12</th><th>13</th><th>14</th><th>15</th>
+		</tr>
 	  </thead>
 	  <tbody>
       {% for t in tab4000 %}
 		<tr>
 		  <td>{{t.row}}</td>
+		  <td>{{t.row.nomer}}</td>
 		  <td>{{t.row.name1}}</td>
 		  <td><input type="number" name="t4000_r{{t.row.id}}_c1" id="t4000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  <td><input type="number" name="t4000_r{{t.row.id}}_c2" id="t4000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
@@ -262,7 +310,8 @@
 		<tr>
 		  <th  class="row_mess" colspan="16">Сведения о выявленных при проведении диспансеризации заболеваниях (случаев)</th>
 		<tr>
-		  <th rowspan="2" width="15%">Заболевание</th>
+		  <th rowspan="2" width="13%">Заболевание</th>
+		  <th rowspan="2" width="2%">Строка</th>
 		  <th rowspan="2" width="5%">Код МКБ-10</th>
 		  <th colspan="4" width="30%">Мужчины</th>
 		  <th colspan="4" width="30%">Женщины</th>
@@ -283,11 +332,16 @@
 		  <th> Старше 60 лет</th>
 		  <th>Всего</th>
 		</tr>
+		<tr>
+	  	  <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th>
+	  	  <th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th>
+		</tr>
 	  </thead>
 	  <tbody>
       {% for t in tab5000 %}
 		<tr>
 		  <td>{{t.row}}</td>
+		  <td>{{t.row.nomer}}</td>
 		  <td>{{t.row.name1}}</td>
 		  <td><input type="number" name="t5000_r{{t.row.id}}_c1" id="t5000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  <td><input type="number" name="t5000_r{{t.row.id}}_c2" id="t5000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
@@ -308,6 +362,7 @@
 	  <tfoot>
 		<tr>
 		  <td>ИТОГО заболеваний</td>
+		  <td></td>
 		  <td>А00-Т98</td>
 		  <td class="cal" id="t5000_rS_c1"></td>
 		  <td class="cal" id="t5000_rS_c2"></td>
@@ -332,7 +387,8 @@
 		<tr>
 		  <th  class="row_mess" colspan="16">Сведения о впервые выявленных при проведении диспансеризации заболеваниях (случаев)</th>
 		<tr>
-		  <th rowspan="2" width="15%">Заболевание</th>
+		  <th rowspan="2" width="13%">Заболевание</th>
+		  <th rowspan="2" width="2%">Строка</th>
 		  <th rowspan="2" width="5%">Код МКБ-10</th>
 		  <th colspan="4" width="30%">Мужчины</th>
 		  <th colspan="4" width="30%">Женщины</th>
@@ -353,11 +409,16 @@
 		  <th> Старше 60 лет</th>
 		  <th>Всего</th>
 		</tr>
+		<tr>
+	  	  <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th>
+	  	  <th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th>
+		</tr>
 	  </thead>
 	  <tbody>
       {% for t in tab5001 %}
 		<tr>
 		  <td>{{t.row}}</td>
+		  <td>{{t.row.nomer}}</td>
 		  <td>{{t.row.name1}}</td>
 		  <td><input type="number" name="t5001_r{{t.row.id}}_c1" id="t5001_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  <td><input type="number" name="t5001_r{{t.row.id}}_c2" id="t5001_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
@@ -378,6 +439,7 @@
 	  <tfoot>
 		<tr>
 		  <td>ИТОГО заболеваний</td>
+		  <td></td>
 		  <td>А00-Т98</td>
 		  <td class="cal" id="t5001_rS_c1"></td>
 		  <td class="cal" id="t5001_rS_c2"></td>
@@ -402,7 +464,8 @@
 		<tr>
 		  <th  class="row_mess" colspan="16">Сведения об установленных при проведении диспансеризации предварительных диагнозах (случаев)</th>
 		<tr>
-		  <th rowspan="2" width="15%">Заболевание</th>
+		  <th rowspan="2" width="13%">Заболевание</th>
+		  <th rowspan="2" width="2%">Строка</th>
 		  <th rowspan="2" width="5%">Код МКБ-10</th>
 		  <th colspan="4" width="30%">Мужчины</th>
 		  <th colspan="4" width="30%">Женщины</th>
@@ -423,11 +486,16 @@
 		  <th>Старше 60 лет</th>
 		  <th>Всего</th>
 		</tr>
+		<tr>
+	  	  <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th>
+	  	  <th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th>
+		</tr>
 	  </thead>
 	  <tbody>
       {% for t in tab6000 %}
 		<tr>
 		  <td>{{t.row}}</td>
+		  <td>{{t.row.nomer}}</td>
 		  <td>{{t.row.name1}}</td>
 		  <td><input type="number" name="t6000_r{{t.row.id}}_c1" id="t6000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  <td><input type="number" name="t6000_r{{t.row.id}}_c2" id="t6000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
@@ -448,6 +516,7 @@
 	  <tfoot>
 		<tr>
 		  <td>ИТОГО заболеваний</td>
+		  <td></td>
 		  <td>А00-Т98</td>
 		  <td class="cal" id="t6000_rS_c1"></td>
 		  <td class="cal" id="t6000_rS_c2"></td>
@@ -475,6 +544,7 @@
 		</tr>
 		<tr>
 		  <th rowspan="2">Результат диспансеризации определенных групп взрослого населения</th>
+		  <th rowspan="2">Строка</th>
 		  <th colspan="3">Мужчины</th>
 		  <th colspan="3">Женщины</th>
 		</tr>
@@ -486,11 +556,15 @@
 		  <th>37 – 60 лет</th>
 		  <th>Старше 60 лет</th>
 		</tr>
+		<tr>
+	  	  <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th>
+		</tr>
 	  </thead>
 	  <tbody>	  
       {% for t in tab7000 %}
 		<tr>
 		  <td>{{t.row}}</td>
+		  <td>{{t.row.nomer}}</td>
 		  <td><input type="number" name="t7000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  <td><input type="number" name="t7000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
 		  <td><input type="number" name="t7000_r{{t.row.id}}_c3" value="{{t.c3}}"></td>
