@@ -133,15 +133,15 @@
  		<tr>
 		  <td>{{t.row}}</td>
           <td>{{t.row.nomer}}</td>
-		  <td><input type="number" name="t2000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
+		  <td><input type="number" name="t2000_r{{t.row.id}}_c1" id="t2000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  {% if t.row.id == 4 or t.row.id == 23 %}
 		  <td class="none"></td>
 		  <td class="none"></td>
 		  {% else %}
-		  <td><input type="number" name="t2000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
-		  <td><input type="number" name="t2000_r{{t.row.id}}_c3" value="{{t.c3}}"></td>
+		  <td><input type="number" name="t2000_r{{t.row.id}}_c2" id="t2000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
+		  <td><input type="number" name="t2000_r{{t.row.id}}_c3" id="t2000_r{{t.row.id}}_c3" value="{{t.c3}}"></td>
 		  {% endif %}
-		  <td><input type="number" name="t2000_r{{t.row.id}}_c4" value="{{t.c4}}"></td>
+		  <td><input type="number" name="t2000_r{{t.row.id}}_c4" id="t2000_r{{t.row.id}}_c4" value="{{t.c4}}"></td>
 		</tr>
       {% endfor %} 
       </tbody>
@@ -565,12 +565,12 @@
 		<tr>
 		  <td>{{t.row}}</td>
 		  <td>{{t.row.nomer}}</td>
-		  <td><input type="number" name="t7000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
-		  <td><input type="number" name="t7000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
-		  <td><input type="number" name="t7000_r{{t.row.id}}_c3" value="{{t.c3}}"></td>
-		  <td><input type="number" name="t7000_r{{t.row.id}}_c4" value="{{t.c4}}"></td>
-		  <td><input type="number" name="t7000_r{{t.row.id}}_c5" value="{{t.c5}}"></td>
-		  <td><input type="number" name="t7000_r{{t.row.id}}_c6" value="{{t.c6}}"></td>
+		  <td><input type="number" id="t7000_r{{t.row.id}}_c1" name="t7000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
+		  <td><input type="number" id="t7000_r{{t.row.id}}_c2" name="t7000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
+		  <td><input type="number" id="t7000_r{{t.row.id}}_c3" name="t7000_r{{t.row.id}}_c3" value="{{t.c3}}"></td>
+		  <td><input type="number" id="t7000_r{{t.row.id}}_c4" name="t7000_r{{t.row.id}}_c4" value="{{t.c4}}"></td>
+		  <td><input type="number" id="t7000_r{{t.row.id}}_c5" name="t7000_r{{t.row.id}}_c5" value="{{t.c5}}"></td>
+		  <td><input type="number" id="t7000_r{{t.row.id}}_c6" name="t7000_r{{t.row.id}}_c6" value="{{t.c6}}"></td>
 		</tr>
       {% endfor %} 
 	  </tbody>
@@ -579,107 +579,107 @@
 	  <tbody>
 		<tr>
 		  <th width="70%">7001 Общее число работающих граждан, прошедших диспансеризацию</th>
-		  <td><input type="number" name="t7001" value="{{doc.t7001}}"></td>
+		  <td><input type="number" id="t7001" name="t7001" value="{{doc.t7001}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <th>7002 Общее число неработающих граждан, прошедших диспансеризацию</th>
-		  <td><input type="number" name="t7002" value="{{doc.t7002}}"></td>
+		  <td><input type="number" id="t7002" name="t7002" value="{{doc.t7002}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <th>7003 Общее число граждан, обучающихся в образовательных организациях по очной форме, прошедших диспансеризацию</th>
-		  <td><input type="number" name="t7003" value="{{doc.t7003}}"></td>
+		  <td><input type="number" id="t7003" name="t7003" value="{{doc.t7003}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <th>7004 Общее число граждан, имеющих право на получение государственной социальной помощи в виде набора социальных услуг , прошедших диспансеризацию ***</th>
-		  <td><input type="number" name="t7004" value="{{doc.t7004}}"></td>
+		  <td><input type="number" id="t7004" name="t7004" value="{{doc.t7004}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <td>из них:<br> - инвалиды войны</td>
-		  <td><input type="number" name="t7004_r1" value="{{doc.t7004_r1}}"></td>
+		  <td><input type="number" id="t7004_r1" name="t7004_r1" value="{{doc.t7004_r1}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <td>- участники Великой Отечественной войны </td>
-		  <td><input type="number" name="t7004_r2" value="{{doc.t7004_r2}}"></td>
+		  <td><input type="number" id="t7004_r2" name="t7004_r2" value="{{doc.t7004_r2}}"></td>
 		  <td>человек</td>
 		</tr>
 		<tr>
 		  <td>- ветераны боевых действий из числа лиц, указанных в подпунктах 1-4 пункта 1 статьи 3 Федерального закона от 12 января 1995 г. № 5-ФЗ «О ветеранах»</td>
-		  <td><input type="number" name="t7004_r3" value="{{doc.t7004_r3}}"></td>
+		  <td><input type="number" id="t7004_r3" name="t7004_r3" value="{{doc.t7004_r3}}"></td>
 		  <td>человек</td>
 		</tr>
 		<tr>
 		  <td>- военнослужащие, проходившие военную службу в воинских частях, учреждениях, военно-учебных заведениях, не входивших в состав действующей армии, в период с 22 июня 1941 года по 3 сентября 1945 года не менее шести месяцев, военнослужащие, награжденные орденами или медалями СССР за службу в указанный период </td>
-		  <td><input type="number" name="t7004_r4" value="{{doc.t7004_r4}}"></td>
+		  <td><input type="number" id="t7004_r4" name="t7004_r4" value="{{doc.t7004_r4}}"></td>
 		  <td>человек</td>
 		</tr>
 		<tr>
 		  <td>- лица, награжденные знаком «Жителю блокадного Ленинграда» и признанных инвалидами вследствие общего заболевания, трудового увечья и других причин (кроме лиц, инвалидность которых наступила вследствие их противоправных действий) </td>
-		  <td><input type="number" name="t7004_r5" value="{{doc.t7004_r5}}"></td>
+		  <td><input type="number" id="t7004_r5" name="t7004_r5" value="{{doc.t7004_r5}}"></td>
 		  <td>человек</td>
 		</tr>
 		<tr>
 		  <td>- лица, работавшие в период Великой Отечественной войны на объектах противовоздушной обороны, местной противовоздушной обороны, на строительстве оборонительных сооружений, военно-морских баз, аэродромов и других военных объектов в пределах тыловых границ действующих фронтов, операционных зон действующих флотов, на прифронтовых участках железных и автомобильных дорог, а также члены экипажей судов транспортного флота, интернированных в начале Великой Отечественной войны в портах других государств </td>
-		  <td><input type="number" name="t7004_r6" value="{{doc.t7004_r6}}"></td>
+		  <td><input type="number" id="t7004_r6" name="t7004_r6" value="{{doc.t7004_r6}}"></td>
 		  <td>человек</td>
 		</tr>
 		<tr>
 		  <td>- члены семей погибших (умерших) инвалидов войны, участников Великой Отечественной войны и ветеранов боевых действий, члены семей погибших в Великой Отечественной войне лиц из числа личного состава групп самозащиты объектовых и аварийных команд местной противовоздушной обороны, а также члены семей погибших работников госпиталей и больниц города Ленинграда </td>
-		  <td><input type="number" name="t7004_r7" value="{{doc.t7004_r7}}"></td>
+		  <td><input type="number" id="t7004_r7" name="t7004_r7" value="{{doc.t7004_r7}}"></td>
 		  <td>человек</td>
 		</tr>
 		<tr>
 		  <td>- инвалиды</td>
-		  <td><input type="number" name="t7004_r8" value="{{doc.t7004_r8}}"></td>
+		  <td><input type="number" id="t7004_r8" name="t7004_r8" value="{{doc.t7004_r8}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <th>7005 Общее число граждан, принадлежащих к коренным малочисленным народам Севера, Сибири и Дальнего Востока Российской Федерации, прошедших диспансеризацию</th>
-		  <td><input type="number" name="t7005" value="{{doc.t7005}}"></td>
+		  <td><input type="number" id="t7005" name="t7005" value="{{doc.t7005}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <th>7006 Общее число медицинских организаций, оказывающих первичную медико-санитарную помощь, принимавших участие в проведении диспансеризации</th>
-		  <td><input type="number" name="t7006" value="{{doc.t7006}}"></td>
+		  <td><input type="number" id="t7006" name="t7006" value="{{doc.t7006}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <td>из них: имеют кабинеты или отделения медицинской профилактики </td>
-		  <td><input type="number" name="t7006_r1" value="{{doc.t7006_r1}}"></td>
+		  <td><input type="number" id="t7006_r1" name="t7006_r1" value="{{doc.t7006_r1}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <th>7007 Общее число мобильных медицинских бригад, принимавших участие в проведении диспансеризации </th>
-		  <td><input type="number" name="t7007" value="{{doc.t7007}}"></td>
+		  <td><input type="number" id="t7007" name="t7007" value="{{doc.t7007}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <th>7008 Общее число граждан, диспансеризация которых была проведена мобильными медицинскими бригадами</th>
-		  <td><input type="number" name="t7008" value="{{doc.t7008}}"></td>
+		  <td><input type="number" id="t7008" name="t7008" value="{{doc.t7008}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <th>7009 Число письменных отказов от прохождения медицинских мероприятий в рамках диспансеризации </th>
-		  <td><input type="number" name="t7009" value="{{doc.t7009}}"></td>
+		  <td><input type="number" id="t7009" name="t7009" value="{{doc.t7009}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <th>7010 Число письменных отказов от прохождения диспансеризации в целом </th>
-		  <td><input type="number" name="t7010" value="{{doc.t7010}}"></td>
+		  <td><input type="number" id="t7010" name="t7010" value="{{doc.t7010}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <th>7011 Число граждан, прошедших первый этап диспансеризации и не завершивших второй этап диспансеризации, </th>
-		  <td><input type="number" name="t7011" value="{{doc.t7011}}"></td>
+		  <td><input type="number" id="t7011" name="t7011" value="{{doc.t7011}}"></td>
 		  <td>человек.</td>
 		</tr>
 		<tr>
 		  <th>7012 Число граждан, проживающих в сельской местности, прошедших диспансеризацию</th>
-		  <td><input type="number" name="t7012" value="{{doc.t7012}}"></td>
+		  <td><input type="number" id="t7012" name="t7012" value="{{doc.t7012}}"></td>
 		  <td>человек.</td>
 		</tr>
 	  </tbody>
@@ -688,10 +688,12 @@
   </section>
 </div>
 <span id="t1000_S" hidden="hidden">{{tab1000.0.row.id}}</span><span id="t1000_F" hidden="hidden">{{tab1000.last.row.id}}</span>
+<span id="t2000_S" hidden="hidden">{{tab2000.0.row.id}}</span><span id="t2000_F" hidden="hidden">{{tab2000.last.row.id}}</span>
 <span id="t3000_S" hidden="hidden">{{tab3000.0.row.id}}</span><span id="t3000_F" hidden="hidden">{{tab3000.last.row.id}}</span>
 <span id="t5000_S" hidden="hidden">{{tab5000.0.row.id}}</span><span id="t5000_F" hidden="hidden">{{tab5000.last.row.id}}</span>
 <span id="t5001_S" hidden="hidden">{{tab5001.0.row.id}}</span><span id="t5001_F" hidden="hidden">{{tab5001.last.row.id}}</span>
 <span id="t6000_S" hidden="hidden">{{tab6000.0.row.id}}</span><span id="t6000_F" hidden="hidden">{{tab6000.last.row.id}}</span>
+<span id="t7000_S" hidden="hidden">{{tab7000.0.row.id}}</span><span id="t7000_F" hidden="hidden">{{tab7000.last.row.id}}</span>
 <script>
   function calCell (t, r, c) {
     
@@ -777,17 +779,17 @@
 	  }
 	  else 
 	    f = f + 1
-	  sum = parseInt($('#t' + t + '_r' + (51 + f - s) + '_c' + c).val()||$('#t' + t + '_r' + (51 + f - s) + '_c' + c).html()||0)
-          + parseInt($('#t' + t + '_r' + (53 + f - s) + '_c' + c).val()||$('#t' + t + '_r' + (53 + f - s) + '_c' + c).html()||0) 
-		  + parseInt($('#t' + t + '_r' + (79 + f - s) + '_c' + c).val()||$('#t' + t + '_r' + (79 + f - s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (81 + f - s) + '_c' + c).val()||$('#t' + t + '_r' + (81 + f - s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (85 + f - s) + '_c' + c).val()||$('#t' + t + '_r' + (85 + f - s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (87 + f - s) + '_c' + c).val()||$('#t' + t + '_r' + (87 + f - s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (91 + f - s) + '_c' + c).val()||$('#t' + t + '_r' + (91 + f - s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (104 + f - s) + '_c' + c).val()||$('#t' + t + '_r' + (104 + f - s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (108 + f - s) + '_c' + c).val()||$('#t' + t + '_r' + (108 + f - s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (113 + f - s) + '_c' + c).val()||$('#t' + t + '_r' + (113 + f - s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (117 + f - s) + '_c' + c).val()||$('#t' + t + '_r' + (117 + f - s) + '_c' + c).html()||0)
+		  sum = parseInt($('#t' + t + '_r' + (s) + '_c' + c).val()||$('#t' + t + '_r' + (s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (2 + s) + '_c' + c).val()||$('#t' + t + '_r'   + (2 + s) + '_c' + c).html()||0)
+          + parseInt($('#t' + t + '_r' + (28 + s) + '_c' + c).val()||$('#t' + t + '_r'  + (2 + s) + '_c' + c).html()||0) 
+		  + parseInt($('#t' + t + '_r' + (30 + s) + '_c' + c).val()||$('#t' + t + '_r' + (32 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (34 + s) + '_c' + c).val()||$('#t' + t + '_r' + (34 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (36 + s) + '_c' + c).val()||$('#t' + t + '_r' + (38 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (40 + s) + '_c' + c).val()||$('#t' + t + '_r' + (40 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (53 + s) + '_c' + c).val()||$('#t' + t + '_r' + (44 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (57 + s) + '_c' + c).val()||$('#t' + t + '_r' + (57 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (62 + s) + '_c' + c).val()||$('#t' + t + '_r' + (63 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (66 + s) + '_c' + c).val()||$('#t' + t + '_r' + (66 + s) + '_c' + c).html()||0)
 	}
 	else
 	  for (var i = s; i <= f; i++) {
@@ -806,11 +808,68 @@
 	}
   })
 
+
+    function getSumCell (t, c){ // Строка "Итого"
+    sum = 0;
+	s = parseInt($('#t' + t + '_S').html());
+	f = parseInt($('#t' + t + '_F').html());
+	if ((t == '5000') || ( t == '5001') || (t == '6000')) {
+	  if (t == '5000') {
+	    s = 0
+		f = 0
+	  }
+	  else 
+	    f = f + 1
+	  sum = parseInt($('#t' + t + '_r' + (s) + '_c' + c).val()||$('#t' + t + '_r' + (s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (2 + s) + '_c' + c).val()||$('#t' + t + '_r'   + (2 + s) + '_c' + c).html()||0)
+          + parseInt($('#t' + t + '_r' + (28 + s) + '_c' + c).val()||$('#t' + t + '_r'  + (2 + s) + '_c' + c).html()||0) 
+		  + parseInt($('#t' + t + '_r' + (30 + s) + '_c' + c).val()||$('#t' + t + '_r' + (32 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (34 + s) + '_c' + c).val()||$('#t' + t + '_r' + (34 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (36 + s) + '_c' + c).val()||$('#t' + t + '_r' + (38 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (40 + s) + '_c' + c).val()||$('#t' + t + '_r' + (40 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (53 + s) + '_c' + c).val()||$('#t' + t + '_r' + (44 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (57 + s) + '_c' + c).val()||$('#t' + t + '_r' + (57 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (62 + s) + '_c' + c).val()||$('#t' + t + '_r' + (63 + s) + '_c' + c).html()||0)
+		  + parseInt($('#t' + t + '_r' + (66 + s) + '_c' + c).val()||$('#t' + t + '_r' + (66 + s) + '_c' + c).html()||0)
+	}
+	else
+	  for (var i = s; i <= f; i++) {
+	    sum = sum + parseInt($('#t' + t + '_r' + i + '_c' + c).val()||$('#t' + t + '_r' + i + '_c' + c).html()||0);
+	  }
+	return sum;
+  }
+  
   function valCell (t, r, c) {
 	    val = parseInt($('#t' + t + '_r' + r + '_c' + c).val());
 	    return val;
   } 
+  function valCelld (cell) {
+	    val = parseInt($('#' + cell).val());
+	    return val;
+  } 
 
+  function valCell_Sum  (tab, startrow, col, num, step) {
+      var val = 0;
+	  for(var i = 0; i< num; i++) {
+    	  val += valCell(tab, startrow + step*i ,col )
+      }
+	  return val;
+  } 
+
+  function validSubStr(tab, startrow, namerow, col, num) {
+    s =  valCell(tab, startrow , col)
+    s1 = 0
+    for(var i = 0; i< num; i++) {
+      s1 += valCell(tab, startrow + 1 + i ,col )
+    }
+    if( s < s1 ) {
+       $("#errmess").html("Ошибка 105. Таблица " + tab + ". Значение в строке " + namerow + " колонка " + (parseInt(col)+3) + " (" + s + ") должно быть больше или равно значения в подстроках (" +
+       		           s1 + ")");           
+       return false;
+    }
+    return true; 
+  }
+  
   function validate_form ( hndl ) {
 	   /* alert("Hi there! val=" + valCell("1000","1","7"));*/
 	    var attrtype = $(hndl).attr('type')
@@ -828,16 +887,136 @@
 	  
   }
 
+  function validTab7000() {
+	  var s6000 =  getSumCell ("6000", "13");
+	  var s7000_r6 = valCell("7000","257","1") + valCell("7000","257","2") + valCell("7000","257","3") + 
+      valCell("7000","257","4") + valCell("7000","257","5") + valCell("7000","257","6");
+	  
+	  if( s6000 != s7000_r6 ) {
+	    	$("#errmess").html("Ошибка 1. Сумма по строке 3 таблицы 7000 (" + s7000_r6 + ") должна быть равна общей сумме в таблице 6000 колонка 16(" + s6000 + ")");
+	    	return false;
+	  }  
+	  var s7000 = getSumCell ("7000", "1") + getSumCell ("7000", "2") + getSumCell ("7000", "3") + 
+	              getSumCell ("7000", "4") + getSumCell ("7000", "5") + getSumCell ("7000", "6")
+	  var v7004 = valCelld("t7004")
+	  if(s7000 != v7004) {
+      	  $("#errmess").html("Ошибка 2. Общая сумма по строкам 1-8 табл. 7000 (" + s7000 + ") должна быть равна значению в поле 7004 (" + v7004 + ")");
+	      return false;
+	  }
+	  var v7005 = valCelld("t7005")
+	  if( v7005 != 0) {
+      	  $("#errmess").html("Ошибка 3. Значение в поле 7005 должно быть равно 0");
+	      return false;
+	  }
+	  var v7006 = valCelld("t7006")
+	  if( v7006 != 1) {
+      	  $("#errmess").html("Ошибка 4. Значение в поле 7006 должно быть равно 1");
+	      return false;
+	  }
+
+	  var v7007 = valCelld("t7007")
+	  if( !(v7007 == 1 || v7007 == 0) ) {
+      	  $("#errmess").html("Ошибка 5. Значение в поле 7007 должно быть равно 0 или 1");
+	      return false;
+	  }
+
+	  var v7009 = valCelld("t7009")
+	  var sotkaz =  getSumCell ("2000", "3") + getSumCell ("3000", "4");
+	  if(v7009 != sotkaz) {
+      	  $("#errmess").html("Ошибка 6. Общая сумма отказов (" + sotkaz + ") в табл.2000 столбец 5  и табл.3000 столбец 6 должна быть равна значению в поле 7009 (" + v7009 + ")");
+	      return false;
+	  }
+     return true;
+  }
+
+  function validTab5_6() {
+	  if( !validTab5x("5000"))
+		  return false;
+	  if( !validTab5x("5001"))
+		  return false;
+	  if( !validTab5x("6000"))
+		  return false;
+      return true;
+  }
+  
+  function validTab5x( tab) {
+	  var arrcol = ["1", "2", "3","4","5","6","7","13"];  /* Excel col = - 3  для каждого столбца таблицы tab */
+    
+      
+      for (var j = 0; j < arrcol.length; j++) {
+    	 rowS = parseInt($('#t' + tab + '_S').html());
+/*1 - 1.1*/
+  	     if (!validSubStr(tab, rowS + 0, "1", arrcol[j], 1))
+  	  	    return false;
+/*2 - 2.1*/
+  	     if (!validSubStr(tab, rowS + 2, "2", arrcol[j], 1))
+  	  	    return false;
+/*2.1 - 2.2:2.13*/
+         r = rowS;
+         row = parseInt(r)  + 3;
+  	     s =  valCell(tab, row, arrcol[j])
+  	     s1	 = valCell_Sum  (tab, row+1, arrcol[j],12,2)
+         if( s < s1 ) {
+  	        $("#errmess").html("Ошибка 101. Таблица " + tab + ". Значение в строке 2.1 колонка " + (parseInt(arrcol[j])+3) + " (" + s + ") должно быть больше или равно суммы подстрок 2.2-2.13  (" +
+  	        		           s1 + ")");           
+  	        return false;
+         }   
+/*2.2 - 2.2.1 */
+  	     if (!validSubStr(tab, rowS + 4, "2.2", arrcol[j], 1))
+  	  	    return false;
+/*2.3 - 2.3.1 */
+  	     if (!validSubStr(tab, rowS + 6, "2.3", arrcol[j], 1))
+  	  	    return false;
+/*2.4 - 2.4.1 */
+  	     if (!validSubStr(tab, rowS + 8, "2.4", arrcol[j], 1))
+  	  	    return false;
+/*2.5 - 2.5.1 */
+  	     if (!validSubStr(tab, rowS + 10, "2.5", arrcol[j], 1))
+  	  	    return false;
+/*2.6 - 2.6.1 */
+  	     if (!validSubStr(tab, rowS + 12, "2.6", arrcol[j], 1))
+  	  	    return false;
+/*2.7 - 2.7.1 */
+  	     if (!validSubStr(tab,rowS + 14, "2.7", arrcol[j], 1))
+  	  	    return false;
+/*2.8 - 2.8.1 */
+  	     if (!validSubStr(tab, rowS + 16, "2.8", arrcol[j], 1))
+  	  	    return false;
+/*2.9 - 2.9.1 */
+  	     if (!validSubStr(tab, rowS + 18, "2.9", arrcol[j], 1))
+  	  	    return false;
+/*2.10 - 2.10.1 */
+  	     if (!validSubStr(tab,rowS + 20, "2.10", arrcol[j], 1))
+  	  	    return false;
+/*2.11 - 2.11.1 */
+  	  	  if (!validSubStr(tab, rowS + 22, "2.11", arrcol[j], 1))
+  	  	    return false;
+/*2.12 - 2.12.1 */
+  	  	  if (!validSubStr(tab, rowS + 24, "2.12", arrcol[j], 1))
+  	  	    return false;
+/*2.13 - 2.13.1 */
+ 	  	  if (!validSubStr(tab, rowS + 26, "2.13", arrcol[j], 1))
+  	  	    return false;
+   	     
+      }
+    
+	  return true;
+  }
+  
   function isValid (){ 
    /* alert("Hi there! val=" + valCell("1000","1","7"));*/
-    if(valCell("1000","1","7") >= valCell("1000","1","8")) {
-    	$("#errmess").html("Ошибок нет")
-    	return true;
-    }
-    else {
-    	$("#errmess").html("Ошибка 1. Значение 1 этапа должно быть больше чем 2-го")
-    	return false;
-    }
+ 
+	   if(valCell("1000","1","7") >= valCell("1000","1","8")) {
+	/*    	$("#errmess").html("Ошибок нет")*/
+	    }
+	   else {
+		   	$("#errmess").html("Ошибка 1. Значение 1 этапа должно быть больше чем 2-го")
+		   	return false;
+	   }
+	   if( !validTab7000() ) return false;
+	   if( !validTab5_6() ) return false;
+
+	   return true;       
   }
   
   
@@ -848,8 +1027,8 @@
 	  else calCell(pole[0].slice(1), pole[1].slice(1), pole[2].slice(1));
 	})
     $(document).ready ( function () { 
-/* 	   $("#btntest").bind("click",function(event){alert("Hi there!");}); */
- 	   $("#btnSend").bind("click",function(event){
+/* 	   $("#btnSend").bind("click",function(event){ */
+ 	   $("#btnTest").bind("click",function(event){
  		   return isValid(); 
  	   }); 
     })
@@ -859,10 +1038,11 @@
   $('.number').blur ( function() {
     if ($(this).val() == '') {$(this).val(0)} 
   })
+ /*
   $('input^[type="number"]').blur ( function() {
     if ($(this).val() == '') {$(this).val(0)} 
   })
-
+*/
   
 </script>
 {% endblock %}

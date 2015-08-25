@@ -89,7 +89,18 @@ def save_doc_form3(request, type, id_doc, mode_comment):
     return save_doc(Doc3,set_fields_form3, is_valid_form3, request, type, id_doc, mode_comment)
 
 def copy_fields_form3(ds, dd):
-    pass 
+    dd.t3001 = ds.t3001
+    dd.t4001_r1 = ds.t4001_r1
+    dd.t4001_r2 = ds.t4001_r2
+    dd.t4002_r1 = ds.t4002_r1
+    dd.t4002_r2 = ds.t4002_r2
+    dd.t7001 = ds.t7001
+    dd.t7002 = ds.t7002
+    dd.t7003 = ds.t7003
+    dd.t7004 = ds.t7004
+    dd.t7004_r1 = ds.t7004_r1
+    dd.t7004_r2 = ds.t7004_r2
+ 
 
 def set_fields_form3(request, doc):
     ''' Заполнение полей модели данными формы . 
