@@ -694,8 +694,9 @@
 <span id="t5001_S" hidden="hidden">{{tab5001.0.row.id}}</span><span id="t5001_F" hidden="hidden">{{tab5001.last.row.id}}</span>
 <span id="t6000_S" hidden="hidden">{{tab6000.0.row.id}}</span><span id="t6000_F" hidden="hidden">{{tab6000.last.row.id}}</span>
 <span id="t7000_S" hidden="hidden">{{tab7000.0.row.id}}</span><span id="t7000_F" hidden="hidden">{{tab7000.last.row.id}}</span>
+
 <script>
-  function calCell (t, r, c) {
+ function calCell (t, r, c) {
     
     switch (t) {
 	  case '1000':
@@ -856,7 +857,7 @@
 	  return val;
   } 
 
-  function validSubStr(tab, startrow, namerow, col, num) {
+  function validSubStr(tab, startrow, namerow, col, num, namerow1) {
     s =  valCell(tab, startrow , col)
     s1 = 0
     for(var i = 0; i< num; i++) {
@@ -864,7 +865,7 @@
     }
     if( s < s1 ) {
        $("#errmess").html("Ошибка 105. Таблица " + tab + ". Значение в строке " + namerow + " колонка " + (parseInt(col)+3) + " (" + s + ") должно быть больше или равно значения в подстроках (" +
-       		           s1 + ")");           
+       		           s1 + ")" + namerow1);           
        return false;
     }
     return true; 
@@ -887,6 +888,140 @@
 	  
   }
 
+
+  function validTab5_6() {
+	  if( !validTab5x("5000"))
+		  return false;
+	  if( !validTab5x("5001"))
+		  return false;
+	  if( !validTab5x("6000"))
+		  return false;
+      return true;
+  }
+  
+  function validTab5x( tab) {
+	  var arrcol = ["1", "2", "3","4","5","6","7","13"];  /* Excel col = - 3  для каждого столбца таблицы tab */
+    
+      
+      for (var j = 0; j < arrcol.length; j++) {
+    	 rowS = parseInt($('#t' + tab + '_S').html());
+/*1 - 1.1*/
+  	     if (!validSubStr(tab, rowS + 0, "1", arrcol[j], 1, ""))
+  	  	    return false;
+/*2 - 2.1*/
+  	     if (!validSubStr(tab, rowS + 2, "2", arrcol[j], 1, ""))
+  	  	    return false;
+/*2.1 - 2.2:2.13*/
+         r = rowS;
+         row = parseInt(r)  + 3;
+  	     s =  valCell(tab, row, arrcol[j])
+  	     s1	 = valCell_Sum  (tab, row+1, arrcol[j],12,2)
+         if( s < s1 ) {
+  	        $("#errmess").html("Ошибка 101. Таблица " + tab + ". Значение в строке 2.1 колонка " + (parseInt(arrcol[j])+3) + " (" + s + ") должно быть больше или равно суммы подстрок 2.2-2.13  (" +
+  	        		           s1 + ")");           
+  	        return false;
+         }   
+/*2.2 - 2.2.1 */
+  	     if (!validSubStr(tab, rowS + 4, "2.2", arrcol[j], 1, ""))
+  	  	    return false;
+/*2.3 - 2.3.1 */
+  	     if (!validSubStr(tab, rowS + 6, "2.3", arrcol[j], 1, ""))
+  	  	    return false;
+/*2.4 - 2.4.1 */
+  	     if (!validSubStr(tab, rowS + 8, "2.4", arrcol[j], 1, ""))
+  	  	    return false;
+/*2.5 - 2.5.1 */
+  	     if (!validSubStr(tab, rowS + 10, "2.5", arrcol[j], 1, ""))
+  	  	    return false;
+/*2.6 - 2.6.1 */
+  	     if (!validSubStr(tab, rowS + 12, "2.6", arrcol[j], 1, ""))
+  	  	    return false;
+/*2.7 - 2.7.1 */
+  	     if (!validSubStr(tab,rowS + 14, "2.7", arrcol[j], 1, ""))
+  	  	    return false;
+/*2.8 - 2.8.1 */
+  	     if (!validSubStr(tab, rowS + 16, "2.8", arrcol[j], 1, ""))
+  	  	    return false;
+/*2.9 - 2.9.1 */
+  	     if (!validSubStr(tab, rowS + 18, "2.9", arrcol[j], 1, ""))
+  	  	    return false;
+/*2.10 - 2.10.1 */
+  	     if (!validSubStr(tab,rowS + 20, "2.10", arrcol[j], 1, ""))
+  	  	    return false;
+/*2.11 - 2.11.1 */
+  	  	  if (!validSubStr(tab, rowS + 22, "2.11", arrcol[j], 1, ""))
+  	  	    return false;
+/*2.12 - 2.12.1 */
+  	  	  if (!validSubStr(tab, rowS + 24, "2.12", arrcol[j], 1, ""))
+  	  	    return false;
+/*2.13 - 2.13.1 */
+ 	  	  if (!validSubStr(tab, rowS + 26, "2.13", arrcol[j], 1, ""))
+  	  	    return false;
+/*3 - 3.1 */
+ 	  	  if (!validSubStr(tab, rowS + 28, "3", arrcol[j], 1, ""))
+  	  	    return false;
+/*4 - 4.1:4.3 */
+ 	  	  if (!validSubStr(tab, rowS + 30, "4", arrcol[j], 3, ""))
+  	  	    return false;
+/*5 - 5.1 */
+ 	  	  if (!validSubStr(tab, rowS + 34, "5", arrcol[j], 1, ""))
+  	  	    return false;
+/*6 - 6.1:6.3 */
+ 	  	  if (!validSubStr(tab, rowS + 36, "6", arrcol[j], 3, ""))
+  	  	    return false;
+/*7 - 7.1:7.4.4 нелогично*/
+         row = rowS;
+  	     s =  valCell(tab, row, arrcol[j])
+  	     s1	 = valCell_Sum(tab,row+1, arrcol[j],2,1) + valCell_Sum(tab,row+7, arrcol[j],2,1) + valCell(tab, row+12, arrcol[j])
+         if( s < s1 ) {
+  	        $("#errmess").html("Ошибка 111. Таблица " + tab + ". Значение в строке 7 колонка " + (parseInt(arrcol[j])+3) + " (" + s + ") должно быть больше или равно суммы подстрок 7.1-7.4 и 7.4.4  (" +
+  	        		           s1 + ")");           
+  	        return false;
+         }   
+/*7.2 - 7.2.1:7.2.3 нелогично*/
+         if (!validSubStr(tab, rowS + 42, "7.2", arrcol[j], 3, "(исключая стр 7.2.4))"))
+  	  	    return false;
+/*7.2.3 - 7.2.4 нелогично */
+         if (!validSubStr(tab, rowS + 45, "7.2.3", arrcol[j], 1, "(имеется ввиду стр 7.2.4))"))
+  	  	    return false;
+   	     
+      }
+/*7.4 - 7.4.1 */
+      if (!validSubStr(tab, rowS + 48, "7.4", arrcol[j], 3, "(исключая стр 7.4.4))"))
+	  	    return false;
+	     
+   }
+/*8 - 8.1:8.3 */
+	  if (!validSubStr(tab, rowS + 53, "8", arrcol[j], 3, ""))
+  	    return false;
+/*9 - 9.1:9.4 */
+  	  if (!validSubStr(tab, rowS + 59, "9", arrcol[j], 4, ""))
+  	    return false;
+/*10 - 10.1:10.3 */
+	  if (!validSubStr(tab, rowS + 62, "10", arrcol[j], 3, ""))
+  	    return false;
+/*10 - мужчины */
+  	  s =  valCell(tab, rowS + 64, arrcol[j])
+      if((arrcol[j] == "1" || arrcol[j] == "2" || arrcol[j] == "3" ) && s > 0) {
+   	     $("#errmess").html("Ошибка 112. Таблица " + tab + ". Значение в строке 10.2 колонка " + (parseInt(arrcol[j])+3) + " (" + s + ") должно быть 0 ");
+        return false;
+      }
+      s =  valCell(tab, rowS + 65, arrcol[j])
+      if((arrcol[j] == "1" || arrcol[j] == "2" || arrcol[j] == "3" ) && s > 0) {
+         $("#errmess").html("Ошибка 113. Таблица " + tab + ". Значение в строке 10.3 колонка " + (parseInt(arrcol[j])+3) + " (" + s + ") должно быть 0 ");           
+         return false;
+      }
+
+/*10 - женщины */
+  	  s =  valCell(tab, rowS + 63, arrcol[j])
+      if((arrcol[j] == "4" || arrcol[j] == "5" || arrcol[j] == "6" ) && s > 0) {
+  	     $("#errmess").html("Ошибка 114. Таблица " + tab + ". Значение в строке 10.1 колонка " + (parseInt(arrcol[j])+3) + " (" + s + ") должно быть 0 ");           
+         return false;
+      }
+        	 
+	  return true;
+  }
+  
   function validTab7000() {
 	  var s6000 =  getSumCell ("6000", "13");
 	  var s7000_r6 = valCell("7000","257","1") + valCell("7000","257","2") + valCell("7000","257","3") + 
@@ -929,91 +1064,149 @@
      return true;
   }
 
-  function validTab5_6() {
-	  if( !validTab5x("5000"))
-		  return false;
-	  if( !validTab5x("5001"))
-		  return false;
-	  if( !validTab5x("6000"))
-		  return false;
-      return true;
+  function validGroup(tab,tab7,row,row7, col, col7){ 
+    s = valCell(tab, row, col)
+    s1 = valCell_Sum(tab7, row7, col7, 4, 1)
+	if(s != s1) {
+       $("#errmess").html("Ошибка 1001. Таблица " + tab + ". Значение по колонке " + (parseInt(col)+2) + " (" + s + ") должно быть равна сумме колонки "  +
+    		              (parseInt(col7)+2) + "в табл." + tab7 + " (" + s1 + ")");           
+      return false;
+	}  
+    return true;
+  } 
+
+  function validTab1000 (){ 
+	  tab = "1000";
+  	  rowS = parseInt($('#t' + tab + '_S').html());
+	  tab7 = "7000";
+  	  rowS7 = parseInt($('#t' + tab7 + '_S').html());
+  	  
+  	  
+  	  s = valCell_Sum(tab, rowS, "7", 3, 1) + valCell_Sum(tab, rowS, "11", 3, 1)
+  	  s1 = valCelld("t7001") + valCelld("t7001")
+  	  if(s != s1) {
+	     $("#errmess").html("Ошибка 1000. Таблица " + tab + ". Сумма по колонке 5" + " (" + s + ") должно быть равна сумме стр. 7001 + 7002  (" +
+   	          s1 + ")");           
+         return false;
+  	  } 
+/* по группам наcеления */
+  	  if (!validGroup(tab, rowS, tab7, rowS7,"7","1"))
+	  	    return false;
+  	  if (!validGroup(tab, rowS+1, tab7, rowS7,"7","2"))
+	  	    return false;
+  	  if (!validGroup(tab, rowS+2, tab7, rowS7,"7","3"))
+	  	    return false;
+  	  if (!validGroup(tab, rowS, tab7, rowS7,"11","4"))
+	  	    return false;
+	  if (!validGroup(tab, rowS+1, tab7, rowS7,"11","5"))
+	  	    return false;
+	  if (!validGroup(tab, rowS+2, tab7, rowS7,"11","6"))
+	  	    return false;
+      return true;       
   }
-  
-  function validTab5x( tab) {
-	  var arrcol = ["1", "2", "3","4","5","6","7","13"];  /* Excel col = - 3  для каждого столбца таблицы tab */
-    
-      
-      for (var j = 0; j < arrcol.length; j++) {
-    	 rowS = parseInt($('#t' + tab + '_S').html());
-/*1 - 1.1*/
-  	     if (!validSubStr(tab, rowS + 0, "1", arrcol[j], 1))
-  	  	    return false;
-/*2 - 2.1*/
-  	     if (!validSubStr(tab, rowS + 2, "2", arrcol[j], 1))
-  	  	    return false;
-/*2.1 - 2.2:2.13*/
-         r = rowS;
-         row = parseInt(r)  + 3;
-  	     s =  valCell(tab, row, arrcol[j])
-  	     s1	 = valCell_Sum  (tab, row+1, arrcol[j],12,2)
-         if( s < s1 ) {
-  	        $("#errmess").html("Ошибка 101. Таблица " + tab + ". Значение в строке 2.1 колонка " + (parseInt(arrcol[j])+3) + " (" + s + ") должно быть больше или равно суммы подстрок 2.2-2.13  (" +
-  	        		           s1 + ")");           
-  	        return false;
-         }   
-/*2.2 - 2.2.1 */
-  	     if (!validSubStr(tab, rowS + 4, "2.2", arrcol[j], 1))
-  	  	    return false;
-/*2.3 - 2.3.1 */
-  	     if (!validSubStr(tab, rowS + 6, "2.3", arrcol[j], 1))
-  	  	    return false;
-/*2.4 - 2.4.1 */
-  	     if (!validSubStr(tab, rowS + 8, "2.4", arrcol[j], 1))
-  	  	    return false;
-/*2.5 - 2.5.1 */
-  	     if (!validSubStr(tab, rowS + 10, "2.5", arrcol[j], 1))
-  	  	    return false;
-/*2.6 - 2.6.1 */
-  	     if (!validSubStr(tab, rowS + 12, "2.6", arrcol[j], 1))
-  	  	    return false;
-/*2.7 - 2.7.1 */
-  	     if (!validSubStr(tab,rowS + 14, "2.7", arrcol[j], 1))
-  	  	    return false;
-/*2.8 - 2.8.1 */
-  	     if (!validSubStr(tab, rowS + 16, "2.8", arrcol[j], 1))
-  	  	    return false;
-/*2.9 - 2.9.1 */
-  	     if (!validSubStr(tab, rowS + 18, "2.9", arrcol[j], 1))
-  	  	    return false;
-/*2.10 - 2.10.1 */
-  	     if (!validSubStr(tab,rowS + 20, "2.10", arrcol[j], 1))
-  	  	    return false;
-/*2.11 - 2.11.1 */
-  	  	  if (!validSubStr(tab, rowS + 22, "2.11", arrcol[j], 1))
-  	  	    return false;
-/*2.12 - 2.12.1 */
-  	  	  if (!validSubStr(tab, rowS + 24, "2.12", arrcol[j], 1))
-  	  	    return false;
-/*2.13 - 2.13.1 */
- 	  	  if (!validSubStr(tab, rowS + 26, "2.13", arrcol[j], 1))
-  	  	    return false;
-   	     
-      }
-    
+
+  function valid2000_1 (tab,rowS,i,sum_all) {
+  	  s =  valCell(tab, rowS + i, "1") + valCell(tab, rowS + i, "2") + valCell(tab, rowS + i, "3")
+	  num = i + 1;
+	  if( num == 2 || num == 3 || num == 4 || num == 14 || || num == 10 || num == 12 || num == 13 || num == 15 || num == 20) {
+		  if(s != sum_all) {
+		      $("#errmess").html("Ошибка 2003. Таблица " + tab + ". Сумма колонок 3,4,5 в строке " + num +  "(" + s + ") должна быть равна сумме колонки 5 табл. 1000  (" +
+			    		 sum_all + ")");           
+			  return false;
+		  }
+			  
+	  }
+	  else {
+		  if(s > sum_all) {
+		      $("#errmess").html("Ошибка 2003. Таблица " + tab + ". Сумма колонок 3,4,5 в строке " + num +  "(" + s + ") должна быть меньше илди равна сумме колонки 5 табл. 1000  (" +
+			    		 sum_all + ")");           
+			  return false;
+		  }
+	  }
 	  return true;
+  } 
+
+  function validTab2000(){ 
+	  tab = "2000";
+  	  rowS = parseInt($('#t' + tab + '_S').html());
+	  tab1 = "1000";
+  	  rowS1 = parseInt($('#t' + tab1 + '_S').html());
+  	  
+  	  sum_all = valCell_Sum(tab1, rowS1, "7", 3, 1) + valCell_Sum(tab1, rowS1, "11", 3, 1)
+  	  s =  valCell(tab, rowS, "1")
+  	  if(s != sum_all) {
+	     $("#errmess").html("Ошибка 2001. Таблица " + tab + ". Значение в строке 1 кол. 3" + " (" + s + ") должно быть равна сумме колонки 5 табл. 1000  (" +
+	    		 sum_all + ")");           
+         return false;
+  	  } 
+  	  s =  valCell(tab, rowS+ 19, "1")
+  	  if(s != sum_all) {
+	     $("#errmess").html("Ошибка 2002. Таблица " + tab + ". Значение в строке 20 кол. 3" + " (" + s + ") должно быть равна сумме колонки 5 табл. 1000  (" +
+	    		 sum_all + ")");           
+         return false;
+  	  } 
+      for(var i = 1; i<=18; i++) {
+        if(!valid2000_1(tab,rowS,i,sum_all))
+        	return false;
+      }
+      return true;       
   }
+
+  function valid3000_1 (tab,rowS,i) {
+  	  s =  valCell(tab, rowS + i, "1")
+  	  s1 =  valCell(tab, rowS + i, "2") + valCell(tab, rowS + i, "3") + valCell(tab, rowS + i, "4")
+	  num = i + 1;
+	  if(s < s1) {
+	      $("#errmess").html("Ошибка 3001. Таблица " + tab + ". Сумма колонок 4,5,6 в строке " + num +  "(" + s1 + ") должна быть меньше или равна сумме колонки 5 табл. 1000  (" +
+			    		 s + ")");           
+		  return false;
+	  }
+			  
+	  return true;
+  } 
+
+  function validTab3000(){ 
+	  tab = "3000";
+  	  rowS = parseInt($('#t' + tab + '_S').html());
+	  tab1 = "1000";
+  	  rowS1 = parseInt($('#t' + tab1 + '_S').html());
+  	  
+  	  sum_all = valCell_Sum(tab1, rowS1, "7", 3, 1) + valCell_Sum(tab1, rowS1, "11", 3, 1)
+      for(var i = 0; i<16; i++) {
+        if(!valid3000_1(tab,rowS,i))
+        	return false;
+      }
+/* 20 %*/
+      s = valCell(tab, rowS + 13, "1"); 	  
+	  if(s < sum_all * 20 / 100) {
+        $("#errmess").html("Ошибка 3002. Таблица " + tab + ". Значение в строке 14 кол. 3 " +  "(" + s1 + ") должна быть больше или равно 20% от суммы колонки 5 табл. 1000  (" +
+			    		 s + ")");
+      	return false;
+	  }    
+      s = valCell(tab, rowS + 14, "1"); 	  
+	  if(s < sum_all * 20 / 100) {
+	     $("#errmess").html("Ошибка 3003. Таблица " + tab + ". Значение в строке 15 кол. 3 " +  "(" + s1 + ") должна быть больше или равно 20% от суммы колонки 5 табл. 1000  (" +
+				    		 s + ")");           
+      	return false;
+	  }    
+ /* 30 %*/
+      s = valCell(tab, rowS + 16, "1"); 	  
+	  if(s < sum_all * 30 / 100) {
+        $("#errmess").html("Ошибка 3002. Таблица " + tab + ". Значение в строке 17 кол. 3 " +  "(" + s1 + ") должна быть больше или равно 30% от суммы колонки 5 табл. 1000  (" +
+			    		 s + ")");
+      	return false;
+	  }    
+
+      return true;       
+  }
+
   
   function isValid (){ 
    /* alert("Hi there! val=" + valCell("1000","1","7"));*/
- 
-	   if(valCell("1000","1","7") >= valCell("1000","1","8")) {
-	/*    	$("#errmess").html("Ошибок нет")*/
-	    }
-	   else {
-		   	$("#errmess").html("Ошибка 1. Значение 1 этапа должно быть больше чем 2-го")
-		   	return false;
-	   }
-	   if( !validTab7000() ) return false;
+	   if( !validTab1000() ) return false;
+	   if( !validTab2000() ) return false;
+	   if( !validTab3000() ) return false;
+	   if( !validTab2000() ) return false;
 	   if( !validTab5_6() ) return false;
 
 	   return true;       
@@ -1043,6 +1236,7 @@
     if ($(this).val() == '') {$(this).val(0)} 
   })
 */
-  
 </script>
+ 
 {% endblock %}
+
