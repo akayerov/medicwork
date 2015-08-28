@@ -62,10 +62,10 @@
 			</tr>
 	  	 </thead>
 	  	 <tbody>
-           {% for t in tab1000 %}
+           {% for t in t1000 %}
  		     <tr>
 		       <td>{{t.row}}</td>
-		       <td>{{t.row.nomer}}</td>
+		       <td id="t1000_r{{t.row.id}}_name">{{t.row.nomer}}</td>
 		       <td class="cal" id="t1000_r{{t.row.id}}_c1"></td>
 		       <td class="cal" id="t1000_r{{t.row.id}}_c2"></td>
 		       <td class="cal" id="t1000_r{{t.row.id}}_c3"></td>
@@ -129,10 +129,10 @@
 
 	  </thead>
 	  <tbody>
-      {% for t in tab2000 %}
+      {% for t in t2000 %}
  		<tr>
 		  <td>{{t.row}}</td>
-          <td>{{t.row.nomer}}</td>
+          <td id="t2000_r{{t.row.id}}_name">{{t.row.nomer}}</td>
 		  <td><input type="number" name="t2000_r{{t.row.id}}_c1" id="t2000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  {% if t.row.id == 4 or t.row.id == 23 %}
 		  <td class="none"></td>
@@ -178,10 +178,10 @@
 		</tr>
 	  </thead>
 	  <tbody>
-      {% for t in tab3000 %}
+      {% for t in t3000 %}
  		<tr>
 		  <td>{{t.row}}</td>
-          <td>{{t.row.nomer}}</td>
+          <td id="t3000_r{{t.row.id}}_name">{{t.row.nomer}}</td>
 		  <td><input type="number" name="t3000_r{{t.row.id}}_c1" id="t3000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  <td><input type="number" name="t3000_r{{t.row.id}}_c2" id="t3000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
 		  <td><input type="number" name="t3000_r{{t.row.id}}_c3" id="t3000_r{{t.row.id}}_c3" value="{{t.c3}}"></td>
@@ -250,10 +250,10 @@
 		</tr>
 	  </thead>
 	  <tbody>
-      {% for t in tab4000 %}
+      {% for t in t4000 %}
 		<tr>
 		  <td>{{t.row}}</td>
-		  <td>{{t.row.nomer}}</td>
+		  <td id="t4000_r{{t.row.id}}_name">{{t.row.nomer}}</td>
 		  <td>{{t.row.name1}}</td>
 		  <td><input type="number" name="t4000_r{{t.row.id}}_c1" id="t4000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  <td><input type="number" name="t4000_r{{t.row.id}}_c2" id="t4000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
@@ -338,10 +338,10 @@
 		</tr>
 	  </thead>
 	  <tbody>
-      {% for t in tab5000 %}
+      {% for t in t5000 %}
 		<tr>
 		  <td>{{t.row}}</td>
-		  <td>{{t.row.nomer}}</td>
+		  <td id="t5000_r{{t.row.id}}_name">{{t.row.nomer}}</td>
 		  <td>{{t.row.name1}}</td>
 		  <td><input type="number" name="t5000_r{{t.row.id}}_c1" id="t5000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  <td><input type="number" name="t5000_r{{t.row.id}}_c2" id="t5000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
@@ -415,10 +415,10 @@
 		</tr>
 	  </thead>
 	  <tbody>
-      {% for t in tab5001 %}
+      {% for t in t5001 %}
 		<tr>
 		  <td>{{t.row}}</td>
-		  <td>{{t.row.nomer}}</td>
+		  <td id="t5001_r{{t.row.id}}_name">{{t.row.nomer}}</td>
 		  <td>{{t.row.name1}}</td>
 		  <td><input type="number" name="t5001_r{{t.row.id}}_c1" id="t5001_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  <td><input type="number" name="t5001_r{{t.row.id}}_c2" id="t5001_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
@@ -492,10 +492,10 @@
 		</tr>
 	  </thead>
 	  <tbody>
-      {% for t in tab6000 %}
+      {% for t in t6000 %}
 		<tr>
 		  <td>{{t.row}}</td>
-		  <td>{{t.row.nomer}}</td>
+		  <td id="t6000_r{{t.row.id}}_name">{{t.row.nomer}}</td>
 		  <td>{{t.row.name1}}</td>
 		  <td><input type="number" name="t6000_r{{t.row.id}}_c1" id="t6000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  <td><input type="number" name="t6000_r{{t.row.id}}_c2" id="t6000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
@@ -561,10 +561,10 @@
 		</tr>
 	  </thead>
 	  <tbody>	  
-      {% for t in tab7000 %}
+      {% for t in t7000 %}
 		<tr>
 		  <td>{{t.row}}</td>
-		  <td>{{t.row.nomer}}</td>
+		  <td id="t7000_r{{t.row.id}}_name">{{t.row.nomer}}</td>
 		  <td><input type="number" id="t7000_r{{t.row.id}}_c1" name="t7000_r{{t.row.id}}_c1" value="{{t.c1}}"></td>
 		  <td><input type="number" id="t7000_r{{t.row.id}}_c2" name="t7000_r{{t.row.id}}_c2" value="{{t.c2}}"></td>
 		  <td><input type="number" id="t7000_r{{t.row.id}}_c3" name="t7000_r{{t.row.id}}_c3" value="{{t.c3}}"></td>
@@ -687,556 +687,87 @@
 	<p>*** Статья 6.1 Федерального закона от 17 июля 1999 г. № 178-ФЗ «О государственной социальной помощи» (Собрание законодательства Российской Федерации, 1999, № 24, ст. 3699; 2004, № 35, ст. 3607).</p>
   </section>
 </div>
-<span id="t1000_S" hidden="hidden">{{tab1000.0.row.id}}</span><span id="t1000_F" hidden="hidden">{{tab1000.last.row.id}}</span>
-<span id="t2000_S" hidden="hidden">{{tab2000.0.row.id}}</span><span id="t2000_F" hidden="hidden">{{tab2000.last.row.id}}</span>
-<span id="t3000_S" hidden="hidden">{{tab3000.0.row.id}}</span><span id="t3000_F" hidden="hidden">{{tab3000.last.row.id}}</span>
-<span id="t5000_S" hidden="hidden">{{tab5000.0.row.id}}</span><span id="t5000_F" hidden="hidden">{{tab5000.last.row.id}}</span>
-<span id="t5001_S" hidden="hidden">{{tab5001.0.row.id}}</span><span id="t5001_F" hidden="hidden">{{tab5001.last.row.id}}</span>
-<span id="t6000_S" hidden="hidden">{{tab6000.0.row.id}}</span><span id="t6000_F" hidden="hidden">{{tab6000.last.row.id}}</span>
-<span id="t7000_S" hidden="hidden">{{tab7000.0.row.id}}</span><span id="t7000_F" hidden="hidden">{{tab7000.last.row.id}}</span>
-
-<script>
- function calCell (t, r, c) {
-    
-    switch (t) {
-	  case '1000':
-	    switch (c) {
-		  case '1': case '2': case '3': case '4':
-	        $('#t' + t + '_r' + r + '_c' + c).html(
-		      (parseInt($('#t' + t + '_r' + r + '_c' + (parseInt(c) + 4)).val()) + parseInt($('#t' + t + '_r' + r + '_c' + (parseInt(c) + 8)).val()))||
-              (parseInt($('#t' + t + '_r' + r + '_c' + (parseInt(c) + 4)).html()) + parseInt($('#t' + t + '_r' + r + '_c' + (parseInt(c) + 8)).html()))||
-		      0)
-	        break;
-	      case '5': case '6': case '7': case '8':
-		    $('#t' + t + '_r' + r + '_c' + (parseInt(c) - 4)).html(
-		      (parseInt($('#t' + t + '_r' + r + '_c' + c).val()) + parseInt($('#t' + t + '_r' + r + '_c' + (parseInt(c) + 4)).val()))||
-              (parseInt($('#t' + t + '_r' + r + '_c' + c).html()) + parseInt($('#t' + t + '_r' + r + '_c' + (parseInt(c) + 4)).html()))||
-		      0);
-			sumCell(t, parseInt(c) - 4);
-		    break;
-	      case '9': case '10': case '11': case '12':
-		    $('#t' + t + '_r' + r + '_c' + (parseInt(c) - 8)).html(
-		      (parseInt($('#t' + t + '_r' + r + '_c' + (parseInt(c) - 4)).val()) + parseInt($('#t' + t + '_r' + r + '_c' + c).val()))||
-              (parseInt($('#t' + t + '_r' + r + '_c' + (parseInt(c) - 4)).html()) + parseInt($('#t' + t + '_r' + r + '_c' + c).html()))||
-		      0);
-			sumCell(t, parseInt(c) - 8);
-		    break;
-		}
-	    break;
-      case '4000': case '5000': case '5001': case '6000':
-	  // суммирование происходит по строкам 
-        switch (c) {
-          // сумирование для столбца мужчины/всего 
-          case '1': case '2': case '3': case '4':
-            $('#t' + t + '_r' + r + '_c4').html(
-		      (parseInt($('#t' + t + '_r' + r + '_c1').val()) + parseInt($('#t' + t + '_r' + r + '_c2').val()) + parseInt($('#t' + t + '_r' + r + '_c3').val()))||
-              (parseInt($('#t' + t + '_r' + r + '_c1').html()) + parseInt($('#t' + t + '_r' + r + '_c2').html()) + parseInt($('#t' + t + '_r' + r + '_c3').html()))||
-		      0);
-            break;
-          // сумирование для столбца женщины/всего
-          case '5': case '6': case '7': case '8':
-            $('#t' + t + '_r' + r + '_c8').html(
-	          (parseInt($('#t' + t + '_r' + r + '_c5').val()) + parseInt($('#t' + t + '_r' + r + '_c6').val()) + parseInt($('#t' + t + '_r' + r + '_c7').val()))||
-		      (parseInt($('#t' + t + '_r' + r + '_c5').html()) + parseInt($('#t' + t + '_r' + r + '_c6').html()) + parseInt($('#t' + t + '_r' + r + '_c7').html()))||
-		      0);
-            break;
-	    } 
-        switch (c) {
-          // сумирование для столбца всего/21-36 лет
-          case '1': case '5': case '9':
-            $('#t' + t + '_r' + r + '_c9').html(
-		      (parseInt($('#t' + t + '_r' + r + '_c1').val()) + parseInt($('#t' + t + '_r' + r + '_c5').val()))||
-		      (parseInt($('#t' + t + '_r' + r + '_c1').html()) + parseInt($('#t' + t + '_r' + r + '_c5').html()))||
-		      0);
-            break;
-          // сумирование для столбца всего/37-60 лет
-          case '2': case '6': case '10':
-            $('#t' + t + '_r' + r + '_c10').html(
-		      (parseInt($('#t' + t + '_r' + r + '_c2').val()) + parseInt($('#t' + t + '_r' + r + '_c6').val()))||
-		      (parseInt($('#t' + t + '_r' + r + '_c2').html()) + parseInt($('#t' + t + '_r' + r + '_c6').html()))||
-              0);
-            break;
-          // сумирование для столбца всего/более 60 лет
-          case '3': case '7': case '11':
-            $('#t' + t + '_r' + r + '_c11').html(
-		      (parseInt($('#t' + t + '_r' + r + '_c3').val()) + parseInt($('#t' + t + '_r' + r + '_c7').val()))||
-		      (parseInt($('#t' + t + '_r' + r + '_c3').html()) + parseInt($('#t' + t + '_r' + r + '_c7').html()))||
-		      0);
-		    break;
-        }
-        // суммирование для столбца всего/всего
-        $('#t' + t + '_r' + r + '_c12').html(parseInt($('#t' + t + '_r' + r + '_c9').html()) + parseInt($('#t' + t + '_r' + r + '_c10').html()) + parseInt($('#t' + t + '_r' + r + '_c11').html()));
-	    break;
-	}
-  }
-  function sumCell (t, c){ // Строка "Итого"
-    sum = 0;
-	s = parseInt($('#t' + t + '_S').html());
-	f = parseInt($('#t' + t + '_F').html());
-	if ((t == '5000') || ( t == '5001') || (t == '6000')) {
-	  if (t == '5000') {
-	    s = 0
-		f = 0
-	  }
-	  else 
-	    f = f + 1
-		  sum = parseInt($('#t' + t + '_r' + (s) + '_c' + c).val()||$('#t' + t + '_r' + (s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (2 + s) + '_c' + c).val()||$('#t' + t + '_r'   + (2 + s) + '_c' + c).html()||0)
-          + parseInt($('#t' + t + '_r' + (28 + s) + '_c' + c).val()||$('#t' + t + '_r'  + (2 + s) + '_c' + c).html()||0) 
-		  + parseInt($('#t' + t + '_r' + (30 + s) + '_c' + c).val()||$('#t' + t + '_r' + (32 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (34 + s) + '_c' + c).val()||$('#t' + t + '_r' + (34 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (36 + s) + '_c' + c).val()||$('#t' + t + '_r' + (38 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (40 + s) + '_c' + c).val()||$('#t' + t + '_r' + (40 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (53 + s) + '_c' + c).val()||$('#t' + t + '_r' + (44 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (57 + s) + '_c' + c).val()||$('#t' + t + '_r' + (57 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (62 + s) + '_c' + c).val()||$('#t' + t + '_r' + (63 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (66 + s) + '_c' + c).val()||$('#t' + t + '_r' + (66 + s) + '_c' + c).html()||0)
-	}
-	else
-	  for (var i = s; i <= f; i++) {
-	    sum = sum + parseInt($('#t' + t + '_r' + i + '_c' + c).val()||$('#t' + t + '_r' + i + '_c' + c).html()||0);
-	  }
-	$('#t' + t + '_rS_c' + c).html(sum);
-  }
-  $('input').blur ( function () {
-    pole = $(this).attr('name').split('_');
-	if ((pole[0].slice(1) == 1000) || (pole[0].slice(1) == 4000) || (pole[0].slice(1) == 5000) || (pole[0].slice(1) == 5001) || (pole[0].slice(1) == 6000)) 
-	  calCell(pole[0].slice(1), pole[1].slice(1), pole[2].slice(1)); 
-	if ((pole[0].slice(1) == 1000) || (pole[0].slice(1) == 5000) || (pole[0].slice(1) == 5001) || (pole[0].slice(1) == 6000)) {
-	  sumCell(pole[0].slice(1), pole[2].slice(1));
-	  if ((pole[0].slice(1) == 5000) || (pole[0].slice(1) == 5001) || (pole[0].slice(1) == 6000)) 
-	    calCell(pole[0].slice(1), 'S', pole[2].slice(1)); 
-	}
-  })
+<span id="t1000_S" hidden="hidden">{{t1000.0.row.id}}</span><span id="t1000_F" hidden="hidden">{{t1000.last.row.id}}</span>
+<span id="t2000_S" hidden="hidden">{{t2000.0.row.id}}</span><span id="t2000_F" hidden="hidden">{{t2000.last.row.id}}</span>
+<span id="t3000_S" hidden="hidden">{{t3000.0.row.id}}</span><span id="t3000_F" hidden="hidden">{{t3000.last.row.id}}</span>
+<span id="t5000_S" hidden="hidden">{{t5000.0.row.id}}</span><span id="t5000_F" hidden="hidden">{{t5000.last.row.id}}</span>
+<span id="t5001_S" hidden="hidden">{{t5001.0.row.id}}</span><span id="t5001_F" hidden="hidden">{{t5001.last.row.id}}</span>
+<span id="t6000_S" hidden="hidden">{{t6000.0.row.id}}</span><span id="t6000_F" hidden="hidden">{{t6000.last.row.id}}</span>
+<span id="t7000_S" hidden="hidden">{{t7000.0.row.id}}</span><span id="t7000_F" hidden="hidden">{{t7000.last.row.id}}</span>
 
 
-    function getSumCell (t, c){ // Строка "Итого"
-    sum = 0;
-	s = parseInt($('#t' + t + '_S').html());
-	f = parseInt($('#t' + t + '_F').html());
-	if ((t == '5000') || ( t == '5001') || (t == '6000')) {
-	  if (t == '5000') {
-	    s = 0
-		f = 0
-	  }
-	  else 
-	    f = f + 1
-	  sum = parseInt($('#t' + t + '_r' + (s) + '_c' + c).val()||$('#t' + t + '_r' + (s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (2 + s) + '_c' + c).val()||$('#t' + t + '_r'   + (2 + s) + '_c' + c).html()||0)
-          + parseInt($('#t' + t + '_r' + (28 + s) + '_c' + c).val()||$('#t' + t + '_r'  + (2 + s) + '_c' + c).html()||0) 
-		  + parseInt($('#t' + t + '_r' + (30 + s) + '_c' + c).val()||$('#t' + t + '_r' + (32 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (34 + s) + '_c' + c).val()||$('#t' + t + '_r' + (34 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (36 + s) + '_c' + c).val()||$('#t' + t + '_r' + (38 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (40 + s) + '_c' + c).val()||$('#t' + t + '_r' + (40 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (53 + s) + '_c' + c).val()||$('#t' + t + '_r' + (44 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (57 + s) + '_c' + c).val()||$('#t' + t + '_r' + (57 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (62 + s) + '_c' + c).val()||$('#t' + t + '_r' + (63 + s) + '_c' + c).html()||0)
-		  + parseInt($('#t' + t + '_r' + (66 + s) + '_c' + c).val()||$('#t' + t + '_r' + (66 + s) + '_c' + c).html()||0)
-	}
-	else
-	  for (var i = s; i <= f; i++) {
-	    sum = sum + parseInt($('#t' + t + '_r' + i + '_c' + c).val()||$('#t' + t + '_r' + i + '_c' + c).html()||0);
-	  }
-	return sum;
-  }
-  
-  function valCell (t, r, c) {
-	    val = parseInt($('#t' + t + '_r' + r + '_c' + c).val());
-	    return val;
-  } 
-  function valCelld (cell) {
-	    val = parseInt($('#' + cell).val());
-	    return val;
-  } 
-
-  function valCell_Sum  (tab, startrow, col, num, step) {
-      var val = 0;
-	  for(var i = 0; i< num; i++) {
-    	  val += valCell(tab, startrow + step*i ,col )
-      }
-	  return val;
-  } 
-
-  function validSubStr(tab, startrow, namerow, col, num, namerow1) {
-    s =  valCell(tab, startrow , col)
-    s1 = 0
-    for(var i = 0; i< num; i++) {
-      s1 += valCell(tab, startrow + 1 + i ,col )
-    }
-    if( s < s1 ) {
-       $("#errmess").html("Ошибка 105. Таблица " + tab + ". Значение в строке " + namerow + " колонка " + (parseInt(col)+3) + " (" + s + ") должно быть больше или равно значения в подстроках (" +
-       		           s1 + ")" + namerow1);           
-       return false;
-    }
-    return true; 
-  }
-  
-  function validate_form ( hndl ) {
-	   /* alert("Hi there! val=" + valCell("1000","1","7"));*/
-	    var attrtype = $(hndl).attr('type')
-	    var attrname = $(hadl).attr('name')
-	    
-	    
-	    if(valCell("1000","1","7") >= valCell("1000","1","8")) {
-	    	$("#errmess").html("Ошибок нет")
-	    	return true;
-	    }
-	    else {
-	    	$("#errmess").html("Ошибка 1. Значение 1 этапа должно быть больше чем 2-го")
-	    	return false;
-	    }
-	  
-  }
+{% if p1000 %}
+{% for p in p1000 %}
+<span id="p1000_r{{p.row.id}}_c5" hidden="hidden">{{p.c5}}</span>
+<span id="p1000_r{{p.row.id}}_c6" hidden="hidden">{{p.c6}}</span>
+<span id="p1000_r{{p.row.id}}_c7" hidden="hidden">{{p.c7}}</span>
+<span id="p1000_r{{p.row.id}}_c8" hidden="hidden">{{p.c8}}</span>
+<span id="p1000_r{{p.row.id}}_c9" hidden="hidden">{{p.c9}}</span>
+<span id="p1000_r{{p.row.id}}_c10" hidden="hidden">{{p.c10}}</span>
+<span id="p1000_r{{p.row.id}}_c11" hidden="hidden">{{p.c11}}</span>
+<span id="p1000_r{{p.row.id}}_c12" hidden="hidden">{{p.c12}}</span>
+{% endfor %} 
+{% for p in p2000 %}
+<span id="p2000_r{{p.row.id}}_c1" hidden="hidden">{{p.c1}}</span>
+<span id="p2000_r{{p.row.id}}_c2" hidden="hidden">{{p.c2}}</span>
+<span id="p2000_r{{p.row.id}}_c3" hidden="hidden">{{p.c3}}</span>
+<span id="p2000_r{{p.row.id}}_c4" hidden="hidden">{{p.c4}}</span>
+{% endfor %} 
+{% for p in p3000 %}
+<span id="p3000_r{{p.row.id}}_c1" hidden="hidden">{{p.c1}}</span>
+<span id="p3000_r{{p.row.id}}_c2" hidden="hidden">{{p.c2}}</span>
+<span id="p3000_r{{p.row.id}}_c3" hidden="hidden">{{p.c3}}</span>
+<span id="p3000_r{{p.row.id}}_c4" hidden="hidden">{{p.c4}}</span>
+<span id="p3000_r{{p.row.id}}_c5" hidden="hidden">{{p.c5}}</span>
+{% endfor %} 
+{% for p in p4000 %}
+<span id="p4000_r{{p.row.id}}_c1" hidden="hidden">{{p.c1}}</span>
+<span id="p4000_r{{p.row.id}}_c2" hidden="hidden">{{p.c2}}</span>
+<span id="p4000_r{{p.row.id}}_c3" hidden="hidden">{{p.c3}}</span>
+<span id="p4000_r{{p.row.id}}_c5" hidden="hidden">{{p.c5}}</span>
+<span id="p4000_r{{p.row.id}}_c6" hidden="hidden">{{p.c6}}</span>
+<span id="p4000_r{{p.row.id}}_c7" hidden="hidden">{{p.c7}}</span>
+{% endfor %} 
+{% for p in p5000 %}
+<span id="p5000_r{{p.row.id}}_c1" hidden="hidden">{{p.c1}}</span>
+<span id="p5000_r{{p.row.id}}_c2" hidden="hidden">{{p.c2}}</span>
+<span id="p5000_r{{p.row.id}}_c3" hidden="hidden">{{p.c3}}</span>
+<span id="p5000_r{{p.row.id}}_c5" hidden="hidden">{{p.c5}}</span>
+<span id="p5000_r{{p.row.id}}_c6" hidden="hidden">{{p.c6}}</span>
+<span id="p5000_r{{p.row.id}}_c7" hidden="hidden">{{p.c7}}</span>
+<span id="p5000_r{{p.row.id}}_c13" hidden="hidden">{{p.c13}}</span>
+{% endfor %} 
+{% for p in p5001 %}
+<span id="p5001_r{{p.row.id}}_c1" hidden="hidden">{{p.c1}}</span>
+<span id="p5001_r{{p.row.id}}_c2" hidden="hidden">{{p.c2}}</span>
+<span id="p5001_r{{p.row.id}}_c3" hidden="hidden">{{p.c3}}</span>
+<span id="p5001_r{{p.row.id}}_c5" hidden="hidden">{{p.c5}}</span>
+<span id="p5001_r{{p.row.id}}_c6" hidden="hidden">{{p.c6}}</span>
+<span id="p5001_r{{p.row.id}}_c7" hidden="hidden">{{p.c7}}</span>
+<span id="p5001_r{{p.row.id}}_c13" hidden="hidden">{{p.c13}}</span>
+{% endfor %} 
+{% for p in p6000 %}
+<span id="p6000_r{{p.row.id}}_c1" hidden="hidden">{{p.c1}}</span>
+<span id="p6000_r{{p.row.id}}_c2" hidden="hidden">{{p.c2}}</span>
+<span id="p6000_r{{p.row.id}}_c3" hidden="hidden">{{p.c3}}</span>
+<span id="p6000_r{{p.row.id}}_c5" hidden="hidden">{{p.c5}}</span>
+<span id="p6000_r{{p.row.id}}_c6" hidden="hidden">{{p.c6}}</span>
+<span id="p6000_r{{p.row.id}}_c7" hidden="hidden">{{p.c7}}</span>
+<span id="p6000_r{{p.row.id}}_c13" hidden="hidden">{{p.c13}}</span>
+{% endfor %} 
+{% for p in p7000 %}
+<span id="p7000_r{{p.row.id}}_c1" hidden="hidden">{{p.c1}}</span>
+<span id="p7000_r{{p.row.id}}_c2" hidden="hidden">{{p.c2}}</span>
+<span id="p7000_r{{p.row.id}}_c3" hidden="hidden">{{p.c3}}</span>
+<span id="p7000_r{{p.row.id}}_c4" hidden="hidden">{{p.c4}}</span>
+<span id="p7000_r{{p.row.id}}_c5" hidden="hidden">{{p.c5}}</span>
+<span id="p7000_r{{p.row.id}}_c6" hidden="hidden">{{p.c6}}</span>
+{% endfor %} 
 
 
-  function validTab5_6() {
-	  if( !validTab5x("5000"))
-		  return false;
-	  if( !validTab5x("5001"))
-		  return false;
-	  if( !validTab5x("6000"))
-		  return false;
-      return true;
-  }
-  
-  function validTab5x( tab) {
-	  var arrcol = ["1", "2", "3","4","5","6","7","13"];  /* Excel col = - 3  для каждого столбца таблицы tab */
-    
-      
-      for (var j = 0; j < arrcol.length; j++) {
-    	 rowS = parseInt($('#t' + tab + '_S').html());
-/*1 - 1.1*/
-  	     if (!validSubStr(tab, rowS + 0, "1", arrcol[j], 1, ""))
-  	  	    return false;
-/*2 - 2.1*/
-  	     if (!validSubStr(tab, rowS + 2, "2", arrcol[j], 1, ""))
-  	  	    return false;
-/*2.1 - 2.2:2.13*/
-         r = rowS;
-         row = parseInt(r)  + 3;
-  	     s =  valCell(tab, row, arrcol[j])
-  	     s1	 = valCell_Sum  (tab, row+1, arrcol[j],12,2)
-         if( s < s1 ) {
-  	        $("#errmess").html("Ошибка 101. Таблица " + tab + ". Значение в строке 2.1 колонка " + (parseInt(arrcol[j])+3) + " (" + s + ") должно быть больше или равно суммы подстрок 2.2-2.13  (" +
-  	        		           s1 + ")");           
-  	        return false;
-         }   
-/*2.2 - 2.2.1 */
-  	     if (!validSubStr(tab, rowS + 4, "2.2", arrcol[j], 1, ""))
-  	  	    return false;
-/*2.3 - 2.3.1 */
-  	     if (!validSubStr(tab, rowS + 6, "2.3", arrcol[j], 1, ""))
-  	  	    return false;
-/*2.4 - 2.4.1 */
-  	     if (!validSubStr(tab, rowS + 8, "2.4", arrcol[j], 1, ""))
-  	  	    return false;
-/*2.5 - 2.5.1 */
-  	     if (!validSubStr(tab, rowS + 10, "2.5", arrcol[j], 1, ""))
-  	  	    return false;
-/*2.6 - 2.6.1 */
-  	     if (!validSubStr(tab, rowS + 12, "2.6", arrcol[j], 1, ""))
-  	  	    return false;
-/*2.7 - 2.7.1 */
-  	     if (!validSubStr(tab,rowS + 14, "2.7", arrcol[j], 1, ""))
-  	  	    return false;
-/*2.8 - 2.8.1 */
-  	     if (!validSubStr(tab, rowS + 16, "2.8", arrcol[j], 1, ""))
-  	  	    return false;
-/*2.9 - 2.9.1 */
-  	     if (!validSubStr(tab, rowS + 18, "2.9", arrcol[j], 1, ""))
-  	  	    return false;
-/*2.10 - 2.10.1 */
-  	     if (!validSubStr(tab,rowS + 20, "2.10", arrcol[j], 1, ""))
-  	  	    return false;
-/*2.11 - 2.11.1 */
-  	  	  if (!validSubStr(tab, rowS + 22, "2.11", arrcol[j], 1, ""))
-  	  	    return false;
-/*2.12 - 2.12.1 */
-  	  	  if (!validSubStr(tab, rowS + 24, "2.12", arrcol[j], 1, ""))
-  	  	    return false;
-/*2.13 - 2.13.1 */
- 	  	  if (!validSubStr(tab, rowS + 26, "2.13", arrcol[j], 1, ""))
-  	  	    return false;
-/*3 - 3.1 */
- 	  	  if (!validSubStr(tab, rowS + 28, "3", arrcol[j], 1, ""))
-  	  	    return false;
-/*4 - 4.1:4.3 */
- 	  	  if (!validSubStr(tab, rowS + 30, "4", arrcol[j], 3, ""))
-  	  	    return false;
-/*5 - 5.1 */
- 	  	  if (!validSubStr(tab, rowS + 34, "5", arrcol[j], 1, ""))
-  	  	    return false;
-/*6 - 6.1:6.3 */
- 	  	  if (!validSubStr(tab, rowS + 36, "6", arrcol[j], 3, ""))
-  	  	    return false;
-/*7 - 7.1:7.4.4 нелогично*/
-         row = rowS;
-  	     s =  valCell(tab, row, arrcol[j])
-  	     s1	 = valCell_Sum(tab,row+1, arrcol[j],2,1) + valCell_Sum(tab,row+7, arrcol[j],2,1) + valCell(tab, row+12, arrcol[j])
-         if( s < s1 ) {
-  	        $("#errmess").html("Ошибка 111. Таблица " + tab + ". Значение в строке 7 колонка " + (parseInt(arrcol[j])+3) + " (" + s + ") должно быть больше или равно суммы подстрок 7.1-7.4 и 7.4.4  (" +
-  	        		           s1 + ")");           
-  	        return false;
-         }   
-/*7.2 - 7.2.1:7.2.3 нелогично*/
-         if (!validSubStr(tab, rowS + 42, "7.2", arrcol[j], 3, "(исключая стр 7.2.4))"))
-  	  	    return false;
-/*7.2.3 - 7.2.4 нелогично */
-         if (!validSubStr(tab, rowS + 45, "7.2.3", arrcol[j], 1, "(имеется ввиду стр 7.2.4))"))
-  	  	    return false;
-   	     
-      }
-/*7.4 - 7.4.1 */
-      if (!validSubStr(tab, rowS + 48, "7.4", arrcol[j], 3, "(исключая стр 7.4.4))"))
-	  	    return false;
-	     
-   }
-/*8 - 8.1:8.3 */
-	  if (!validSubStr(tab, rowS + 53, "8", arrcol[j], 3, ""))
-  	    return false;
-/*9 - 9.1:9.4 */
-  	  if (!validSubStr(tab, rowS + 59, "9", arrcol[j], 4, ""))
-  	    return false;
-/*10 - 10.1:10.3 */
-	  if (!validSubStr(tab, rowS + 62, "10", arrcol[j], 3, ""))
-  	    return false;
-/*10 - мужчины */
-  	  s =  valCell(tab, rowS + 64, arrcol[j])
-      if((arrcol[j] == "1" || arrcol[j] == "2" || arrcol[j] == "3" ) && s > 0) {
-   	     $("#errmess").html("Ошибка 112. Таблица " + tab + ". Значение в строке 10.2 колонка " + (parseInt(arrcol[j])+3) + " (" + s + ") должно быть 0 ");
-        return false;
-      }
-      s =  valCell(tab, rowS + 65, arrcol[j])
-      if((arrcol[j] == "1" || arrcol[j] == "2" || arrcol[j] == "3" ) && s > 0) {
-         $("#errmess").html("Ошибка 113. Таблица " + tab + ". Значение в строке 10.3 колонка " + (parseInt(arrcol[j])+3) + " (" + s + ") должно быть 0 ");           
-         return false;
-      }
+{% endif %}
 
-/*10 - женщины */
-  	  s =  valCell(tab, rowS + 63, arrcol[j])
-      if((arrcol[j] == "4" || arrcol[j] == "5" || arrcol[j] == "6" ) && s > 0) {
-  	     $("#errmess").html("Ошибка 114. Таблица " + tab + ". Значение в строке 10.1 колонка " + (parseInt(arrcol[j])+3) + " (" + s + ") должно быть 0 ");           
-         return false;
-      }
-        	 
-	  return true;
-  }
-  
-  function validTab7000() {
-	  var s6000 =  getSumCell ("6000", "13");
-	  var s7000_r6 = valCell("7000","257","1") + valCell("7000","257","2") + valCell("7000","257","3") + 
-      valCell("7000","257","4") + valCell("7000","257","5") + valCell("7000","257","6");
-	  
-	  if( s6000 != s7000_r6 ) {
-	    	$("#errmess").html("Ошибка 1. Сумма по строке 3 таблицы 7000 (" + s7000_r6 + ") должна быть равна общей сумме в таблице 6000 колонка 16(" + s6000 + ")");
-	    	return false;
-	  }  
-	  var s7000 = getSumCell ("7000", "1") + getSumCell ("7000", "2") + getSumCell ("7000", "3") + 
-	              getSumCell ("7000", "4") + getSumCell ("7000", "5") + getSumCell ("7000", "6")
-	  var v7004 = valCelld("t7004")
-	  if(s7000 != v7004) {
-      	  $("#errmess").html("Ошибка 2. Общая сумма по строкам 1-8 табл. 7000 (" + s7000 + ") должна быть равна значению в поле 7004 (" + v7004 + ")");
-	      return false;
-	  }
-	  var v7005 = valCelld("t7005")
-	  if( v7005 != 0) {
-      	  $("#errmess").html("Ошибка 3. Значение в поле 7005 должно быть равно 0");
-	      return false;
-	  }
-	  var v7006 = valCelld("t7006")
-	  if( v7006 != 1) {
-      	  $("#errmess").html("Ошибка 4. Значение в поле 7006 должно быть равно 1");
-	      return false;
-	  }
 
-	  var v7007 = valCelld("t7007")
-	  if( !(v7007 == 1 || v7007 == 0) ) {
-      	  $("#errmess").html("Ошибка 5. Значение в поле 7007 должно быть равно 0 или 1");
-	      return false;
-	  }
-
-	  var v7009 = valCelld("t7009")
-	  var sotkaz =  getSumCell ("2000", "3") + getSumCell ("3000", "4");
-	  if(v7009 != sotkaz) {
-      	  $("#errmess").html("Ошибка 6. Общая сумма отказов (" + sotkaz + ") в табл.2000 столбец 5  и табл.3000 столбец 6 должна быть равна значению в поле 7009 (" + v7009 + ")");
-	      return false;
-	  }
-     return true;
-  }
-
-  function validGroup(tab,tab7,row,row7, col, col7){ 
-    s = valCell(tab, row, col)
-    s1 = valCell_Sum(tab7, row7, col7, 4, 1)
-	if(s != s1) {
-       $("#errmess").html("Ошибка 1001. Таблица " + tab + ". Значение по колонке " + (parseInt(col)+2) + " (" + s + ") должно быть равна сумме колонки "  +
-    		              (parseInt(col7)+2) + "в табл." + tab7 + " (" + s1 + ")");           
-      return false;
-	}  
-    return true;
-  } 
-
-  function validTab1000 (){ 
-	  tab = "1000";
-  	  rowS = parseInt($('#t' + tab + '_S').html());
-	  tab7 = "7000";
-  	  rowS7 = parseInt($('#t' + tab7 + '_S').html());
-  	  
-  	  
-  	  s = valCell_Sum(tab, rowS, "7", 3, 1) + valCell_Sum(tab, rowS, "11", 3, 1)
-  	  s1 = valCelld("t7001") + valCelld("t7001")
-  	  if(s != s1) {
-	     $("#errmess").html("Ошибка 1000. Таблица " + tab + ". Сумма по колонке 5" + " (" + s + ") должно быть равна сумме стр. 7001 + 7002  (" +
-   	          s1 + ")");           
-         return false;
-  	  } 
-/* по группам наcеления */
-  	  if (!validGroup(tab, rowS, tab7, rowS7,"7","1"))
-	  	    return false;
-  	  if (!validGroup(tab, rowS+1, tab7, rowS7,"7","2"))
-	  	    return false;
-  	  if (!validGroup(tab, rowS+2, tab7, rowS7,"7","3"))
-	  	    return false;
-  	  if (!validGroup(tab, rowS, tab7, rowS7,"11","4"))
-	  	    return false;
-	  if (!validGroup(tab, rowS+1, tab7, rowS7,"11","5"))
-	  	    return false;
-	  if (!validGroup(tab, rowS+2, tab7, rowS7,"11","6"))
-	  	    return false;
-      return true;       
-  }
-
-  function valid2000_1 (tab,rowS,i,sum_all) {
-  	  s =  valCell(tab, rowS + i, "1") + valCell(tab, rowS + i, "2") + valCell(tab, rowS + i, "3")
-	  num = i + 1;
-	  if( num == 2 || num == 3 || num == 4 || num == 14 || || num == 10 || num == 12 || num == 13 || num == 15 || num == 20) {
-		  if(s != sum_all) {
-		      $("#errmess").html("Ошибка 2003. Таблица " + tab + ". Сумма колонок 3,4,5 в строке " + num +  "(" + s + ") должна быть равна сумме колонки 5 табл. 1000  (" +
-			    		 sum_all + ")");           
-			  return false;
-		  }
-			  
-	  }
-	  else {
-		  if(s > sum_all) {
-		      $("#errmess").html("Ошибка 2003. Таблица " + tab + ". Сумма колонок 3,4,5 в строке " + num +  "(" + s + ") должна быть меньше илди равна сумме колонки 5 табл. 1000  (" +
-			    		 sum_all + ")");           
-			  return false;
-		  }
-	  }
-	  return true;
-  } 
-
-  function validTab2000(){ 
-	  tab = "2000";
-  	  rowS = parseInt($('#t' + tab + '_S').html());
-	  tab1 = "1000";
-  	  rowS1 = parseInt($('#t' + tab1 + '_S').html());
-  	  
-  	  sum_all = valCell_Sum(tab1, rowS1, "7", 3, 1) + valCell_Sum(tab1, rowS1, "11", 3, 1)
-  	  s =  valCell(tab, rowS, "1")
-  	  if(s != sum_all) {
-	     $("#errmess").html("Ошибка 2001. Таблица " + tab + ". Значение в строке 1 кол. 3" + " (" + s + ") должно быть равна сумме колонки 5 табл. 1000  (" +
-	    		 sum_all + ")");           
-         return false;
-  	  } 
-  	  s =  valCell(tab, rowS+ 19, "1")
-  	  if(s != sum_all) {
-	     $("#errmess").html("Ошибка 2002. Таблица " + tab + ". Значение в строке 20 кол. 3" + " (" + s + ") должно быть равна сумме колонки 5 табл. 1000  (" +
-	    		 sum_all + ")");           
-         return false;
-  	  } 
-      for(var i = 1; i<=18; i++) {
-        if(!valid2000_1(tab,rowS,i,sum_all))
-        	return false;
-      }
-      return true;       
-  }
-
-  function valid3000_1 (tab,rowS,i) {
-  	  s =  valCell(tab, rowS + i, "1")
-  	  s1 =  valCell(tab, rowS + i, "2") + valCell(tab, rowS + i, "3") + valCell(tab, rowS + i, "4")
-	  num = i + 1;
-	  if(s < s1) {
-	      $("#errmess").html("Ошибка 3001. Таблица " + tab + ". Сумма колонок 4,5,6 в строке " + num +  "(" + s1 + ") должна быть меньше или равна сумме колонки 5 табл. 1000  (" +
-			    		 s + ")");           
-		  return false;
-	  }
-			  
-	  return true;
-  } 
-
-  function validTab3000(){ 
-	  tab = "3000";
-  	  rowS = parseInt($('#t' + tab + '_S').html());
-	  tab1 = "1000";
-  	  rowS1 = parseInt($('#t' + tab1 + '_S').html());
-  	  
-  	  sum_all = valCell_Sum(tab1, rowS1, "7", 3, 1) + valCell_Sum(tab1, rowS1, "11", 3, 1)
-      for(var i = 0; i<16; i++) {
-        if(!valid3000_1(tab,rowS,i))
-        	return false;
-      }
-/* 20 %*/
-      s = valCell(tab, rowS + 13, "1"); 	  
-	  if(s < sum_all * 20 / 100) {
-        $("#errmess").html("Ошибка 3002. Таблица " + tab + ". Значение в строке 14 кол. 3 " +  "(" + s1 + ") должна быть больше или равно 20% от суммы колонки 5 табл. 1000  (" +
-			    		 s + ")");
-      	return false;
-	  }    
-      s = valCell(tab, rowS + 14, "1"); 	  
-	  if(s < sum_all * 20 / 100) {
-	     $("#errmess").html("Ошибка 3003. Таблица " + tab + ". Значение в строке 15 кол. 3 " +  "(" + s1 + ") должна быть больше или равно 20% от суммы колонки 5 табл. 1000  (" +
-				    		 s + ")");           
-      	return false;
-	  }    
- /* 30 %*/
-      s = valCell(tab, rowS + 16, "1"); 	  
-	  if(s < sum_all * 30 / 100) {
-        $("#errmess").html("Ошибка 3002. Таблица " + tab + ". Значение в строке 17 кол. 3 " +  "(" + s1 + ") должна быть больше или равно 30% от суммы колонки 5 табл. 1000  (" +
-			    		 s + ")");
-      	return false;
-	  }    
-
-      return true;       
-  }
-
-  
-  function isValid (){ 
-   /* alert("Hi there! val=" + valCell("1000","1","7"));*/
-	   if( !validTab1000() ) return false;
-	   if( !validTab2000() ) return false;
-	   if( !validTab3000() ) return false;
-	   if( !validTab2000() ) return false;
-	   if( !validTab5_6() ) return false;
-
-	   return true;       
-  }
-  
-  
-  $(document).ready ( function () {
-    $('.cal',this).each ( function () {
-	  pole = $(this).attr('id').split('_');
-	  if (pole[1].slice(1) == 'S') sumCell(pole[0].slice(1), pole[2].slice(1));
-	  else calCell(pole[0].slice(1), pole[1].slice(1), pole[2].slice(1));
-	})
-    $(document).ready ( function () { 
-/* 	   $("#btnSend").bind("click",function(event){ */
- 	   $("#btnTest").bind("click",function(event){
- 		   return isValid(); 
- 	   }); 
-    })
-
-  })
-  
-  $('.number').blur ( function() {
-    if ($(this).val() == '') {$(this).val(0)} 
-  })
- /*
-  $('input^[type="number"]').blur ( function() {
-    if ($(this).val() == '') {$(this).val(0)} 
-  })
-*/
-</script>
  
 {% endblock %}
 

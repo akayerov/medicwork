@@ -282,6 +282,7 @@ def monitoring_list(request, question_id ):
     args['status'] = status       
     args['hosp'] = m  
     args['region'] = region       
+    args['type'] = type       
      
 
     args['result'] = result    
@@ -294,7 +295,8 @@ def monitoring_list(request, question_id ):
  # 21/08/2015   
  #   return render_to_response(html_response, args)
     response = render_to_response(html_response, args)
-    response.set_cookie("period",period)
+    
+    response.set_cookie("period",period,2678400)
     return response
 
 def monitoring_form(request, question_id):
@@ -433,17 +435,28 @@ def monitoring_form(request, question_id):
     args['hosp'] = m       
     args['region'] = region       
     args['doc_id'] = doc_id       
+    args['type'] = type       
 
 # Настройка типа документа  
     if type == 3:
-        args['tab1000'] = Doc3Tab1000.objects.filter(doc=doc_id)       
-        args['tab2000'] = Doc3Tab2000.objects.filter(doc=doc_id)       
-        args['tab3000'] = Doc3Tab3000.objects.filter(doc=doc_id)       
-        args['tab4000'] = Doc3Tab4000.objects.filter(doc=doc_id)       
-        args['tab5000'] = Doc3Tab5000.objects.filter(doc=doc_id)       
-        args['tab5001'] = Doc3Tab5001.objects.filter(doc=doc_id)       
-        args['tab6000'] = Doc3Tab6000.objects.filter(doc=doc_id)       
-        args['tab7000'] = Doc3Tab7000.objects.filter(doc=doc_id)           
+        args['t1000'] = Doc3Tab1000.objects.filter(doc=doc_id)       
+        args['t2000'] = Doc3Tab2000.objects.filter(doc=doc_id)       
+        args['t3000'] = Doc3Tab3000.objects.filter(doc=doc_id)       
+        args['t4000'] = Doc3Tab4000.objects.filter(doc=doc_id)       
+        args['t5000'] = Doc3Tab5000.objects.filter(doc=doc_id)       
+        args['t5001'] = Doc3Tab5001.objects.filter(doc=doc_id)       
+        args['t6000'] = Doc3Tab6000.objects.filter(doc=doc_id)       
+        args['t7000'] = Doc3Tab7000.objects.filter(doc=doc_id)           
+        if doc_prevList:
+            args['p1000'] = Doc3Tab1000.objects.filter(doc=doc_prevList[0])       
+            args['p2000'] = Doc3Tab2000.objects.filter(doc=doc_prevList[0])       
+            args['p3000'] = Doc3Tab3000.objects.filter(doc=doc_prevList[0])       
+            args['p4000'] = Doc3Tab4000.objects.filter(doc=doc_prevList[0])       
+            args['p5000'] = Doc3Tab5000.objects.filter(doc=doc_prevList[0])       
+            args['p5001'] = Doc3Tab5001.objects.filter(doc=doc_prevList[0])       
+            args['p6000'] = Doc3Tab6000.objects.filter(doc=doc_prevList[0])       
+            args['p7000'] = Doc3Tab7000.objects.filter(doc=doc_prevList[0])           
+            args['doc_prev'] = doc_prevList[0]
 # конец настройки по типу документа
     return render_to_response(html_response, args)
 

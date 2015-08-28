@@ -34,7 +34,6 @@ def create_report_form3(periodInt, datef):
         return False
     for dh in Doc_Hosp.objects.filter(doc_type = type):
         odoc = Doc3.objects.create(hosp=dh.hosp, period=period, datef=datef)
-        create_tab(3, odoc)     # создаем табличные части для нового отчета, 3 - код мониторинга
         # если предыдущий период есть, попробуем заполнить документ из предыдущего
         if period_prev:       
             doc_prevList = Doc3.objects.filter(period = period_prev, hosp = dh.hosp, status='F')
@@ -42,44 +41,128 @@ def create_report_form3(periodInt, datef):
                 doc_prev = doc_prevList[0]
                 copy_fields_form3(doc_prev, odoc)
                 odoc.save()
+                create_tab(type,odoc, doc_prev)     # создаем табличные части для нового отчета 4 - код мониторинга
+            else:     
+                create_tab(type,odoc)     # создаем табличные части для нового отчета 4 - код мониторинга
+        else:     
+            create_tab(type,odoc)     # создаем табличные части для нового отчета 4 - код мониторинга
+
                 
 #    return create_new_report(3,Doc3,periodInt,datef, copy_fields_form3)
     return True
 
-def create_tab(type, odoc):
+def create_tab(type, odoc, pdoc = None):
     ''' создатим табличные записи для нового отчета '''
     
     row = Rows.objects.filter(type  = type, table = 'таб1000')
     for r in row:
         otab1000 = Doc3Tab1000.objects.create(doc=odoc, row=r )
+        if pdoc:
+            ptab1000 = Doc3Tab1000.objects.get(doc=pdoc, row=r )
+            if ptab1000:
+                otab1000.c1 = ptab1000.c1
+                otab1000.c2 = ptab1000.c2
+                otab1000.c3 = ptab1000.c3
+                otab1000.c4 = ptab1000.c4
+                otab1000.c5 = ptab1000.c5
+                otab1000.c6 = ptab1000.c6
+                otab1000.c7 = ptab1000.c7
+                otab1000.c8 = ptab1000.c8
+                otab1000.c9 = ptab1000.c9
+                otab1000.c10 = ptab1000.c10
+                otab1000.c11 = ptab1000.c11
+                otab1000.c12 = ptab1000.c12
         otab1000.save()
     row = Rows.objects.filter(type  = type, table = 'таб2000')
     for r in row:
         otab2000 = Doc3Tab2000.objects.create(doc=odoc, row=r )
+        if pdoc:
+            ptab2000 = Doc3Tab2000.objects.get(doc=pdoc, row=r )
+            if ptab2000:
+                otab2000.c1 = ptab2000.c1
+                otab2000.c2 = ptab2000.c2
+                otab2000.c3 = ptab2000.c3
+                otab2000.c4 = ptab2000.c4
         otab2000.save()
     row = Rows.objects.filter(type  = type, table = 'таб3000')
     for r in row:
         otab3000 = Doc3Tab3000.objects.create(doc=odoc, row=r )
+        if pdoc:
+            ptab3000 = Doc3Tab3000.objects.get(doc=pdoc, row=r )
+            if ptab3000:
+                otab3000.c1 = ptab3000.c1
+                otab3000.c2 = ptab3000.c2
+                otab3000.c3 = ptab3000.c3
+                otab3000.c4 = ptab3000.c4
+                otab3000.c5 = ptab3000.c5
         otab3000.save()
     row = Rows.objects.filter(type  = type, table = 'таб4000')
     for r in row:
         otab4000 = Doc3Tab4000.objects.create(doc=odoc, row=r )
+        if pdoc:
+            ptab4000 = Doc3Tab4000.objects.get(doc=pdoc, row=r )
+            if ptab4000:
+                otab4000.c1 = ptab4000.c1
+                otab4000.c2 = ptab4000.c2
+                otab4000.c3 = ptab4000.c3
+                otab4000.c5 = ptab4000.c5
+                otab4000.c6 = ptab4000.c6
+                otab4000.c7 = ptab4000.c7
         otab4000.save()
     row = Rows.objects.filter(type  = type, table = 'таб5000')
     for r in row:
         otab5000 = Doc3Tab5000.objects.create(doc=odoc, row=r )
+        if pdoc:
+            ptab5000 = Doc3Tab5000.objects.get(doc=pdoc, row=r )
+            if ptab5000:
+                otab5000.c1 = ptab5000.c1
+                otab5000.c2 = ptab5000.c2
+                otab5000.c3 = ptab5000.c3
+                otab5000.c5 = ptab5000.c5
+                otab5000.c6 = ptab5000.c6
+                otab5000.c7 = ptab5000.c7
+                otab5000.c13 = ptab5000.c13
         otab5000.save()
     row = Rows.objects.filter(type  = type, table = 'таб5001')
     for r in row:
         otab5001 = Doc3Tab5001.objects.create(doc=odoc, row=r )
+        if pdoc:
+            ptab5001 = Doc3Tab5001.objects.get(doc=pdoc, row=r )
+            if ptab5001:
+                otab5001.c1 = ptab5001.c1
+                otab5001.c2 = ptab5001.c2
+                otab5001.c3 = ptab5001.c3
+                otab5001.c5 = ptab5001.c5
+                otab5001.c6 = ptab5001.c6
+                otab5001.c7 = ptab5001.c7
+                otab5001.c13 = ptab5001.c13
         otab5001.save()
     row = Rows.objects.filter(type  = type, table = 'таб6000')
     for r in row:
         otab6000 = Doc3Tab6000.objects.create(doc=odoc, row=r )
+        if pdoc:
+            ptab6000 = Doc3Tab6000.objects.get(doc=pdoc, row=r )
+            if ptab6000:
+                otab6000.c1 = ptab6000.c1
+                otab6000.c2 = ptab6000.c2
+                otab6000.c3 = ptab6000.c3
+                otab6000.c5 = ptab6000.c5
+                otab6000.c6 = ptab6000.c6
+                otab6000.c7 = ptab6000.c7
+                otab6000.c13 = ptab6000.c13
         otab6000.save()
     row = Rows.objects.filter(type  = type, table = 'таб7000')
     for r in row:
         otab7000 = Doc3Tab7000.objects.create(doc=odoc, row=r )
+        if pdoc:
+            ptab7000 = Doc3Tab7000.objects.get(doc=pdoc, row=r )
+            if ptab7000:
+                otab7000.c1 = ptab7000.c1
+                otab7000.c2 = ptab7000.c2
+                otab7000.c3 = ptab7000.c3
+                otab7000.c4 = ptab7000.c4
+                otab7000.c5 = ptab7000.c5
+                otab7000.c6 = ptab7000.c6
         otab7000.save()
 
 def save_doc_form3(request, type, id_doc, mode_comment):
@@ -100,7 +183,22 @@ def copy_fields_form3(ds, dd):
     dd.t7004 = ds.t7004
     dd.t7004_r1 = ds.t7004_r1
     dd.t7004_r2 = ds.t7004_r2
- 
+    dd.t7004_r3 = ds.t7004_r3
+    dd.t7004_r4 = ds.t7004_r4
+    dd.t7004_r5 = ds.t7004_r5
+    dd.t7004_r6 = ds.t7004_r6
+    dd.t7004_r7 = ds.t7004_r7
+    dd.t7004_r8 = ds.t7004_r8
+    dd.t7005 = ds.t7005
+    dd.t7006 = ds.t7006
+    dd.t7006_r1 = ds.t7006_r1
+    dd.t7007 = ds.t7007
+    dd.t7008 = ds.t7008
+    dd.t7009 = ds.t7009
+    dd.t7010 = ds.t7010
+    dd.t7011 = ds.t7011
+    dd.t7012 = ds.t7012
+  
 
 def set_fields_form3(request, doc):
     ''' Заполнение полей модели данными формы . 
@@ -239,8 +337,16 @@ def set_fields_form3(request, doc):
             tab.c6 = request.POST[get_name_input(table,tab.row.id,"c6")]
             tab.save()
 
-def is_valid_form3(doc, doc_prev):
+def is_valid_form3(dd, ds):
     ''' Проверка заполнения формы на корректность 
+        dd - текущий документ
+        ds - документ предыдущего периода
+        Все поля кроме 7011 должны быть >= соответствующего значения предыдущего периода
+    print(dd)
+    print(ds)
+    if int(dd.t3001) < int(ds.t3001):
+        ret = [False,'Ошибка 3001.']
+        return ret
     '''
     ret = [True,'OK']
     return ret

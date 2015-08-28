@@ -15,7 +15,7 @@
 
    <style>
      .rowsel:hover {background: #f0f080}
-     .errmess {background: #dd0000}
+     .errmess {background: #dd0000 !important}
      .old_period { background: #eeeeee !important }
      .row.full-width {
         width: 100%;
@@ -67,6 +67,11 @@
 {% comment %}
   <script src="{% static 'js/vendor/jquery.js'%}"></script>
 {% endcomment %}
+  {% if type %}
+    {% if type == 3 %}
+      <script src="{% static 'js/medic/form3.js'%}"></script>
+    {% endif %}
+  {% endif %}
   <script src="{% static 'js/vendor/fastclick.js'%}"></script>
   <script src="{% static 'js/foundation.min.js'%}"></script>
   <script type="text/javascript" src="{% static 'js/jqia2.support.js'%}"></script>
