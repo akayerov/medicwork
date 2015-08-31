@@ -587,7 +587,6 @@
 	   if( !validTab1000() ) return false;
 	   if( !validTab2000() ) return false;
 	   if( !validTab3000() ) return false;
-	   if( !validTab2000() ) return false;
 	   if( !validTab5_6() ) return false;
 	   if( !validTab7000() ) return false;
   /* prev period по только 1000 и 2000 таблицы */
