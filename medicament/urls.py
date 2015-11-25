@@ -20,5 +20,6 @@ urlpatterns = patterns('',
     url(r'^monitor/export/(?P<question_id>.+)/$', views.export, name='export'),
     url(r'^monitor/(?P<question_id>.+)/$', views.monitoring_form, name='monitoring_form'),
     url(r'^test/(?P<question_id>.+)/$', views.test, name='test'),
+    url(r'^test1/(?P<question_id>.+)/$', views.testAjax, name='testAjax'),
 
 )

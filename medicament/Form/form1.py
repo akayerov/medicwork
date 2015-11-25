@@ -7,7 +7,8 @@ from random import random
 import openpyxl
 from openpyxl.styles import Font
 
-from medicament.oper_with_base import create_new_report, save_doc, get_name, get_period_namef, get_region_name
+from medicament.oper_with_base import create_new_report, save_doc, get_name, get_period_namef, get_region_name, get_name_input, add_action_in_comment
+
 from medicament.models import Doc1
 from _datetime import datetime
 

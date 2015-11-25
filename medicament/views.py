@@ -29,6 +29,9 @@ from medicament.Form.form3 import create_report_form3, calc_sum_form3,\
 
 import os
 import mimetypes
+from pip._vendor.requests.models import Response
+from django.template import response
+import json
 
 _PATH = os.path.abspath(os.path.dirname(__file__))
 
@@ -607,6 +610,28 @@ def test(request, question_id):
     f3 = doc.c2_1
     assert False 
     return render_to_response('/', {})
+
+
+def testAjax(request,question_id):
+#    return HttpResponse("Hello, I am Ajax")
+    for i in range(1,100000):
+        for j in range(1,1000):
+            k = i*j
+        
+    obj = { 'id' : 1234, 'name' : 'AndreyK'}
+    content = json.dumps(obj)
+    response = HttpResponse(content)
+#    response['Content-Type'] = 'text/javascript'
+    return response 
+
+'''
+def testAjax(request, question_id):
+        response = HttpResponse();
+        response['Content-Type'] = 'text/javascript'
+        obj = { 'id' : 1234, 'name' : 'AndreyK'}
+        response.write(serializers.serialize("json"), obj)        
+    return response 
+'''
      
 #    for field in model_instance._meta.fields:
 #        print field.name

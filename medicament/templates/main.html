@@ -6,21 +6,28 @@
      ЯрВебМед Мониторинги
    </title>
    <link rel="stylesheet" type="text/css" href="{% static 'css/foundation.css'%}" />
-{% comment %}
-   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-{% endcomment %}
+   <!-- script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script-->
    <script src="{% static 'js/vendor/jquery.js'%}"></script>
- 
    <script src="{% static 'js/vendor/modernizr.js'%}"></script>
 
    <style>
      .rowsel:hover {background: #f0f080}
-     .errmess {background: #dd0000 !important}
+     .errmess {background: #dd0000}
      .old_period { background: #eeeeee !important }
      .row.full-width {
         width: 100%;
         max-width: 90rem !important; 
      }
+      .waitpopup {
+         position: absolute; /* Абсолютное позиционирование */
+         left: 800px;
+         top: 800px;
+         width: 200px; 
+         background: #ffffff;
+         padding: 5px;
+         padding-right: 20px; 
+         border: solid 1px black; 
+     }    
      .par_hidden {
         display: none !important
      } 
@@ -64,14 +71,15 @@
 <div class="footer-bar">
   Copyright © <a href="http://miac.zdrav76.ru">Медицинский информационно-аналитический центр</a> - Государственное бюджетное учреждение здравоохранения Ярославской области	
 </div>
-{% comment %}
-  <script src="{% static 'js/vendor/jquery.js'%}"></script>
-{% endcomment %}
   {% if type %}
+    {% if type == 1 %}
+      <script src="{% static 'js/medic/form1.js'%}"></script>
+    {% endif %}
     {% if type == 3 %}
       <script src="{% static 'js/medic/form3.js'%}"></script>
     {% endif %}
   {% endif %}
+  <script src="{% static 'js/form.js'%}"></script>
   <script src="{% static 'js/vendor/fastclick.js'%}"></script>
   <script src="{% static 'js/foundation.min.js'%}"></script>
   <script type="text/javascript" src="{% static 'js/jqia2.support.js'%}"></script>
@@ -92,7 +100,7 @@
         	    }
         	  });
         });
-
+        
         function ftrigger() {
          	$('tr.detail_row').toggle();
       	 /*	$('tr.detail_row').slideToggle("fast"); */

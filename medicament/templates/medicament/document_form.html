@@ -15,57 +15,48 @@
 	     	<div class="medium-12-3">
 		         <h6>Отчетный период: <span class="SUL"> {{ doc.period}} ({{doc.datef}}) </span></h6> 
 	        </div>
-	     	<!--div class="medium-12-3 medium-3 columns">
-		         <h6>{{ doc.get_status_display }}</h6> 
-	        </div-->
           <div class="medium-12-12 columns errmess">
 		      {{error}}
           </div>
-{% comment %}
-          <form onsubmit="return validate_form ($(this));">
-{% endcomment %}
-          <form >
+          <form>
            {% csrf_token %}
            {% block monitorform %} {% endblock %}
- 
-          <div id="errmess" class="medium-12-12 columns errmess">
-          </div>
+		   
            <div class="row">
            <div class="medium-12 columns">
+		     <div id="DocLoad" class="medium-8 columns" hidden="hidden">
+			   <p>Идет обновление данных</p>
+			 </div>
            {% if right_operator or right_admin %}
            {% if doc.status == 'E' or doc.status == 'C' %}
- 	     	 <div class="medium-2 columns">
-   		       <button class="button" name="button_save" value="1" type="submit" formmethod="post">Сохранить</button>         
+ 	     	 <div id="btnBar" class="medium-8 columns">
+   		       <button class="button" name="button_save" value="1" type="submit" formmethod="post">Сохранить</button>
+     		   <button id="btnSend" class="button" name="button_send_control" value="2" type="submit" formmethod="post">На согласование</button>  
+  {% if type %}
+    {% if type == 1 or type == 3 %}     
+      	       <button class="button" name="button_load" value="6" type="submit" formmethod="post">Загрузить из Excel</button>     
+    {% endif %}
+  {% endif %}
 	         </div>
- 	     	 <div class="medium-3 columns">
-     		   <button id="btnSend" class="button" name="button_send_control" value="2" type="submit" formmethod="post">На согласование</button>         
-	         </div>
- 	     	 <div class="medium-1 columns">
-	         </div>
- 	     	 <div class="medium-2 columns">
-             {% if isloadExcel %}
-   	     	 <div class="medium-2 columns">
-      	       <button class="button" name="button_load" value="6" type="submit" formmethod="post">Загрузить из Excel</button>         
-	         </div>
-             {% endif %}
-	         </div>
-
           {% endif %}
           {% endif %}
           {% if right_control or right_admin %}
           {% if doc.status == 'W' %}
-       	    <div class="medium-2 columns">
+       	    <div id="btnBar" class="medium-8 columns">
   	    	<button class="button" name="button_isOK" value="4" type="submit" formmethod="post">Согласовано</button>         
-            </div>
-  	   	    <div class="medium-3 columns">
   		    <button class="button" name="button_isNotOK" value="5" type="submit" formmethod="post">Не согласовано</button>         
             </div>
           {% endif %}
           {% endif %}
-     	    <div class="medium-2 columns">
+     	    <div id="btnAjax" class="medium-2 columns">
+     	    <button class="button" name="button_ajax" value="10" type="button">Ajax</button>         
+     	    </div>
+     	    <div id="btnExp" class="medium-2 columns">
      	    <button class="button" name="button_export" value="3" type="submit" formmethod="post">Экспорт в Excel</button>         
      	    </div>
           </div>
+           <div id="errmess" class="medium-12-12 columns errmess">
+           </div>
           </div>
   		  </form>
            
