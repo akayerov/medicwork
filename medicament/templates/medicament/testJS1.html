@@ -1,0 +1,125 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Test Ajax1 (JS1)</title>
+    <style type="text/css">
+      #progressBar {
+        width: 256px;
+        height: 18px;
+      }
+      body > div > div {
+        margin-bottom: 12px;
+      }
+      #warning {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="content">
+      <h1>Тест JavaScript Ajax Test1 асинхронный доступ</h1>
+      <div>
+        <button  onclick="GetStateServer(0)" type="button" id="button1">Start Проверка 1</button> (состояние сервера синхрон) 
+      </div>
+      <div>
+        <button  onclick="GetStateServerAsync(0)" type="button" id="button2">Start Проверка 2</button> (состояние асинхрон) 
+      </div>
+      <div>
+        <button  onclick="GetStateServer(1)" type="button" id="button3">Start Проверка 3</button> (длинная операция синхрон) 
+      </div>
+      <div>
+        <button  onclick="GetStateServerAsync(1)" type="button" id="button4">Start Проверка 4</button> (длинная операция асинхрон) 
+      </div>
+      <div>
+        <div id="progressBar"></div>
+        <span id="valueDisplay">&mdash;</span>
+      </div>
+      <div>
+        <button type="button" id="button10">Stop</button> 
+      </div>
+    </div>
+    <div id="warning">
+        Должен быть запущен сервер
+    </div>
+  </body>
+  <script type="text/javascript">
+  function GetStateServer( mode) { 
+	    var xhr = new XMLHttpRequest();
+        if(mode == 0)
+	      xhr.open('GET', '/server/check/', false);    /* синхронный запрос */
+	    else  
+	      xhr.open('GET', '/server/longOperation/', false);    /* синхронный запрос */
+	    xhr.send();
+
+	    button1.innerHTML = 'Загружаю...';
+	    button1.disabled = true;
+
+	    if (xhr.status != 200) {
+	      // обработать ошибку
+	        alert(xhr.status + ': ' + xhr.statusText);
+	    } else {
+	      // вывести результат
+	        alert(xhr.responseText);
+	    }
+        button1.innerHTML = 'Готово!';
+  }
+
+  function GetStateServerAsync(mode) { 
+    var xhr = new XMLHttpRequest();
+    if(mode == 0)
+      xhr.open('GET', '/server/check/', true);    /* асинхронный запрос */
+    else  
+      xhr.open('GET', '/server/longOperation/', true);    /* асинхронный запрос */
+
+    xhr.send();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState != 4) return;
+      button2.innerHTML = 'Готово!';
+      if (xhr.status != 200) {
+    	clearInterval(timerId);  
+      // обработать ошибку
+        alert(xhr.status + ': ' + xhr.statusText);
+      } else {
+      // вывести результат
+        clearInterval(timerId);
+        alert(xhr.responseText);
+      }
+    }  
+    
+    if(mode > 0) {   /* в длинном запросе доставать состояние */
+    	// начать повторы с интервалом 2 сек
+    	var timerId = setInterval(GetProgressLongOPeration, 2000);
+    	
+    }	
+  button2.innerHTML = 'Загружаю...';
+  button2.disabled = true;
+}
+
+function GetProgressLongOPeration() { 
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/server/getStatusOperation/', true);    /* асинхронный запрос */
+
+    xhr.send();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState != 4) return;
+      button4.innerHTML = 'Готово!';
+      if (xhr.status != 200) {
+      // обработать ошибку
+        alert(xhr.status + ': ' + xhr.statusText);
+      } else {
+        // вывести результат
+        //alert(xhr.responseText);
+        // button4.innerHTML = xhr.responseText;
+    	obj= JSON.parse(xhr.responseText)
+        value = +obj.proc
+        button4.innerHTML = value;
+      }
+    }  
+  button4.innerHTML = 'Загружаю...';
+  button4.disabled = true;
+}
+</script>
+ 
+</html>

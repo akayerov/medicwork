@@ -624,14 +624,7 @@ def testAjax(request,question_id):
 #    response['Content-Type'] = 'text/javascript'
     return response 
 
-'''
-def testAjax(request, question_id):
-        response = HttpResponse();
-        response['Content-Type'] = 'text/javascript'
-        obj = { 'id' : 1234, 'name' : 'AndreyK'}
-        response.write(serializers.serialize("json"), obj)        
-    return response 
-'''
+
      
 #    for field in model_instance._meta.fields:
 #        print field.name

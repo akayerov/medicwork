@@ -516,3 +516,10 @@ class Comment(models.Model):
                                       default=EMPTY)
 
 
+class Synchro(models.Model):
+    ''' Для синхронизации процессов
+    '''
+    name =  models.CharField('Наименование Краткое',max_length=16)
+    val = models.IntegerField('Знач', default=0)
+    def __str__(self):              # __unicode__ on Python 2
+        return self.name

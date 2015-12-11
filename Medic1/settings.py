@@ -113,3 +113,12 @@ FILES_ROOT = '/medicament/Files/'
 FILES_URL = 'Files'
 
 ADMIN_FILES_PREFIX = '/Files/'
+
+'''
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake'
+    }
+}
+'''

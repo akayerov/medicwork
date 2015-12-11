@@ -1,0 +1,88 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Test Ajax2 (JS2)</title>
+    <style type="text/css">
+      #progressBar {
+        width: 256px;
+        height: 18px;
+      }
+      body > div > div {
+        margin-bottom: 12px;
+      }
+      #warning {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="content">
+      <h1>Тест JavaScript Ajax Test2 асинхронный доступ</h1>
+      <div  >
+        <span id="status"></span> 
+      </div>
+      <div>
+        <button  onclick="GetStateServerAsync()" type="button" id="button1">Start Проверка 1</button> (состояние сервера синхрон) 
+      </div>
+    </div>
+    <div id="warning">
+        Должен быть запущен сервер
+    </div>
+  </body>
+  <script type="text/javascript">
+  
+
+  function GetStateServerAsync() { 
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/server/longOperation2/', true);    /* асинхронный запрос */
+    xhr.send();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState != 4) return;
+      button1.innerHTML = 'Готово!';
+      if (xhr.status != 200) {
+    	clearInterval(timerId);  
+      // обработать ошибку
+        alert(xhr.status + ': ' + xhr.statusText);
+      } else {
+      // вывести результат
+        clearInterval(timerId);
+        alert(xhr.responseText);
+      }
+    }  
+    
+   	// начать повторы с интервалом 2 сек
+	var timerId = setInterval(GetProgressLongOPeration2, 2000);
+    	
+  button1.innerHTML = 'Загружаю...';
+  button1.disabled = true;
+}
+
+function GetProgressLongOPeration2() { 
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/server/getStatusOperation2/', true);    /* асинхронный запрос */
+    var status = document.getElementById('status');
+
+    xhr.send();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState != 4) return;
+      status.innerHTML = 'Готово!';
+      if (xhr.status != 200) {
+      // обработать ошибку
+        alert(xhr.status + ': ' + xhr.statusText);
+      } else {
+        // вывести результат
+        //alert(xhr.responseText);
+        // button4.innerHTML = xhr.responseText;
+    	obj= JSON.parse(xhr.responseText)
+        value = +obj.proc
+        status.innerHTML = value;
+      }
+    }  
+  status.innerHTML = 'Читаю...';
+  status.disabled = true;
+}
+</script>
+ 
+</html>

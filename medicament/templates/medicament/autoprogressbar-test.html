@@ -1,0 +1,85 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Auto-Progress Bar Test</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'testJquery/core.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'testJquery/jquery-ui-1.8.custom.css'%}">
+    <script type="text/javascript" src="{% static 'testJquery/jquery-1.4.js'%}"></script>
+    <script type="text/javascript" src="{% static 'testJquery/jquery-ui-1.8.custom.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'testJquery/jqia2.support.js'%}"></script>
+    <script type="text/javascript" src="{% static 'testJquery/jquery.jqia2.autoprogressbar.js'%}"></script>
+    <script type="text/javascript">
+      $(function() {
+
+        $('#startButton').click(function(){
+
+          $.post('/server/longOperation/',function(){
+            $('#progressBar')
+              .autoProgressbar('stop')
+              .autoProgressbar('value',100);
+          });
+
+          $('#progressBar').autoProgressbar({
+            pulseUrl: '/server/getStatusOperation/',
+            change: function(event) {
+              $('#valueDisplay').text($('#progressBar').autoProgressbar('value') + '%');
+            }
+          });
+        });
+
+        $('#stopButton').click(function(){
+          $('#progressBar').autoProgressbar('destroy');
+        });
+
+        $.ajax({
+          url: '/server/check/',
+          type: 'get',
+          success: function(){ $('#content').show(); },
+          error: function(){ $('#warning').show(); }
+        });
+
+      });
+    </script>
+    <style type="text/css">
+      #progressBar {
+        width: 256px;
+        height: 18px;
+      }
+      body > div > div {
+        margin-bottom: 12px;
+      }
+      #content,#warning {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="content">
+
+      <h1>Auto-Progressbar Test</h1>
+
+      <div>
+        <button type="button" id="startButton" class="green90x24">Start</button> (starts a lengthy operation)
+      </div>
+
+      <div>
+        <div id="progressBar"></div>
+        <span id="valueDisplay">&mdash;</span>
+      </div>
+
+      <div>
+        <button type="button" id="stopButton" class="green90x24">Stop</button> (stops the progress bar pulse checking)
+      </div>
+
+    </div>
+
+    <div id="warning">
+      This example page must be served from a Servlet web container in order to operate. Please see the text for information on properly setting up a Tomcat instance to serve active examples.
+    </div>
+
+
+  </body>
+</html>
