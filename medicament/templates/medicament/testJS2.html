@@ -20,23 +20,31 @@
   <body>
     <div id="content">
       <h1>Тест JavaScript Ajax Test2 асинхронный доступ</h1>
-      <div  >
-        <span id="status"></span> 
+      <form>
+        {% csrf_token %}
+        <div  >
+          <span id="status"></span> 
+        </div>
+        <div>
+          <button  onclick="GetStateServerAsync()" type="button" id="button1">Start Проверка 1</button> (состояние сервера синхрон) 
+        </div>
       </div>
-      <div>
-        <button  onclick="GetStateServerAsync()" type="button" id="button1">Start Проверка 1</button> (состояние сервера синхрон) 
+      <div id="warning">
+          Должен быть запущен сервер
       </div>
-    </div>
-    <div id="warning">
-        Должен быть запущен сервер
-    </div>
+      </form>
   </body>
   <script type="text/javascript">
   
 
   function GetStateServerAsync() { 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/server/longOperation2/', true);    /* асинхронный запрос */
+    var csrfCookie = document.cookie.match(/csrftoken=([\w-]+)/);
+//    xhr.open('GET', '/server/longOperation2/', true);    /* асинхронный запрос */
+    xhr.open('POST', '/server/longOperation2/', true);    /* асинхронный запрос */
+    if (csrfCookie) {
+    	xhr.setRequestHeader("X-CSRFToken", csrfCookie[1]);
+    }
     xhr.send();
     xhr.onreadystatechange = function() {
       if (xhr.readyState != 4) return;
@@ -61,7 +69,12 @@
 
 function GetProgressLongOPeration2() { 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/server/getStatusOperation2/', true);    /* асинхронный запрос */
+//    xhr.open('GET', '/server/getStatusOperation2/', true);    /* асинхронный запрос */
+    xhr.open('POST', '/server/getStatusOperation2/', true);    /* асинхронный запрос */
+    var csrfCookie = document.cookie.match(/csrftoken=([\w-]+)/);
+    if (csrfCookie) {   // только для POST запросов, для GET это не нужно
+    	xhr.setRequestHeader("X-CSRFToken", csrfCookie[1]);
+    }
     var status = document.getElementById('status');
 
     xhr.send();

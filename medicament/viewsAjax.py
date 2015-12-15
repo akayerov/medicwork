@@ -18,6 +18,7 @@ import json
 from concurrent.futures._base import wait
 from time import sleep
 from django.contrib.sessions.backends.db import SessionStore
+from django.contrib.sessions.models import Session
 
 _PATH = os.path.abspath(os.path.dirname(__file__))
 
@@ -53,8 +54,19 @@ def testAjaxJS1(request):
 def testAjaxJS2(request):
 #
 #   Тест 2 Передаваемые данные храним в session, читаем, сохраняем как объект базы данных
-#
+#   
+#    sessionid = request.COOKIES['sessionid']
+#    print("Start serverGetStatusOperation2")
+#    print(sessionid)
+#    sobj = Session.objects.get(pk=sessionid)
+#    obj = sobj.get_decoded()
+#    sproc = obj['proc']
+#    assert False 
+
+    
     args = {} 
+    args.update(csrf(request))
+
     return render_to_response("medicament/testJS2.html", args)
 
 def serverCheck(request):
@@ -92,16 +104,11 @@ def longOperation2(request):
 #    return HttpResponse("Hello, I am Ajax")
     print("serverLongOperation2 Start!")
 #    return HttpResponse("OK")   
-    s = SessionStore()     
+    s = SessionStore(request.COOKIES['sessionid'])     
     for i in range(0,101):
-#        request.session['proc'] = str(i)
-#        request.session['proc'] = i
-#        print(request.session['proc'])
         s['proc'] = i
         s.save();
-        print("Set p=" + str(i))
-#        for j in range(0,1000000):
-#            k = i * j * i
+#        print("Set p=" + str(i))
         sleep(1)
     return HttpResponse("OK")           
     obj = { 'id' : 1234, 'name' : 'AndreyKayerov'}
@@ -121,11 +128,19 @@ def serverGetStatusOperation(request):
 
 def serverGetStatusOperation2(request):
     proc = 0
-    if 'proc' in request.session:
-       proc = request.session['proc']    
-       obj = { 'proc' : proc,}
-    
-    
+    sessionid = request.COOKIES['sessionid']
+#    print("Start serverGetStatusOperation2")
+#    print(sessionid)
+    sobj = Session.objects.get(pk=sessionid)
+#    print("Sobj=OK")
+    dataobj = sobj.get_decoded()
+
+    if 'proc' in dataobj:
+ #       print("Sobj=" + str(dataobj['proc']))
+        obj = { 'proc' : dataobj['proc'] }
+    else:
+        obj = { 'proc' : -1 }
+#        print('FAIL')
     content = json.dumps(obj)
     response = HttpResponse(content)
     return response 
